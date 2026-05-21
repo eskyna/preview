@@ -1,0 +1,293 @@
+{{ $rawDescription := .Description | default .Site.Params.description }}
+{{ $description := $rawDescription | plainify | truncate 155 }}
+{{ $keywords := .Site.Params.keywords | default "Styleberatung, Imageberatung, Personal Styling, Farbberatung, Hannover, Online Coaching" }}
+{{ $siteTitle := .Site.Title | default "ESKYNA Style & Image Coaching" }}
+{{ $pageTitle := .Title | default $siteTitle }}
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-src 'none'; form-action 'self'; upgrade-insecure-requests;">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="{{ $description }}">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="keywords" content="{{ $keywords }}">
+<meta name="copyright" content="© 2026 Natalia Kleemann, Stefan Rohe">
+<meta name="audience" content="all">
+<meta name="page-topic" content="Style und Image Coaching">
+<meta name="revisit-after" content="7 days">
+<meta http-equiv="Expires" content="Thu, 31 Dec 2037 23:55:55 GMT">
+{{ if and (ne $pageTitle "") (ne $pageTitle $siteTitle) }}
+  <title>{{ $pageTitle }} | {{ $siteTitle }}</title>
+{{ else }}
+  <title>{{ $siteTitle }}</title>
+{{ end }}
+<link rel="shortcut icon" href="{{ "favicon.ico" | relURL }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ "images/favicon-16x16.png" | relURL }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ "images/favicon-32x32.png" | relURL }}">
+<link rel="mask-icon" href="{{ "images/mask-icon.svg" | relURL }}" color="#8b5e34">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ "images/apple-touch-icon.png" | relURL }}">
+<link rel="apple-touch-startup-image" href="{{ "images/apple-startup-icon.png" | relURL }}">
+<link rel="canonical" href="{{ .Permalink }}">
+<link rel="sitemap" type="application/xml" title="Sitemap" href="{{ "sitemap.xml" | absURL }}">
+<script>
+  (function () {
+    var key = "eskynaPreferredLanguage";
+    var path = window.location.pathname;
+    var isRoot = path === "/" || path === "/index.html";
+    if (!isRoot) return;
+
+    var preferred = null;
+    try {
+      preferred = window.localStorage.getItem(key);
+    } catch (err) {
+      preferred = null;
+    }
+
+    if (!preferred) {
+      var langs = [];
+      if (Array.isArray(navigator.languages) && navigator.languages.length > 0) {
+        langs = navigator.languages;
+      } else if (navigator.language) {
+        langs = [navigator.language];
+      }
+
+      preferred = "de";
+      for (var i = 0; i < langs.length; i += 1) {
+        if (String(langs[i]).toLowerCase().indexOf("ru") === 0) {
+          preferred = "ru";
+          break;
+        }
+      }
+    }
+
+    if (preferred === "ru") {
+      window.location.replace("/ru/");
+    }
+  })();
+</script>
+
+<style>
+  @font-face {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("/fonts/S6uyw4BMUTPHvxk.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("/fonts/S6u9w4BMUTPHh6UVew8.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("/fonts/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Ew-.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url("/fonts/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtZ6Ew-.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-stretch: normal;
+    font-display: swap;
+    src: url("/fonts/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsjZ0C4n.ttf")
+      format("truetype");
+  }
+
+  @font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 600;
+    font-stretch: normal;
+    font-display: swap;
+    src: url("/fonts/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsgH1y4n.ttf")
+      format("truetype");
+  }
+
+  @font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-stretch: normal;
+    font-display: swap;
+    src: url("/fonts/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsg-1y4n.ttf")
+      format("truetype");
+  }
+
+  @font-face {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url("/fonts/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCu170w-.ttf") format("truetype");
+  }
+</style>
+
+<style>
+  :root {
+    --text: #2c1e16;
+    --accent: #c5a059;
+    --accent-strong: #8b5e34;
+    --max-width: 1120px;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: "Open Sans", "Helvetica Neue", helvetica, arial, sans-serif;
+    color: var(--text);
+    background: #f6f1ea;
+    line-height: 1.55;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .container {
+    width: min(100% - 3rem, var(--max-width));
+    margin: 0 auto;
+  }
+
+  .section {
+    padding-block: 3rem;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    min-height: 46px;
+    padding: 0.6rem 1.2rem;
+    border: 1px solid rgb(44 30 22 / 14%);
+    border-radius: 999px;
+    background: rgb(255 255 255 / 75%);
+    color: var(--accent-strong);
+    font-weight: 700;
+  }
+
+  {{ if .IsHome }}
+    .hero {
+      min-height: 94vh;
+      background: #4a352a;
+      color: #fff;
+    }
+
+    .hero-grid {
+      min-height: 94vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .hero h1 {
+      margin: 0 0 1rem;
+      max-width: 12ch;
+      font-family: Montserrat, "Helvetica Neue", helvetica, arial, sans-serif;
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      line-height: 1.06;
+      color: #fff;
+    }
+
+    .hero .lead {
+      margin: 0 0 1.25rem;
+      max-width: 52ch;
+      color: rgb(255 255 255 / 86%);
+    }
+
+    @media (width <= 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        align-items: end;
+      }
+    }
+  {{ end }}
+</style>
+
+{{ $mainCSSMin := resources.FromString "css/main.css" (readFile "static/css/main.css") | minify }}
+<link rel="preload" href="{{ $mainCSSMin.RelPermalink }}" as="style">
+<link rel="stylesheet" href="{{ $mainCSSMin.RelPermalink }}" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="{{ $mainCSSMin.RelPermalink }}"></noscript>
+
+{{ if .IsHome }}
+  {{ range .AllTranslations -}}
+    <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}" />
+  {{ end -}}
+  <link rel="alternate" hreflang="x-default" href="{{ .Permalink }}" />
+{{ end -}}
+
+{{ partial "schema.html" . }}
+
+<script>
+  (function () {
+    var key = "eskynaPreferredLanguage";
+
+    function getStoredLanguage() {
+      try {
+        return window.localStorage.getItem(key);
+      } catch (err) {
+        return null;
+      }
+    }
+
+    function setStoredLanguage(lang) {
+      try {
+        window.localStorage.setItem(key, lang);
+      } catch (err) {
+        // Ignore storage errors (private mode, blocked storage, etc.)
+      }
+    }
+
+    function bindLanguageLinks() {
+      var links = document.querySelectorAll(".language-link[data-lang]");
+      for (var i = 0; i < links.length; i += 1) {
+        links[i].addEventListener("click", function (event) {
+          var lang = event.currentTarget.getAttribute("data-lang");
+          if (lang) {
+            setStoredLanguage(lang);
+          }
+        });
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", bindLanguageLinks);
+  })();
+</script>
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () {
+      navigator.serviceWorker.register("{{ "sw.js" | relURL }}");
+    });
+  }
+</script>

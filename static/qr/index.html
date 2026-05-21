@@ -1,0 +1,2048 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>ESKYNA Luxury QR-Atelier</title>
+    <meta
+      name="description"
+      content="Elegante QR-Codes im ESKYNA Look direkt im Browser gestalten."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Reliable QR Code Styling Library -->
+    <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.6.0/lib/qr-code-styling.js"></script>
+
+    <style>
+      :root {
+        /* ESKYNA Specific Palette */
+        --ink: #231f20;
+        --muted: #8c8279;
+        --line: rgba(35, 31, 32, 0.08);
+        --paper: #ffffff;
+        --cream: #fcfbf9;
+        --sand: #f1e5d7;
+        --accent: #b99a7f;
+
+        --brand-dark: #231f20;
+        --brand-accent: #b99a7f;
+
+        --shadow-soft: 0 10px 30px rgba(57, 39, 25, 0.04);
+        --shadow-hover: 0 20px 50px rgba(57, 39, 25, 0.08);
+
+        --radius-sm: 8px;
+        --radius-md: 16px;
+        --radius-lg: 24px;
+        --warp-val: 2.5;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family:
+          "Inter",
+          system-ui,
+          -apple-system,
+          sans-serif;
+        color: var(--ink);
+        /* Clean, luxurious Eskyna Background */
+        background-color: var(--cream);
+        background-image:
+          radial-gradient(circle at 15% 0%, rgba(185, 154, 127, 0.08) 0%, transparent 40%),
+          radial-gradient(circle at 85% 100%, rgba(185, 154, 127, 0.1) 0%, transparent 50%);
+        background-attachment: fixed;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+      }
+
+      .app-container {
+        display: flex;
+        flex-direction: column;
+        max-width: 1600px;
+        margin: 0 auto;
+        padding: 24px;
+        gap: 24px;
+        flex-grow: 1;
+        width: 100%;
+        z-index: 1;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 24px;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+      }
+
+      .header-left {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .back-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 8px 16px 8px 12px;
+        border-radius: 999px;
+        background: transparent;
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 0.85rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+      .back-link:hover {
+        background: var(--paper);
+        color: var(--ink);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .brand img {
+        width: 44px;
+        filter: drop-shadow(0 4px 8px rgba(57, 39, 25, 0.05));
+      }
+      .brand span {
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        font-weight: 500;
+        color: var(--ink);
+        font-size: 0.85rem;
+      }
+
+      .btn-inspire {
+        background: var(--ink);
+        color: #fff;
+        border: none;
+        padding: 10px 22px;
+        border-radius: 999px;
+        font-weight: 500;
+        font-size: 0.85rem;
+        cursor: pointer;
+        box-shadow: 0 8px 20px rgba(35, 31, 32, 0.15);
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .btn-inspire:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 10px 25px rgba(35, 31, 32, 0.25);
+        background: #000;
+      }
+
+      .workspace {
+        display: grid;
+        grid-template-columns: 500px 1fr;
+        gap: 32px;
+        flex-grow: 1;
+        align-items: start;
+      }
+
+      /* --- CONTROLS --- */
+      .controls-panel {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        padding: 36px;
+        box-shadow: var(--shadow-soft);
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+        height: calc(100vh - 120px);
+        overflow-y: auto;
+      }
+
+      .controls-panel::-webkit-scrollbar {
+        width: 4px;
+      }
+      .controls-panel::-webkit-scrollbar-thumb {
+        background: rgba(35, 31, 32, 0.1);
+        border-radius: 10px;
+      }
+
+      .panel-header .eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        font-weight: 600;
+        color: var(--accent);
+        font-size: 0.7rem;
+        margin-bottom: 10px;
+        display: block;
+      }
+      .panel-header h1 {
+        font-family: "Playfair Display", Georgia, serif;
+        font-size: 2.2rem;
+        line-height: 1.1;
+        margin-bottom: 12px;
+        font-weight: 500;
+        color: var(--ink);
+      }
+      .panel-header p {
+        font-size: 0.95rem;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      /* Tabs */
+      .tabs {
+        display: flex;
+        gap: 6px;
+        background: rgba(35, 31, 32, 0.04);
+        padding: 6px;
+        border-radius: 999px;
+        margin-bottom: 8px;
+      }
+      .tab-btn {
+        flex: 1;
+        padding: 10px;
+        border-radius: 999px;
+        border: none;
+        background: transparent;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--muted);
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .tab-btn.active {
+        background: #fff;
+        color: var(--ink);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        font-weight: 600;
+      }
+      .tab-content {
+        display: none;
+        flex-direction: column;
+        gap: 12px;
+        animation: fadeIn 0.3s ease;
+      }
+      .tab-content.active {
+        display: flex;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(5px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .form-group > label {
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 4px;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      input[type="password"],
+      textarea,
+      select {
+        width: 100%;
+        padding: 14px 16px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: #faf9f7;
+        font-family: "Inter", sans-serif;
+        font-size: 0.95rem;
+        color: var(--ink);
+        outline: none;
+        transition: 0.2s;
+      }
+      textarea {
+        resize: vertical;
+        min-height: 60px;
+        line-height: 1.4;
+      }
+      input:focus,
+      textarea:focus,
+      select:focus {
+        border-color: var(--accent);
+        background: #fff;
+        box-shadow: 0 0 0 3px rgba(185, 154, 127, 0.1);
+      }
+
+      /* Custom Sliders */
+      input[type="range"] {
+        -webkit-appearance: none;
+        width: 100%;
+        height: 4px;
+        background: rgba(35, 31, 32, 0.08);
+        border-radius: 5px;
+        outline: none;
+        margin: 10px 0;
+      }
+      input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: var(--accent);
+        cursor: pointer;
+        transition: 0.2s;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      input[type="range"]::-webkit-slider-thumb:hover {
+        transform: scale(1.15);
+        background: var(--ink);
+      }
+
+      .range-label-wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 4px;
+      }
+      .range-val {
+        font-size: 0.8rem;
+        background: #faf9f7;
+        border: 1px solid var(--line);
+        padding: 3px 10px;
+        border-radius: 999px;
+        font-weight: 500;
+        color: var(--muted);
+      }
+
+      /* Design Cards */
+      .design-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .design-card {
+        padding: 16px 14px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        background: #faf9f7;
+        cursor: pointer;
+        transition: 0.2s;
+        text-align: left;
+        color: var(--ink);
+      }
+      .design-card:hover {
+        border-color: rgba(35, 31, 32, 0.2);
+        background: #fff;
+      }
+      .design-card.active {
+        outline: 2px solid var(--accent);
+        border-color: transparent;
+        background: #fff;
+      }
+      .design-card strong {
+        display: block;
+        font-size: 0.9rem;
+        margin-bottom: 4px;
+        font-weight: 600;
+      }
+      .design-card span {
+        font-size: 0.75rem;
+        color: var(--muted);
+        line-height: 1.3;
+        display: block;
+      }
+
+      /* Colors & Presets */
+      .color-presets {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
+        margin-bottom: 12px;
+      }
+      .color-swatch {
+        aspect-ratio: 1;
+        border-radius: 50%;
+        border: 1px solid var(--line);
+        cursor: pointer;
+        transition: transform 0.2s;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+        position: relative;
+      }
+      .color-swatch:hover {
+        transform: scale(1.15);
+      }
+      .color-swatch.active {
+        border-color: var(--ink);
+        padding: 3px;
+        background-clip: content-box;
+        border-width: 2px;
+      }
+
+      .color-inputs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .color-picker-wrap {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: #faf9f7;
+        padding: 8px 14px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        transition: 0.2s;
+      }
+      .color-picker-wrap input[type="color"] {
+        -webkit-appearance: none;
+        border: none;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        cursor: pointer;
+        padding: 0;
+        background: none;
+      }
+      .color-picker-wrap input[type="color"]::-webkit-color-swatch-wrapper {
+        padding: 0;
+      }
+      .color-picker-wrap input[type="color"]::-webkit-color-swatch {
+        border: none;
+        border-radius: 50%;
+        box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+      }
+      .color-picker-wrap span {
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--ink);
+      }
+      .color-picker-wrap.disabled {
+        opacity: 0.4;
+        pointer-events: none;
+        background: transparent;
+        border-style: dashed;
+      }
+
+      /* Toggles & Checkboxes */
+      .checkbox-wrap {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.9rem;
+        font-weight: 400;
+        color: var(--ink);
+        cursor: pointer;
+        padding: 6px 0;
+        transition: color 0.2s;
+      }
+      .checkbox-wrap input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        accent-color: var(--accent);
+        cursor: pointer;
+      }
+
+      /* Buttons */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 22px;
+        font-size: 0.95rem;
+        font-weight: 500;
+        border-radius: 999px;
+        cursor: pointer;
+        transition: 0.3s;
+        border: none;
+        gap: 8px;
+        text-decoration: none;
+      }
+      .btn-primary {
+        background: var(--ink);
+        color: #fffaf4;
+        box-shadow: 0 8px 20px rgba(35, 31, 32, 0.15);
+      }
+      .btn-primary:hover {
+        background: #000;
+        transform: translateY(-2px);
+        box-shadow: 0 12px 25px rgba(35, 31, 32, 0.25);
+      }
+      .btn-secondary {
+        background: #faf9f7;
+        color: var(--ink);
+        border: 1px solid var(--line);
+        font-size: 0.85rem;
+        padding: 10px 18px;
+      }
+      .btn-secondary:hover {
+        background: #fff;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(35, 31, 32, 0.05);
+        border-color: rgba(35, 31, 32, 0.2);
+      }
+
+      #export-format {
+        border-radius: 999px;
+        font-weight: 500;
+        cursor: pointer;
+        padding: 0 36px 0 20px;
+        appearance: none;
+        background: url('data:image/svg+xml;utf8,<svg fill="%23231f20" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>')
+          no-repeat right 12px center / 24px;
+        background-color: #faf9f7;
+        border: 1px solid var(--line);
+        font-family: "Inter", sans-serif;
+      }
+      #export-format:hover {
+        background-color: #fff;
+      }
+
+      /* Advanced Settings Collapsible */
+      .advanced-settings {
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        background: #faf9f7;
+        transition: all 0.3s ease;
+        margin-top: 8px;
+      }
+      .advanced-settings[open] {
+        background: #ffffff;
+        box-shadow: var(--shadow-soft);
+      }
+      .advanced-settings summary {
+        padding: 16px 20px;
+        font-weight: 500;
+        color: var(--ink);
+        cursor: pointer;
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        user-select: none;
+        font-size: 0.95rem;
+      }
+      .advanced-settings summary::-webkit-details-marker {
+        display: none;
+      }
+      .advanced-settings summary::after {
+        content: "";
+        width: 20px;
+        height: 20px;
+        background: url('data:image/svg+xml;utf8,<svg fill="none" stroke="%23756b62" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg>')
+          no-repeat center / contain;
+        transition: transform 0.3s ease;
+      }
+      .advanced-settings[open] summary::after {
+        transform: rotate(180deg);
+      }
+      .advanced-settings-content {
+        padding: 0 20px 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        border-top: 1px solid var(--line);
+        margin-top: 4px;
+        padding-top: 24px;
+      }
+
+      /* --- STYLISH PREVIEW STAGE --- */
+      .preview-stage {
+        position: sticky;
+        top: 24px;
+        height: calc(100vh - 120px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        perspective: 1400px;
+        overflow: hidden;
+
+        /* Veredelte Bühne */
+        background: radial-gradient(
+          circle at 50% 50%,
+          rgba(255, 255, 255, 0.9) 0%,
+          rgba(241, 229, 215, 0.4) 100%
+        );
+        border: 1px solid rgba(255, 255, 255, 0.9);
+        border-radius: var(--radius-lg);
+        box-shadow:
+          inset 0 0 60px rgba(255, 255, 255, 0.8),
+          0 20px 40px rgba(57, 39, 25, 0.03);
+      }
+
+      /* Schwebende atmosphärische Licht-Orbs (sehr subtil) */
+      .stage-orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(50px);
+        opacity: 0.3;
+        z-index: 0;
+        pointer-events: none;
+        animation: floatOrb 15s infinite alternate ease-in-out;
+      }
+      .orb-1 {
+        width: 350px;
+        height: 350px;
+        background: rgba(201, 164, 93, 0.2);
+        top: 5%;
+        left: 5%;
+      }
+      .orb-2 {
+        width: 450px;
+        height: 450px;
+        background: rgba(255, 255, 255, 0.5);
+        bottom: -10%;
+        right: -5%;
+        animation-delay: -5s;
+      }
+
+      @keyframes floatOrb {
+        0% {
+          transform: translate(0, 0) scale(1);
+        }
+        100% {
+          transform: translate(30px, -20px) scale(1.05);
+        }
+      }
+
+      /* Der innere Container, der sanft schwebt */
+      .qr-frame {
+        position: relative;
+        background: transparent;
+        padding: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 10;
+      }
+
+      #qr-wrapper {
+        position: relative;
+        /* Flache 2D-Matrix vermeidet WebKit-Clipping-Bugs vollständig */
+        transform: matrix(1, 0.05, -0.025, 0.9125, 0, 0);
+        transform-origin: center;
+        transition: transform 0.1s linear;
+        border-radius: var(--rad-internal);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        will-change: transform;
+
+        /* Basis-Schatten für das Papierobjekt */
+        box-shadow:
+          0 40px 80px rgba(58, 34, 24, 0.12),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+      }
+
+      /* Layered Rendering for Materials */
+      #qr-bg {
+        position: absolute;
+        inset: 0;
+        background: var(--bg-internal);
+        transition: 0.3s;
+        z-index: 1;
+        border-radius: inherit;
+      }
+      #qr-material-layer {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        pointer-events: none;
+        mix-blend-mode: multiply;
+        opacity: 0;
+        transition: opacity 0.3s;
+        border-radius: inherit;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.12'/%3E%3C/svg%3E");
+      }
+      #qr-marble-layer {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        pointer-events: none;
+        mix-blend-mode: color-burn;
+        opacity: 0;
+        transition: opacity 0.3s;
+        border-radius: inherit;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='marble'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.01 0.05' numOctaves='3' result='noise'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1.5 -0.2' in='noise'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23marble)' opacity='0.15'/%3E%3C/svg%3E");
+      }
+
+      /* Das flache Preview-Image verhindert WebKit-3D-Bugs */
+      #qr-preview-img {
+        position: relative;
+        z-index: 3;
+        transition: 0.2s opacity;
+        transform: translateZ(1px);
+        padding: var(--pad-internal);
+        width: 100%;
+        height: auto;
+        max-width: 450px;
+      }
+
+      /* Themes (Internal variables only now, physical styling is on wrapper) */
+      .style-eskyna {
+        --rad-internal: 0px;
+        --bg-internal: #ffffff;
+      }
+      .style-silk {
+        --rad-internal: 46px;
+        --bg-internal: linear-gradient(145deg, #fffaf4, #ead8c5);
+      }
+      .style-linen {
+        --rad-internal: 30px;
+        --bg-internal:
+          repeating-linear-gradient(45deg, rgba(64, 47, 35, 0.02) 0 1px, transparent 1px 11px),
+          #f5efeb;
+      }
+      .style-wine {
+        --rad-internal: 38px;
+        --bg-internal: linear-gradient(145deg, #471625, #2a141b);
+      }
+      .style-glass {
+        --rad-internal: 32px;
+        --bg-internal: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+      }
+
+      /* System Toasts */
+      .toast {
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%) translateY(20px);
+        background: rgba(35, 31, 32, 0.92);
+        color: #fffaf4;
+        padding: 12px 24px;
+        border-radius: 999px;
+        font-size: 0.95rem;
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.3s;
+        z-index: 100;
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.24);
+      }
+      .toast.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      /* Logo Upload Styling */
+      .logo-upload-container {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        background: #faf9f7;
+        border: 1px dashed rgba(185, 154, 127, 0.6);
+        border-radius: 16px;
+        padding: 12px;
+        transition: 0.2s;
+        margin-bottom: 4px;
+      }
+      .logo-upload-container:hover {
+        border-style: solid;
+        border-color: var(--accent);
+        background: #fff;
+      }
+      .logo-preview-box {
+        width: 52px;
+        height: 52px;
+        border-radius: 12px;
+        border: 1px solid var(--line);
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        flex-shrink: 0;
+      }
+      .logo-preview-box img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+      }
+
+      @media (max-width: 1024px) {
+        .workspace {
+          grid-template-columns: 1fr;
+        }
+        .controls-panel {
+          height: auto;
+          overflow: visible;
+        }
+        .preview-stage {
+          height: 600px;
+          position: relative;
+          top: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app-container">
+      <header>
+        <div class="header-left">
+          <a href="https://eskyna.com" class="back-link" title="Zurück zu ESKYNA">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            eskyna.com
+          </a>
+          <div class="brand">
+            <img src="https://eskyna.com/images/sign.png" alt="ESKYNA Logo" />
+            <span>QR-Atelier</span>
+          </div>
+        </div>
+        <button class="btn-inspire" id="btn-inspire">✨ Inspiration</button>
+      </header>
+
+      <div class="workspace">
+        <!-- Controls -->
+        <aside class="controls-panel">
+          <div class="panel-header">
+            <span class="eyebrow">Dein persönlicher QR-Code</span>
+            <h1>Design-Objekt</h1>
+            <p>
+              Gestalte einen eleganten QR-Code für deine Webseite, digitale Visitenkarte oder dein
+              Netzwerk – perfekt abgestimmt auf deine Marke.
+            </p>
+          </div>
+
+          <div class="form-group">
+            <div class="tabs">
+              <button class="tab-btn active" data-tab="tab-url">Link (URL)</button>
+              <button class="tab-btn" data-tab="tab-vcard">Visitenkarte</button>
+              <button class="tab-btn" data-tab="tab-wifi">WLAN</button>
+            </div>
+
+            <!-- URL TAB -->
+            <div id="tab-url" class="tab-content active">
+              <input
+                type="text"
+                id="inp-url"
+                placeholder="https://eskyna.com"
+                value="https://eskyna.com"
+              />
+            </div>
+
+            <!-- VCARD TAB -->
+            <div id="tab-vcard" class="tab-content">
+              <div class="form-row">
+                <input type="text" id="inp-vc-first" placeholder="Vorname" />
+                <input type="text" id="inp-vc-last" placeholder="Nachname" />
+              </div>
+              <input type="text" id="inp-vc-org" placeholder="Unternehmen / Marke" />
+              <input type="text" id="inp-vc-title" placeholder="Position / Titel" />
+              <div class="form-row">
+                <input type="tel" id="inp-vc-tel" placeholder="Telefonnummer" />
+                <input type="email" id="inp-vc-email" placeholder="E-Mail Adresse" />
+              </div>
+              <input type="text" id="inp-vc-url" placeholder="Webseite (z.B. https://eskyna.com)" />
+            </div>
+
+            <!-- WIFI TAB -->
+            <div id="tab-wifi" class="tab-content">
+              <input type="text" id="inp-wifi-ssid" placeholder="WLAN-Netzwerkname (SSID)" />
+              <input type="password" id="inp-wifi-pass" placeholder="WLAN-Passwort" />
+              <select id="inp-wifi-type">
+                <option value="WPA">WPA/WPA2 (Standard)</option>
+                <option value="WEP">WEP</option>
+                <option value="nopass">Ungesichert</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Marken-Signatur (Optionaler Text)</label>
+            <input
+              type="text"
+              id="inp-signature"
+              placeholder="z.B. eskyna.com oder Name"
+              style="font-family: &quot;Playfair Display&quot;, serif; font-size: 1.05rem"
+            />
+          </div>
+
+          <div
+            class="form-group"
+            style="
+              background: rgba(251, 249, 245, 0.6);
+              padding: 20px;
+              border-radius: var(--radius-md);
+              border: 1px solid var(--line);
+            "
+          >
+            <label style="color: var(--ink)">Zentrales Logo</label>
+            <div class="logo-upload-container">
+              <div class="logo-preview-box" id="logo-preview-container">
+                <img id="logo-thumbnail" src="https://eskyna.com/images/sign.png" alt="Logo" />
+              </div>
+              <label class="btn btn-secondary" style="flex-grow: 1; margin: 0; cursor: pointer">
+                Eigenes Logo hochladen
+                <input type="file" id="inp-logo" accept="image/*" style="display: none" />
+              </label>
+              <button
+                class="btn btn-secondary"
+                id="btn-clear-logo"
+                style="display: none; padding: 10px 14px"
+                title="Zurücksetzen"
+              >
+                ✕
+              </button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Design-Thema</label>
+            <div class="design-grid">
+              <button class="design-card active" data-style="eskyna">
+                <strong>ESKYNA Original</strong><span>Blüten-Ecken, minimalistisch</span>
+              </button>
+              <button class="design-card" data-style="silk">
+                <strong>Seide</strong><span>Sanfter Verlauf, eleganter Glanz</span>
+              </button>
+              <button class="design-card" data-style="linen">
+                <strong>Leinen</strong><span>Natürliche Webstruktur, ruhig</span>
+              </button>
+              <button class="design-card" data-style="wine">
+                <strong>Wein</strong><span>Tiefer Kontrast, luxuriös</span>
+              </button>
+              <button class="design-card" data-style="glass">
+                <strong>Acrylglas</strong><span>Transluzent, moderner Look</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Farbwelt</label>
+            <div class="color-presets" id="preset-grid">
+              <!-- Populated via JS -->
+            </div>
+            <div class="color-inputs">
+              <div class="color-picker-wrap">
+                <input type="color" id="inp-color-dark" value="#231f20" /><span
+                  >Hauptfarbe (Tinte)</span
+                >
+              </div>
+              <div class="color-picker-wrap">
+                <input type="color" id="inp-color-bg" value="#ffffff" /><span
+                  >Hintergrund (Papier)</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- COLLAPSIBLE ADVANCED SETTINGS -->
+          <details class="advanced-settings">
+            <summary>✨ Feinschliff & Veredelung</summary>
+            <div class="advanced-settings-content">
+              <div class="form-group">
+                <label>Zusätzliche Details</label>
+                <div style="display: grid; grid-template-columns: 1fr; gap: 10px">
+                  <label class="checkbox-wrap"
+                    ><input type="checkbox" id="inp-passepartout" /> Passepartout (Feiner
+                    Innenrahmen)</label
+                  >
+                  <label class="checkbox-wrap"
+                    ><input type="checkbox" id="inp-two-tone" /> Zweifarbige Akzente in den
+                    Ecken</label
+                  >
+                </div>
+              </div>
+
+              <div class="form-group" style="margin-top: 6px">
+                <label>Logo-Anpassung</label>
+                <div class="range-label-wrap" style="margin-top: 0">
+                  <span style="font-size: 0.85rem; color: var(--ink); font-weight: 400"
+                    >Logo-Größe</span
+                  >
+                  <span class="range-val" id="val-logo-size">28%</span>
+                </div>
+                <input type="range" id="inp-logo-size" min="10" max="45" step="1" value="28" />
+                <label class="checkbox-wrap" style="margin-top: 6px">
+                  <input type="checkbox" id="inp-hide-dots" checked /> QR-Punkte hinter dem Logo
+                  ausblenden (Freistellen)
+                </label>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Punkt-Design</label>
+                  <select id="inp-dots">
+                    <option value="dots">ESKYNA Punkte</option>
+                    <option value="rounded">Weich abgerundet</option>
+                    <option value="classy-rounded">Elegant</option>
+                    <option value="square">Klassisch eckig</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Hintergrund-Effekt</label>
+                  <select id="inp-material">
+                    <option value="clean">Klassisch glatt</option>
+                    <option value="paper">Edles Naturpapier</option>
+                    <option value="marble">Marmor-Textur</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Farbveredelung & Folien</label>
+                <div class="form-row">
+                  <select id="inp-gradient-type" style="font-size: 0.9rem">
+                    <option value="solid">Einfarbig</option>
+                    <option value="linear">Sanfter linearer Verlauf</option>
+                    <option value="radial">Radialer Glanz</option>
+                    <option value="gold">✨ Goldprägung</option>
+                    <option value="iridescent">✨ Holografische Folie</option>
+                    <option value="liquidmetal">✨ Flüssiges Metall</option>
+                  </select>
+                  <div
+                    class="color-picker-wrap disabled"
+                    id="wrap-color-dark2"
+                    style="padding: 4px 12px"
+                  >
+                    <input type="color" id="inp-color-dark2" value="#b99a7f" /><span
+                      style="font-size: 0.8rem"
+                      >Verlaufs-Ende</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Besondere Effekte</label>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px">
+                  <label class="checkbox-wrap" style="padding-top: 0"
+                    ><input type="checkbox" id="inp-emboss" /> Letterpress (Prägung)</label
+                  >
+                  <label class="checkbox-wrap" style="padding-top: 0"
+                    ><input type="checkbox" id="inp-glow" /> Sanftes Leuchten (Aura)</label
+                  >
+                  <label class="checkbox-wrap" style="padding-top: 0; grid-column: span 2"
+                    ><input type="checkbox" id="inp-transparent" /> Transparenter Hintergrund</label
+                  >
+                </div>
+                <div class="range-label-wrap" style="margin-top: 16px">
+                  <label
+                    style="
+                      color: var(--ink);
+                      font-weight: 500;
+                      text-transform: none;
+                      margin-bottom: 0;
+                    "
+                    >Räumliche Darstellung</label
+                  >
+                  <span class="range-val" id="val-warp">2.5</span>
+                </div>
+                <input type="range" id="inp-warp" min="0" max="6" step="0.1" value="2.5" />
+                <span
+                  style="
+                    font-size: 0.8rem;
+                    color: var(--muted);
+                    line-height: 1.4;
+                    margin-top: 4px;
+                    display: block;
+                  "
+                  >Verleiht dem Code eine elegante, dreidimensionale Wirkung für
+                  Präsentationen.</span
+                >
+              </div>
+            </div>
+          </details>
+
+          <div class="form-group" style="margin-top: 14px; margin-bottom: 10px">
+            <label>Herunterladen</label>
+            <div style="display: flex; gap: 12px; height: 54px">
+              <select id="export-format">
+                <option value="png">Bild (PNG) - Optimal für Druck & Web</option>
+                <option value="svg">Vektor (SVG) - Für Grafiker</option>
+              </select>
+              <button id="btn-download" class="btn btn-primary" style="flex-grow: 1">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  style="margin-right: 6px"
+                >
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Speichern
+              </button>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Stylish Preview Stage -->
+        <main class="preview-stage" id="preview-stage">
+          <!-- Floating Ambient Orbs -->
+          <div class="stage-orb orb-1"></div>
+          <div class="stage-orb orb-2"></div>
+
+          <div class="qr-frame style-eskyna" id="qr-frame">
+            <div id="qr-wrapper">
+              <div id="qr-bg"></div>
+              <div id="qr-material-layer"></div>
+              <div id="qr-marble-layer"></div>
+              <!-- Das flache Preview-Image verhindert WebKit-3D-Bugs -->
+              <img id="qr-preview-img" alt="QR Vorschau" />
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <div class="toast" id="toast">Erfolgreich heruntergeladen</div>
+
+    <script>
+      // System Constants
+      const ESKYNA_LOGO_URL = "https://eskyna.com/images/sign.png";
+      let customLogoURL = null;
+      const PREVIEW_SIZE = 600;
+      let currentStyle = "eskyna";
+      let activeTab = "tab-url";
+      let previewDebounceTimer = null;
+      let renderCounter = 0;
+
+      const dom = {
+        // Inputs
+        url: document.getElementById("inp-url"),
+        signature: document.getElementById("inp-signature"),
+        logo: document.getElementById("inp-logo"),
+        btnClearLogo: document.getElementById("btn-clear-logo"),
+        logoThumbnail: document.getElementById("logo-thumbnail"),
+        logoSize: document.getElementById("inp-logo-size"),
+        valLogoSize: document.getElementById("val-logo-size"),
+        hideDots: document.getElementById("inp-hide-dots"),
+        dots: document.getElementById("inp-dots"),
+        material: document.getElementById("inp-material"),
+        gradientType: document.getElementById("inp-gradient-type"),
+        warp: document.getElementById("inp-warp"),
+        valWarp: document.getElementById("val-warp"),
+        colorDark: document.getElementById("inp-color-dark"),
+        colorDark2: document.getElementById("inp-color-dark2"),
+        wrapDark2: document.getElementById("wrap-color-dark2"),
+        colorBg: document.getElementById("inp-color-bg"),
+        transparent: document.getElementById("inp-transparent"),
+        glow: document.getElementById("inp-glow"),
+        emboss: document.getElementById("inp-emboss"),
+        twoTone: document.getElementById("inp-two-tone"),
+        passepartout: document.getElementById("inp-passepartout"),
+
+        // vCard Inputs
+        vcFirst: document.getElementById("inp-vc-first"),
+        vcLast: document.getElementById("inp-vc-last"),
+        vcOrg: document.getElementById("inp-vc-org"),
+        vcTitle: document.getElementById("inp-vc-title"),
+        vcTel: document.getElementById("inp-vc-tel"),
+        vcEmail: document.getElementById("inp-vc-email"),
+        vcUrl: document.getElementById("inp-vc-url"),
+
+        // WiFi Inputs
+        wifiSsid: document.getElementById("inp-wifi-ssid"),
+        wifiPass: document.getElementById("inp-wifi-pass"),
+        wifiType: document.getElementById("inp-wifi-type"),
+
+        // Elements
+        qrPreviewImg: document.getElementById("qr-preview-img"),
+        wrapper: document.getElementById("qr-wrapper"),
+        bgLayer: document.getElementById("qr-bg"),
+        matLayer: document.getElementById("qr-material-layer"),
+        marbleLayer: document.getElementById("qr-marble-layer"),
+        frame: document.getElementById("qr-frame"),
+        stage: document.getElementById("preview-stage"),
+        format: document.getElementById("export-format"),
+        btnDownload: document.getElementById("btn-download"),
+        btnInspire: document.getElementById("btn-inspire"),
+        toast: document.getElementById("toast"),
+        designCards: document.querySelectorAll(".design-card"),
+        presetGrid: document.getElementById("preset-grid"),
+        tabBtns: document.querySelectorAll(".tab-btn"),
+        tabContents: document.querySelectorAll(".tab-content"),
+      };
+
+      // --- Tab Switcher Logic ---
+      dom.tabBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          dom.tabBtns.forEach((b) => b.classList.remove("active"));
+          dom.tabContents.forEach((c) => c.classList.remove("active"));
+          btn.classList.add("active");
+          activeTab = btn.dataset.tab;
+          document.getElementById(activeTab).classList.add("active");
+          triggerPreviewUpdate();
+        });
+      });
+
+      // --- Dynamic Data Builder ---
+      function getQRData() {
+        if (activeTab === "tab-url") {
+          return dom.url.value.trim() || "https://eskyna.com";
+        } else if (activeTab === "tab-vcard") {
+          let vcard = `BEGIN:VCARD\nVERSION:3.0\n`;
+          vcard += `N:${dom.vcLast.value};${dom.vcFirst.value};;;\n`;
+          vcard += `FN:${dom.vcFirst.value} ${dom.vcLast.value}\n`;
+          if (dom.vcOrg.value) vcard += `ORG:${dom.vcOrg.value}\n`;
+          if (dom.vcTitle.value) vcard += `TITLE:${dom.vcTitle.value}\n`;
+          if (dom.vcTel.value) vcard += `TEL:${dom.vcTel.value}\n`;
+          if (dom.vcEmail.value) vcard += `EMAIL:${dom.vcEmail.value}\n`;
+          if (dom.vcUrl.value) vcard += `URL:${dom.vcUrl.value}\n`;
+          vcard += `END:VCARD`;
+          return vcard;
+        } else if (activeTab === "tab-wifi") {
+          const ssid = dom.wifiSsid.value;
+          const pass = dom.wifiPass.value;
+          const type = dom.wifiType.value;
+          return `WIFI:T:${type};S:${ssid};P:${pass};;`;
+        }
+        return "https://eskyna.com";
+      }
+
+      // --- Curated Luxury Palettes ---
+      const presets = [
+        {
+          name: "ESKYNA Original",
+          dark: "#231f20",
+          dark2: "#b99a7f",
+          bg: "#ffffff",
+          grad: "solid",
+        },
+        {
+          name: "Mitternachtsgold",
+          dark: "#0f172a",
+          dark2: "#d4af37",
+          bg: "#fcfaf5",
+          grad: "linear",
+        },
+        { name: "Rosenquarz", dark: "#89375F", dark2: "#F3C5C5", bg: "#fffafb", grad: "linear" },
+        {
+          name: "Smaragd & Salbei",
+          dark: "#064e3b",
+          dark2: "#6ee7b7",
+          bg: "#f0fdf4",
+          grad: "radial",
+        },
+        {
+          name: "Toskanische Sonne",
+          dark: "#7c2d12",
+          dark2: "#f59e0b",
+          bg: "#fffbeb",
+          grad: "radial",
+        },
+        {
+          name: "Flüssiges Platin",
+          dark: "#334155",
+          dark2: "#94a3b8",
+          bg: "#f8fafc",
+          grad: "liquidmetal",
+        },
+        { name: "Goldfolie", dark: "#b45309", dark2: "#fbbf24", bg: "#fffdfa", grad: "gold" },
+        {
+          name: "Obsidian Perle",
+          dark: "#000000",
+          dark2: "#475569",
+          bg: "#f1f5f9",
+          grad: "radial",
+        },
+        { name: "Amethyst", dark: "#4c1d95", dark2: "#a78bfa", bg: "#f5f3ff", grad: "linear" },
+        {
+          name: "Holografisch",
+          dark: "#be185d",
+          dark2: "#3b82f6",
+          bg: "#fdf2f8",
+          grad: "iridescent",
+        },
+      ];
+
+      dom.presetGrid.innerHTML = presets
+        .map(
+          (p, i) => `
+      <div class="color-swatch ${i === 0 ? "active" : ""}" 
+           style="background: ${p.grad === "solid" ? p.dark : `linear-gradient(135deg, ${p.dark} 0%, ${p.dark2} 100%)`}; border-color: ${i === 0 ? p.dark : "transparent"};"
+           data-idx="${i}" title="${p.name}">
+      </div>
+    `
+        )
+        .join("");
+
+      // --- 3D Mouse Parallax Effect ---
+      let bounds;
+      function updateBounds() {
+        bounds = dom.stage.getBoundingClientRect();
+      }
+      window.addEventListener("resize", updateBounds);
+      window.addEventListener("scroll", updateBounds);
+
+      dom.stage.addEventListener("mouseenter", updateBounds);
+      dom.stage.addEventListener("mousemove", (e) => {
+        if (!bounds) updateBounds();
+        const mouseX = e.clientX - bounds.left;
+        const mouseY = e.clientY - bounds.top;
+        const xPct = mouseX / bounds.width - 0.5;
+        const yPct = mouseY / bounds.height - 0.5;
+
+        dom.frame.style.transform = `rotateY(${xPct * 12}deg) rotateX(${yPct * -12}deg) translateY(-5px)`;
+        dom.frame.style.setProperty("--mouse-x", `${mouseX}px`);
+        dom.frame.style.setProperty("--mouse-y", `${mouseY}px`);
+      });
+      dom.stage.addEventListener("mouseleave", () => {
+        dom.frame.style.transform = `rotateY(0deg) rotateX(0deg) translateY(0)`;
+        dom.frame.style.setProperty("--mouse-x", `50%`);
+        dom.frame.style.setProperty("--mouse-y", `50%`);
+      });
+
+      // --- Helper for 100% reliable Image Extraction ---
+      function blobToImage(blob) {
+        return new Promise((resolve, reject) => {
+          const url = URL.createObjectURL(blob);
+          const img = new Image();
+          img.onload = () => {
+            URL.revokeObjectURL(url);
+            resolve(img);
+          };
+          img.onerror = reject;
+          img.src = url;
+        });
+      }
+
+      function hexToRgba(hex, alpha) {
+        hex = hex.replace("#", "");
+        if (hex.length === 3)
+          hex = hex
+            .split("")
+            .map((x) => x + x)
+            .join("");
+        let r = parseInt(hex.substring(0, 2), 16),
+          g = parseInt(hex.substring(2, 4), 16),
+          b = parseInt(hex.substring(4, 6), 16);
+        return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+      }
+
+      function getOptimalTypeNumber(textLength) {
+        if (textLength < 40) return 4;
+        if (textLength < 75) return 6;
+        if (textLength < 115) return 8;
+        return 10;
+      }
+
+      // --- BULLETPROOF GRAPHIC GENERATORS ---
+      function buildLeafPath(ctx, x, y, s, type) {
+        let r = s * 0.35;
+        if (type === "tl") {
+          ctx.moveTo(x, y);
+          ctx.lineTo(x + s - r, y);
+          ctx.arcTo(x + s, y, x + s, y + r, r);
+          ctx.lineTo(x + s, y + s);
+          ctx.lineTo(x + r, y + s);
+          ctx.arcTo(x, y + s, x, y + s - r, r);
+          ctx.lineTo(x, y);
+        } else {
+          ctx.moveTo(x, y + r);
+          ctx.arcTo(x, y, x + r, y, r);
+          ctx.lineTo(x + s, y);
+          ctx.lineTo(x + s, y + s - r);
+          ctx.arcTo(x + s, y + s, x + s - r, y + s, r);
+          ctx.lineTo(x, y + s);
+          ctx.lineTo(x, y + r);
+        }
+      }
+
+      function drawEskynaPetalFinder(ctx, type, size, colorOuter, colorInner) {
+        let thick = size * 0.22;
+        let hs = size - thick * 2;
+        let h_offset = thick;
+        let ds = size * 0.38;
+        let d_offset = (size - ds) / 2;
+        ctx.fillStyle = colorOuter;
+        ctx.beginPath();
+        buildLeafPath(ctx, 0, 0, size, type);
+        buildLeafPath(ctx, h_offset, h_offset, hs, type);
+        ctx.fill("evenodd");
+        ctx.fillStyle = colorInner;
+        ctx.beginPath();
+        buildLeafPath(ctx, d_offset, d_offset, ds, type);
+        ctx.fill();
+      }
+
+      function getLeafSVGPath(x, y, s, type) {
+        let r = s * 0.35;
+        if (type === "tl")
+          return `M ${x} ${y} L ${x + s - r} ${y} A ${r} ${r} 0 0 1 ${x + s} ${y + r} L ${x + s} ${y + s} L ${x + r} ${y + s} A ${r} ${r} 0 0 1 ${x} ${y + s - r} Z`;
+        else
+          return `M ${x} ${y + r} A ${r} ${r} 0 0 1 ${x + r} ${y} L ${x + s} ${y} L ${x + s} ${y + s - r} A ${r} ${r} 0 0 1 ${x + s - r} ${y + s} L ${x} ${y + s} Z`;
+      }
+
+      function getPetalSVG(x, y, size, type, colorOuter, colorInner) {
+        let thick = size * 0.22;
+        let hs = size - thick * 2;
+        let h_offset = thick;
+        let ds = size * 0.38;
+        let d_offset = (size - ds) / 2;
+        let outer = getLeafSVGPath(x, y, size, type);
+        let inner = getLeafSVGPath(x + h_offset, y + h_offset, hs, type);
+        let dot = getLeafSVGPath(x + d_offset, y + d_offset, ds, type);
+        return `<path fill="${colorOuter}" fill-rule="evenodd" d="${outer} ${inner}" /><path fill="${colorInner}" d="${dot}" />`;
+      }
+
+      // Elegant Passepartout Generators
+      function drawPassepartout(ctx, size, color) {
+        const p = size * 0.035;
+        const p2 = p + size * 0.01;
+        const r = size * 0.04;
+        const r2 = r - size * 0.01;
+        ctx.strokeStyle = color;
+        ctx.lineWidth = Math.max(1, size * 0.002);
+        ctx.beginPath();
+        if (ctx.roundRect) ctx.roundRect(p, p, size - p * 2, size - p * 2, r);
+        else ctx.rect(p, p, size - p * 2, size - p * 2);
+        ctx.stroke();
+        ctx.lineWidth = Math.max(0.5, size * 0.001);
+        ctx.beginPath();
+        if (ctx.roundRect) ctx.roundRect(p2, p2, size - p2 * 2, size - p2 * 2, r2);
+        else ctx.rect(p2, p2, size - p2 * 2, size - p2 * 2);
+        ctx.stroke();
+      }
+
+      function getPassepartoutSVG(size, color) {
+        const p = size * 0.035;
+        const p2 = p + size * 0.01;
+        const r = size * 0.04;
+        const r2 = r - size * 0.01;
+        const lw1 = Math.max(1, size * 0.002);
+        const lw2 = Math.max(0.5, size * 0.001);
+        return `<rect x="${p}" y="${p}" width="${size - p * 2}" height="${size - p * 2}" rx="${r}" fill="none" stroke="${color}" stroke-width="${lw1}" opacity="0.8"/><rect x="${p2}" y="${p2}" width="${size - p2 * 2}" height="${size - p2 * 2}" rx="${r2}" fill="none" stroke="${color}" stroke-width="${lw2}" opacity="0.6"/>`;
+      }
+
+      function buildQROptions(
+        data,
+        darkColor,
+        darkColor2,
+        typeNumber,
+        size,
+        renderType = "canvas"
+      ) {
+        let dots = dom.dots.value;
+        let gradType = dom.gradientType.value;
+        let logoScale = parseInt(dom.logoSize.value) / 100;
+        let doHideDots = dom.hideDots.checked;
+
+        let options = {
+          width: size,
+          height: size,
+          type: renderType,
+          data: data,
+          margin: 0,
+          qrOptions: { typeNumber: typeNumber, mode: "Byte", errorCorrectionLevel: "H" },
+          backgroundOptions: { color: "rgba(0,0,0,0)" },
+          image: customLogoURL || ESKYNA_LOGO_URL,
+          imageOptions: {
+            crossOrigin: customLogoURL ? undefined : "anonymous",
+            margin: 8,
+            imageSize: logoScale,
+            hideBackgroundDots: doHideDots,
+          },
+          dotsOptions: { type: dots, color: darkColor },
+          // ALWAYS MAKE NATIVE CORNERS TRANSPARENT
+          cornersSquareOptions: { type: "square", color: "transparent" },
+          cornersDotOptions: { type: "square", color: "transparent" },
+        };
+
+        if (gradType === "gold")
+          options.dotsOptions.gradient = {
+            type: "linear",
+            rotation: Math.PI / 4,
+            colorStops: [
+              { offset: 0, color: "#bf953f" },
+              { offset: 0.4, color: "#fcf6ba" },
+              { offset: 0.8, color: "#b38728" },
+              { offset: 1, color: "#fbf5b7" },
+            ],
+          };
+        else if (gradType === "liquidmetal")
+          options.dotsOptions.gradient = {
+            type: "linear",
+            rotation: Math.PI / 3,
+            colorStops: [
+              { offset: 0, color: "#7b7b7b" },
+              { offset: 0.25, color: "#ffffff" },
+              { offset: 0.5, color: "#4a4a4a" },
+              { offset: 0.75, color: "#ffffff" },
+              { offset: 1, color: "#7b7b7b" },
+            ],
+          };
+        else if (gradType === "iridescent")
+          options.dotsOptions.gradient = {
+            type: "linear",
+            rotation: Math.PI / 5,
+            colorStops: [
+              { offset: 0, color: "#ff7eb3" },
+              { offset: 0.3, color: "#ff758c" },
+              { offset: 0.5, color: "#87cefa" },
+              { offset: 0.8, color: "#a020f0" },
+              { offset: 1, color: "#ff7eb3" },
+            ],
+          };
+        else if (gradType === "linear" || gradType === "radial")
+          options.dotsOptions.gradient = {
+            type: gradType,
+            rotation: Math.PI / 4,
+            colorStops: [
+              { offset: 0, color: darkColor },
+              { offset: 1, color: darkColor2 },
+            ],
+          };
+        return options;
+      }
+
+      function applyThemeSettings(style) {
+        // Internal variables only now, physical styling is mapped cleanly to the wrapper
+        if (style === "wine") {
+          dom.colorDark.value = "#ffffff";
+          dom.colorBg.value = "#471625";
+          dom.wrapper.style.setProperty("--bg-internal", "rgba(255,255,255,0.1)");
+        } else if (style === "silk") {
+          dom.colorDark.value = "#3a2b23";
+          dom.colorBg.value = "#fff8ef";
+          dom.wrapper.style.setProperty("--bg-internal", "rgba(255,255,255,0.6)");
+        } else if (style === "glass") {
+          dom.colorDark.value = "#231f20";
+          dom.colorBg.value = "transparent";
+          dom.wrapper.style.setProperty("--bg-internal", "transparent");
+          dom.transparent.checked = true;
+        } else {
+          dom.colorDark.value = "#231f20";
+          dom.colorBg.value = "#ffffff";
+          dom.wrapper.style.setProperty("--bg-internal", "transparent");
+        }
+
+        if (style !== "eskyna") {
+          dom.wrapper.style.setProperty("--pad-internal", "20px");
+          dom.wrapper.style.setProperty("--rad-internal", "24px");
+        } else {
+          dom.wrapper.style.setProperty("--pad-internal", "0");
+          dom.wrapper.style.setProperty("--rad-internal", "0");
+        }
+      }
+
+      function getSpecialColors() {
+        let darkColor = dom.colorDark.value;
+        let darkColor2 = dom.colorDark2.value;
+        let gradType = dom.gradientType.value;
+        let finderOuterColor = darkColor;
+        let finderInnerColor = darkColor;
+
+        if (gradType === "gold") {
+          finderOuterColor = "#b38728";
+          finderInnerColor = "#b38728";
+        }
+        if (gradType === "liquidmetal") {
+          finderOuterColor = "#4a4a4a";
+          finderInnerColor = "#4a4a4a";
+        }
+        if (gradType === "iridescent") {
+          finderOuterColor = "#a020f0";
+          finderInnerColor = "#a020f0";
+        }
+        if (gradType === "linear" || gradType === "radial") {
+          finderInnerColor = darkColor;
+        }
+
+        if (dom.twoTone.checked) {
+          if (gradType === "solid" || gradType === "linear" || gradType === "radial")
+            finderInnerColor = darkColor2;
+          else if (gradType === "gold") finderInnerColor = "#231f20";
+        }
+        return { outer: finderOuterColor, inner: finderInnerColor };
+      }
+
+      // --- Debounced, Flat Raster Preview Renderer (Fixes 3D Bugs completely) ---
+      function triggerPreviewUpdate() {
+        clearTimeout(previewDebounceTimer);
+        previewDebounceTimer = setTimeout(renderPreviewLogic, 150);
+      }
+
+      function updateWarpTransform() {
+        const w = parseFloat(dom.warp.value) || 0;
+        dom.valWarp.textContent = w;
+        dom.wrapper.style.transform = `matrix(1, ${w * 0.02}, ${w * -0.01}, ${1 - w * 0.035}, 0, 0)`;
+      }
+
+      async function renderPreviewLogic() {
+        const currentRunId = ++renderCounter;
+        dom.qrPreviewImg.style.opacity = 0.5;
+
+        const data = getQRData();
+        const darkColor = dom.colorDark.value;
+        const darkColor2 = dom.colorDark2.value;
+        const bgColor = dom.colorBg.value;
+        const typeNumber = getOptimalTypeNumber(data.length);
+        const isTransparent = dom.transparent.checked;
+        const sigText = dom.signature.value.trim();
+        const hasPassepartout = dom.passepartout.checked;
+
+        const sigHeight = sigText ? PREVIEW_SIZE * 0.15 : 0;
+        const totalHeight = PREVIEW_SIZE + sigHeight;
+
+        dom.valLogoSize.textContent = dom.logoSize.value + "%";
+
+        dom.bgLayer.style.background = isTransparent ? "transparent" : bgColor;
+        dom.matLayer.style.opacity = dom.material.value === "paper" && !isTransparent ? "1" : "0";
+        dom.marbleLayer.style.opacity =
+          dom.material.value === "marble" && !isTransparent ? "1" : "0";
+
+        let filters = [];
+        if (dom.emboss.checked) {
+          filters.push("drop-shadow(-1.5px -1.5px 1px rgba(0,0,0,0.35))");
+          filters.push("drop-shadow(1.5px 1.5px 1px rgba(255,255,255,0.8))");
+        }
+        if (dom.glow.checked) filters.push(`drop-shadow(0 0 15px ${hexToRgba(darkColor, 0.4)})`);
+        dom.qrPreviewImg.style.filter = filters.length > 0 ? filters.join(" ") : "none";
+
+        const isCustomGradient = ["solid", "gold", "iridescent", "liquidmetal"].includes(
+          dom.gradientType.value
+        );
+        dom.wrapDark2.classList.toggle("disabled", isCustomGradient && !dom.twoTone.checked);
+
+        const options = buildQROptions(
+          data,
+          darkColor,
+          darkColor2,
+          typeNumber,
+          PREVIEW_SIZE,
+          "canvas"
+        );
+
+        try {
+          const qrGen = new QRCodeStyling(options);
+          const blob = await qrGen.getRawData("png");
+          if (currentRunId !== renderCounter) return;
+
+          const srcImg = await blobToImage(blob);
+
+          const cvs = document.createElement("canvas");
+          cvs.width = PREVIEW_SIZE;
+          cvs.height = totalHeight;
+          const ctx = cvs.getContext("2d");
+
+          let colors = getSpecialColors();
+          if (hasPassepartout) drawPassepartout(ctx, PREVIEW_SIZE, colors.outer);
+
+          ctx.drawImage(srcImg, 0, 0);
+
+          const moduleCount = typeNumber * 4 + 17;
+          const finderSize = (PREVIEW_SIZE / moduleCount) * 7;
+
+          ctx.save();
+          drawEskynaPetalFinder(ctx, "tl", finderSize, colors.outer, colors.inner);
+          ctx.restore();
+          ctx.save();
+          ctx.translate(PREVIEW_SIZE - finderSize, 0);
+          drawEskynaPetalFinder(ctx, "tr", finderSize, colors.outer, colors.inner);
+          ctx.restore();
+          ctx.save();
+          ctx.translate(0, PREVIEW_SIZE - finderSize);
+          drawEskynaPetalFinder(ctx, "bl", finderSize, colors.outer, colors.inner);
+          ctx.restore();
+
+          if (sigText) {
+            ctx.font = `500 ${PREVIEW_SIZE * 0.06}px "Playfair Display", serif`;
+            ctx.textAlign = "center";
+            ctx.fillStyle = colors.outer;
+            ctx.fillText(sigText, PREVIEW_SIZE / 2, PREVIEW_SIZE + sigHeight * 0.6);
+          }
+
+          dom.qrPreviewImg.src = cvs.toDataURL("image/png");
+          dom.qrPreviewImg.style.opacity = 1;
+        } catch (err) {
+          console.error("Vorschau konnte nicht gerendert werden:", err);
+          dom.qrPreviewImg.style.opacity = 1;
+        }
+      }
+
+      // --- High-Fidelity Export ---
+      dom.btnDownload.addEventListener("click", async () => {
+        dom.btnDownload.textContent = "Verarbeite...";
+        dom.btnDownload.disabled = true;
+
+        try {
+          const format = dom.format.value;
+          const data = getQRData();
+          const darkColor = dom.colorDark.value;
+          const darkColor2 = dom.colorDark2.value;
+          const bgColor = dom.colorBg.value;
+          const warp = parseFloat(dom.warp.value) || 0;
+          const typeNumber = getOptimalTypeNumber(data.length);
+          const isTransparent = dom.transparent.checked;
+          const hasGlow = dom.glow.checked;
+          const hasEmboss = dom.emboss.checked;
+          const hasPaper = dom.material.value === "paper";
+          const hasMarble = dom.material.value === "marble";
+          const sigText = dom.signature.value.trim();
+          const hasPassepartout = dom.passepartout.checked;
+
+          const exportSize = format === "png" ? 2000 : 1000;
+          const sigHeight = sigText ? exportSize * 0.15 : 0;
+          const totalHeight = exportSize + sigHeight;
+
+          const exportOptions = buildQROptions(
+            data,
+            darkColor,
+            darkColor2,
+            typeNumber,
+            exportSize,
+            format === "png" ? "canvas" : "svg"
+          );
+          const tempQR = new QRCodeStyling(exportOptions);
+
+          let colors = getSpecialColors();
+
+          if (format === "svg") {
+            // --- Elegant Affine SVG Export ---
+            const svgBlob = await tempQR.getRawData("svg");
+            let svgText = await svgBlob.text();
+
+            const moduleCount = typeNumber * 4 + 17;
+            const finderSize = (exportSize / moduleCount) * 7;
+
+            const pathTL = getPetalSVG(0, 0, finderSize, "tl", colors.outer, colors.inner);
+            const pathTR = getPetalSVG(
+              exportSize - finderSize,
+              0,
+              finderSize,
+              "tr",
+              colors.outer,
+              colors.inner
+            );
+            const pathBL = getPetalSVG(
+              0,
+              exportSize - finderSize,
+              finderSize,
+              "bl",
+              colors.outer,
+              colors.inner
+            );
+
+            svgText = svgText.replace("</svg>", pathTL + pathTR + pathBL + "</svg>");
+
+            if (sigText) {
+              svgText = svgText.replace(/height="(\d+)"/, `height="${totalHeight}"`);
+              svgText = svgText.replace(
+                /viewBox="0 0 (\d+) (\d+)"/,
+                `viewBox="0 0 $1 ${totalHeight}"`
+              );
+            }
+
+            let contentTransform = "";
+            if (warp > 0) {
+              const cx = exportSize / 2;
+              const a = 1,
+                b = warp * 0.02,
+                c = -warp * 0.01,
+                d = 1 - warp * 0.035;
+              contentTransform = `transform="translate(${cx}, ${cx}) matrix(${a}, ${b}, ${c}, ${d}, 0, 0) translate(${-cx}, ${-cx})"`;
+            }
+
+            const bgRect = isTransparent
+              ? ""
+              : `<rect width="100%" height="100%" fill="${bgColor}" />`;
+            let matFilter = "";
+            if ((hasPaper || hasMarble) && !isTransparent) {
+              matFilter = `<filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#noiseFilter)" opacity="0.12"/>`;
+            }
+            const embossFilter = hasEmboss
+              ? `<filter id="embossFilter"><feDropShadow dx="-2" dy="-2" stdDeviation="2" flood-color="#000" flood-opacity="0.35"/><feDropShadow dx="2" dy="2" stdDeviation="2" flood-color="#fff" flood-opacity="0.8"/></filter>`
+              : "";
+
+            let passepartoutNode = hasPassepartout
+              ? getPassepartoutSVG(exportSize, colors.outer)
+              : "";
+
+            let textNode = "";
+            if (sigText) {
+              textNode = `<text x="${exportSize / 2}" y="${exportSize + sigHeight * 0.6}" font-family="Playfair Display, serif" font-size="${exportSize * 0.06}" fill="${colors.outer}" text-anchor="middle" letter-spacing="0.15em">${sigText}</text>`;
+            }
+
+            svgText = svgText.replace(
+              /(<svg[^>]*>)/,
+              `$1<defs>${embossFilter}</defs>${bgRect}${matFilter}<g ${contentTransform} filter="${hasEmboss ? "url(#embossFilter)" : ""}">`
+            );
+            svgText = svgText.replace("</svg>", `${passepartoutNode}</g>${textNode}</svg>`);
+
+            const link = document.createElement("a");
+            link.download = `eskyna-qr-luxury.svg`;
+            link.href = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svgText);
+            link.click();
+          } else {
+            // --- Elegant Affine PNG Export ---
+            const blob = await tempQR.getRawData("png");
+            const srcImg = await blobToImage(blob);
+
+            const destCanvas = document.createElement("canvas");
+            destCanvas.width = exportSize;
+            destCanvas.height = totalHeight;
+            const ctx = destCanvas.getContext("2d");
+
+            if (!isTransparent) {
+              ctx.fillStyle = bgColor;
+              ctx.fillRect(0, 0, exportSize, totalHeight);
+            }
+
+            if ((hasPaper || hasMarble) && !isTransparent) {
+              const noiseCanvas = document.createElement("canvas");
+              noiseCanvas.width = noiseCanvas.height = 250;
+              const nCtx = noiseCanvas.getContext("2d");
+              const idata = nCtx.createImageData(250, 250);
+              const buffer = new Uint32Array(idata.data.buffer);
+              for (let i = 0; i < buffer.length; i++)
+                buffer[i] =
+                  (255 << 24) |
+                  ((Math.random() * 20) << 16) |
+                  ((Math.random() * 20) << 8) |
+                  (Math.random() * 20);
+              nCtx.putImageData(idata, 0, 0);
+              ctx.save();
+              ctx.globalCompositeOperation = hasMarble ? "color-burn" : "multiply";
+              ctx.globalAlpha = hasMarble ? 0.15 : 0.08;
+              ctx.fillStyle = ctx.createPattern(noiseCanvas, "repeat");
+              ctx.fillRect(0, 0, exportSize, totalHeight);
+              ctx.restore();
+            }
+
+            if (hasGlow) {
+              let grad = ctx.createRadialGradient(
+                exportSize / 2,
+                exportSize / 2,
+                exportSize * 0.1,
+                exportSize / 2,
+                exportSize / 2,
+                exportSize * 0.7
+              );
+              grad.addColorStop(0, hexToRgba(darkColor, 0.4));
+              grad.addColorStop(1, "rgba(0,0,0,0)");
+              ctx.fillStyle = grad;
+              ctx.fillRect(0, 0, exportSize, exportSize);
+            }
+
+            ctx.save();
+            if (warp > 0) {
+              ctx.translate(exportSize / 2, exportSize / 2);
+              ctx.transform(1, warp * 0.02, -warp * 0.01, 1 - warp * 0.035, 0, 0);
+              ctx.translate(-exportSize / 2, -exportSize / 2);
+            }
+
+            if (hasEmboss)
+              ctx.filter =
+                "drop-shadow(-3px -3px 2px rgba(0,0,0,0.35)) drop-shadow(3px 3px 2px rgba(255,255,255,0.8))";
+
+            if (hasPassepartout) drawPassepartout(ctx, exportSize, colors.outer);
+
+            ctx.drawImage(srcImg, 0, 0);
+
+            const moduleCount = typeNumber * 4 + 17;
+            const finderSize = (exportSize / moduleCount) * 7;
+
+            ctx.save();
+            drawEskynaPetalFinder(ctx, "tl", finderSize, colors.outer, colors.inner);
+            ctx.restore();
+            ctx.save();
+            ctx.translate(exportSize - finderSize, 0);
+            drawEskynaPetalFinder(ctx, "tr", finderSize, colors.outer, colors.inner);
+            ctx.restore();
+            ctx.save();
+            ctx.translate(0, exportSize - finderSize);
+            drawEskynaPetalFinder(ctx, "bl", finderSize, colors.outer, colors.inner);
+            ctx.restore();
+
+            ctx.restore();
+
+            if (sigText) {
+              ctx.font = `500 ${exportSize * 0.06}px "Playfair Display", serif`;
+              ctx.textAlign = "center";
+              ctx.fillStyle = colors.outer;
+              if (hasEmboss)
+                ctx.filter =
+                  "drop-shadow(-2px -2px 1px rgba(0,0,0,0.3)) drop-shadow(2px 2px 1px rgba(255,255,255,0.8))";
+              ctx.fillText(sigText, exportSize / 2, exportSize + sigHeight * 0.6);
+            }
+
+            const link = document.createElement("a");
+            link.download = `eskyna-qr-luxury.png`;
+            link.href = destCanvas.toDataURL("image/png", 1.0);
+            link.click();
+          }
+
+          dom.toast.textContent = `Erfolgreich heruntergeladen`;
+          dom.toast.classList.add("show");
+          setTimeout(() => dom.toast.classList.remove("show"), 3000);
+        } catch (err) {
+          console.error(err);
+          alert("Fehler beim Exportieren. Bitte stelle sicher, dass das Logo unterstützt wird.");
+        } finally {
+          dom.btnDownload.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg> Speichern`;
+          dom.btnDownload.disabled = false;
+        }
+      });
+
+      dom.warp.addEventListener("input", updateWarpTransform);
+
+      // --- UI Event Listeners ---
+      [
+        dom.url,
+        dom.signature,
+        dom.dots,
+        dom.colorDark,
+        dom.colorDark2,
+        dom.colorBg,
+        dom.transparent,
+        dom.gradientType,
+        dom.glow,
+        dom.emboss,
+        dom.material,
+        dom.logoSize,
+        dom.hideDots,
+        dom.twoTone,
+        dom.passepartout,
+        dom.vcFirst,
+        dom.vcLast,
+        dom.vcOrg,
+        dom.vcTitle,
+        dom.vcTel,
+        dom.vcEmail,
+        dom.vcUrl,
+        dom.wifiSsid,
+        dom.wifiPass,
+        dom.wifiType,
+      ].forEach((el) => el.addEventListener("input", triggerPreviewUpdate));
+
+      dom.designCards.forEach((card) => {
+        card.addEventListener("click", (e) => {
+          dom.designCards.forEach((c) => c.classList.remove("active"));
+          e.currentTarget.classList.add("active");
+          currentStyle = e.currentTarget.dataset.style;
+          dom.frame.className = `qr-frame style-${currentStyle}`;
+          applyThemeSettings(currentStyle);
+          triggerPreviewUpdate();
+        });
+      });
+
+      dom.presetGrid.addEventListener("click", (e) => {
+        const swatch = e.target.closest(".color-swatch");
+        if (!swatch) return;
+        const presetData = presets[swatch.dataset.idx];
+        dom.colorDark.value = presetData.dark;
+        dom.colorDark2.value = presetData.dark2;
+        dom.colorBg.value = presetData.bg;
+        dom.gradientType.value = presetData.grad;
+        document.querySelectorAll(".color-swatch").forEach((s) => {
+          s.classList.remove("active");
+          s.style.borderColor = "transparent";
+        });
+        swatch.classList.add("active");
+        swatch.style.borderColor = presetData.dark;
+        triggerPreviewUpdate();
+      });
+
+      dom.logo.addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (event) => {
+            customLogoURL = event.target.result;
+            dom.logoThumbnail.src = customLogoURL;
+            dom.btnClearLogo.style.display = "block";
+            triggerPreviewUpdate();
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+
+      dom.btnClearLogo.addEventListener("click", () => {
+        customLogoURL = null;
+        dom.logo.value = "";
+        dom.logoThumbnail.src = ESKYNA_LOGO_URL;
+        dom.btnClearLogo.style.display = "none";
+        triggerPreviewUpdate();
+      });
+
+      dom.btnInspire.addEventListener("click", () => {
+        const presetIdx = Math.floor(Math.random() * presets.length);
+        const randomPreset = presets[presetIdx];
+        dom.colorDark.value = randomPreset.dark;
+        dom.colorDark2.value = randomPreset.dark2;
+        dom.colorBg.value = randomPreset.bg;
+        dom.gradientType.value = randomPreset.grad;
+        document.querySelectorAll(".color-swatch").forEach((s, idx) => {
+          s.classList.toggle("active", idx === presetIdx);
+          s.style.borderColor = idx === presetIdx ? randomPreset.dark : "transparent";
+        });
+        const arch = ["dots", "rounded", "classy-rounded"];
+        dom.dots.value = arch[Math.floor(Math.random() * arch.length)];
+        dom.emboss.checked = Math.random() > 0.5;
+        const mats = ["clean", "paper", "marble"];
+        dom.material.value = mats[Math.floor(Math.random() * mats.length)];
+        dom.twoTone.checked = Math.random() > 0.6;
+        dom.passepartout.checked = Math.random() > 0.8;
+        dom.logoSize.value = Math.floor(Math.random() * 15) + 20;
+
+        updateWarpTransform();
+        triggerPreviewUpdate();
+
+        dom.btnInspire.style.transform = "scale(0.95)";
+        setTimeout(() => (dom.btnInspire.style.transform = ""), 150);
+      });
+
+      window.addEventListener("DOMContentLoaded", () => {
+        applyThemeSettings("eskyna");
+        updateWarpTransform();
+        renderPreviewLogic();
+      });
+    </script>
+  </body>
+</html>

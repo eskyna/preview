@@ -1,0 +1,317 @@
+{{ define "main" }}
+{{ $hero := .Params.hero }}
+{{ $problems := .Params.problems }}
+{{ $results := .Params.results }}
+{{ $process := .Params.process }}
+{{ $coach := .Params.coach }}
+{{ $facts := .Params.facts }}
+{{ $services := .Params.services }}
+{{ $method := .Params.method }}
+{{ $cases := .Params.cases }}
+{{ $references := .Params.references }}
+{{ $faq := .Params.faq }}
+{{ $contact := .Params.contact }}
+{{ $ui := .Params.ui }}
+{{ $contactBlogHintText := $contact.blogHintText }}
+{{ $contactBlogLinkText := $contact.blogLinkText }}
+<main class="home-main">
+  <section class="hero">
+    <div class="container hero-topbar">
+      <p class="hero-coach-label" aria-label="Natalia Kleemann">
+        <span class="hero-coach-name">Natalia Kleemann</span>
+        <img src="/images/sign_gold.png" alt="Eskyna Kleeblatt-Symbol" class="hero-coach-sign" aria-hidden="true" width="42" height="42">
+      </p>
+      <div class="hero-tools">
+        {{ partial "social-links.html" . }}
+        {{ partial "language-switcher.html" . }}
+      </div>
+    </div>
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <h1>{{ $hero.headline }}</h1>
+        <div class="lead">{{ $hero.text | markdownify }}</div>
+        <div class="hero-actions">
+          {{ partial "button-icon.html" (dict "href" $hero.ctaHref "text" $hero.ctaText "title" $hero.ctaText) }}
+        </div>
+        {{ with $hero.trust }}
+        <div class="hero-trust">
+          {{ range . }}<span class="hero-trust-item">{{ . }}</span>{{ end }}
+        </div>
+        {{ end }}
+      </div>
+      <div class="hero-image-wrap">
+        <picture>
+          <source media="(max-width: 799px)" srcset="{{ "/images/backgrounds/hero/new_hero_portrait_combined.avif" | relURL }}" type="image/avif">
+          <source media="(max-width: 799px)" srcset="{{ "/images/backgrounds/hero/new_hero_portrait_combined.webp" | relURL }}" type="image/webp">
+          <source media="(max-width: 799px)" srcset="{{ "/images/backgrounds/hero/new_hero_portrait_combined.png" | relURL }}" type="image/png">
+          <source media="(min-width: 800px)" srcset="{{ "/images/backgrounds/hero/new_hero_landscape_combined.avif" | relURL }}" type="image/avif">
+          <source media="(min-width: 800px)" srcset="{{ "/images/backgrounds/hero/new_hero_landscape_combined.webp" | relURL }}" type="image/webp">
+          <source media="(min-width: 800px)" srcset="{{ "/images/backgrounds/hero/new_hero_landscape_combined.png" | relURL }}" type="image/png">
+          <img src="{{ "/images/backgrounds/hero/new_hero_landscape_combined.png" | relURL }}" alt="{{ $ui.hero_image_alt }}" title="{{ $ui.hero_image_alt }}" class="hero-image" loading="eager" decoding="async" fetchpriority="high">
+        </picture>
+      </div>
+    </div>
+  </section>
+
+  <section class="ps-section">
+    <div class="ps-inner">
+      <header class="ps-header">
+        <h2 class="ps-heading">{{ $problems.title }}</h2>
+        <div class="ps-divider" aria-hidden="true">
+          <span class="ps-divider-line"></span>
+          <span class="ps-divider-line"></span>
+        </div>
+      </header>
+
+      <div class="ps-grid problem-grid">
+        {{ range $problems.items }}
+          <article class="ps-card problem-card">
+            {{ $itemTitle := .title }}
+            {{ with .icon }}<img src="{{ . | relURL }}" alt="{{ $itemTitle }}" title="{{ $itemTitle }}" class="ps-card-icon" loading="lazy" width="150" height="150">{{ end }}
+            <h3 class="ps-card-title">{{ .title }}</h3>
+            <p class="ps-card-text">{{ .text }}</p>
+          </article>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  <section class="section coach-section">
+    <div class="container intro-grid">
+      <div>
+        {{ partial "responsive-image.html" (dict "src" $coach.image "alt" "Natalia Kleemann" "title" "Natalia Kleemann" "class" "card-image coach-image" "loading" "lazy" "decoding" "async" "sizes" "(max-width: 900px) 100vw, 50vw") }}
+      </div>
+      <div>
+        <h2>{{ $coach.title | safeHTML }}</h2>
+        <p>{{ $coach.text }}</p>
+        {{ with $facts.mission }}
+        <div class="coach-mission">{{ . | markdownify }}</div>
+        {{ end }}
+        <div class="coach-actions">
+          {{ partial "button-icon.html" (dict "href" $coach.buttonHref "text" $coach.buttonText "title" $coach.buttonText "targetBlank" true) }}
+          {{ if and (isset $ui "coach_about_cta_text") (isset $ui "coach_about_cta_href") }}
+          {{ partial "button-icon.html" (dict "href" ($ui.coach_about_cta_href | relURL) "text" $ui.coach_about_cta_text "title" $ui.coach_about_cta_text "class" "btn btn-secondary") }}
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section benefits-section">
+    <div class="container">
+      <h2>{{ $results.title }}</h2>
+      <div class="benefits-grid">
+        {{ range $results.items }}
+          <article class="benefit-card">
+            <h3>{{ .title }}</h3>
+            <p>{{ .text }}</p>
+          </article>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="angebote">
+    <div class="container">
+      <h2>{{ $services.title }}</h2>
+      {{ with $services.intro }}<p class="offers-intro">{{ . }}</p>{{ end }}
+      
+      <!-- Kostenlose Angebote -->
+      <section class="offers-free-section">
+        {{ with $services.free.title }}<h3 class="offers-group-title">{{ . }}</h3>{{ end }}
+        <p class="offers-free-intro">{{ $services.free.subtitle }}</p>
+        <div class="offers-free-grid">
+          {{ range $idx, $item := $services.free.items }}
+            {{ $itemTitle := $item.title }}
+            {{ $ctaHref := or $item.ctaHref "#kontakt" }}
+            {{ $ctaText := or $item.ctaText $ui.default_cta_text }}
+            {{ $openInNewTab := or (hasPrefix $ctaHref "http") (hasSuffix $ctaHref ".pdf") }}
+            <article class="free-offer-card">
+              {{ with $item.image }}
+                {{ $imagePath := . }}
+                <a class="free-offer-media-link" href="{{ $ctaHref }}" title="{{ $ctaText }}"{{ if $openInNewTab }} target="_blank" rel="noopener noreferrer"{{ end }}>
+                  {{ partial "responsive-image.html" (dict "src" $imagePath "alt" $itemTitle "title" $itemTitle "class" (printf "free-offer-image%s" (cond (or (hasSuffix $imagePath "10_styling_tipps.png") (hasSuffix $imagePath "stiltest.png") (hasSuffix $imagePath "cover_stylingtipps.png") (hasSuffix $imagePath "cover_stiltest.png")) " free-offer-image-contain" "")) "loading" "lazy" "decoding" "async" "sizes" "(max-width: 700px) 100vw, (max-width: 1200px) 50vw, 33vw") }}
+                </a>
+              {{ end }}
+              <h4>{{ $item.title }}</h4>
+              <p>{{ $item.text }}</p>
+              <a class="btn" href="{{ $ctaHref }}" title="{{ $ctaText }}"{{ if $openInNewTab }} target="_blank" rel="noopener noreferrer"{{ end }}>{{ $ctaText }}</a>
+            </article>
+          {{ end }}
+        </div>
+        <div class="offers-free-highlights" aria-label="Vorteile der kostenlosen Angebote">
+          <article class="offers-free-highlight-item">
+            <img src="{{ "images/klarheit_stern.svg" | relURL }}" alt="" class="offers-free-highlight-icon" loading="lazy" aria-hidden="true" width="56" height="56">
+            <p>Für mehr Klarheit in Ihrem Stil</p>
+          </article>
+          <article class="offers-free-highlight-item">
+            <img src="{{ "images/praxisnah_herz.svg" | relURL }}" alt="" class="offers-free-highlight-icon" loading="lazy" aria-hidden="true" width="56" height="56">
+            <p>Praxisnah &amp; sofort anwendbar</p>
+          </article>
+          <article class="offers-free-highlight-item">
+            <img src="{{ "images/personal_stylistin_diamant.svg" | relURL }}" alt="" class="offers-free-highlight-icon" loading="lazy" aria-hidden="true" width="56" height="56">
+            <p>Von Personal Stylistin Natalia Kleemann</p>
+          </article>
+          <article class="offers-free-highlight-item">
+            <img src="{{ "images/kostenlos_geschenk.svg" | relURL }}" alt="" class="offers-free-highlight-icon" loading="lazy" aria-hidden="true" width="56" height="56">
+            <p>100% kostenlos &amp; unverbindlich</p>
+          </article>
+        </div>
+      </section>
+      
+      <!-- Hauptpakete -->
+      <section class="offers-packages-section">
+        <h3 class="offers-group-title">{{ $services.packages.title }}</h3>
+        <div class="packages-grid">
+          {{ range $services.packages.items }}
+            {{ $ctaHref := or .ctaHref "#kontakt" }}
+            {{ $ctaText := or .ctaText $ui.default_cta_text }}
+            {{ $openInNewTab := or (hasPrefix $ctaHref "http") (hasSuffix $ctaHref ".pdf") }}
+            <article class="package-card {{ if .featured }}package-card-featured{{ end }}">
+              {{ if .badge }}
+                <div class="package-badge">{{ .badge }}</div>
+              {{ end }}
+              <p class="package-name">{{ .name }}</p>
+              <p class="package-price">{{ .price }}</p>
+              <h4 class="package-headline">{{ .headline }}</h4>
+              <p class="package-description">{{ .description }}</p>
+              {{ with .highlights }}
+                <ul class="package-highlights">
+                  {{ range . }}
+                    <li>{{ . }}</li>
+                  {{ end }}
+                </ul>
+              {{ end }}
+              {{ with .note }}
+                <p class="package-note">{{ . }}</p>
+              {{ end }}
+              {{ with .result }}
+                <p class="package-result"><span class="package-result-label">{{ $ui.result_label }}</span> {{ . }}</p>
+              {{ end }}
+              <div class="package-cta">
+                {{ partial "button-icon.html" (dict "href" $ctaHref "text" $ctaText "title" $ctaText "class" (printf "btn%s" (cond (not .featured) " btn-secondary" "")) "targetBlank" $openInNewTab) }}
+              </div>
+            </article>
+          {{ end }}
+        </div>
+      </section>
+      
+      <!-- Vergleichstabelle -->
+      {{ with $services.comparison }}
+      <section class="offers-comparison-section">
+        <h3 class="offers-group-title">{{ .title }}</h3>
+        {{ with .intro }}<p class="comparison-intro">{{ . }}</p>{{ end }}
+        <div class="comparison-table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                {{ range .table.headers }}
+                  <th>{{ . }}</th>
+                {{ end }}
+              </tr>
+            </thead>
+            <tbody>
+              {{ range .table.rows }}
+                <tr>
+                  <td><strong>{{ .offer }}</strong></td>
+                  <td>{{ .focus }}</td>
+                  <td>{{ .audience }}</td>
+                  <td class="table-price"><strong>{{ .investment }}</strong></td>
+                </tr>
+              {{ end }}
+            </tbody>
+          </table>
+        </div>
+        <div class="comparison-cards" aria-label="{{ .title }}">
+          {{ range .table.rows }}
+            <article class="comparison-card">
+              <h4>{{ .offer }}</h4>
+              <dl>
+                <dt>Fokus</dt>
+                <dd>{{ .focus }}</dd>
+                <dt>Für wen?</dt>
+                <dd>{{ .audience }}</dd>
+                <dt>Investition</dt>
+                <dd>{{ .investment }}</dd>
+              </dl>
+            </article>
+          {{ end }}
+        </div>
+      </section>
+      {{ end }}
+      
+      <!-- Unsicherheits-Abfang -->
+      {{ with $services.uncertainty }}
+      <section class="offers-uncertainty-section">
+        <h3>{{ .title }}</h3>
+        <p>{{ .text }}</p>
+        {{ $ctaHref := or .ctaHref "#kontakt" }}
+        {{ $ctaText := or .ctaText $ui.default_cta_text }}
+        {{ $openInNewTab := or (hasPrefix $ctaHref "http") (hasSuffix $ctaHref ".pdf") }}
+        {{ partial "button-icon.html" (dict "href" $ctaHref "text" .ctaText "title" .ctaText "targetBlank" $openInNewTab) }}
+      </section>
+      {{ end }}
+    </div>
+  </section>
+
+  <section class="section references-section" id="referenzen">
+    <div class="container">
+      <h2>{{ $references.title }}</h2>
+      <p class="references-subtitle">{{ $references.subtitle }}</p>
+      <div class="references-grid">
+        {{ range $item := $references.items }}
+          <article class="reference-chip">
+            {{ with $item.logo }}
+              <img src="{{ if or (hasPrefix . "http") (hasPrefix . "data:") }}{{ . | safeURL }}{{ else }}{{ . | relURL }}{{ end }}" alt="Logo {{ $item.name }}" title="Logo {{ $item.name }}" class="reference-logo" loading="lazy" width="120" height="28">
+            {{ end }}
+            <p class="reference-name">{{ $item.name }}</p>
+            {{ with $item.label }}<p class="reference-label">{{ . }}</p>{{ end }}
+          </article>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  {{ with $faq }}
+  <section class="section faq-section" id="faq">
+    <div class="container">
+      <h2 class="faq-title">{{ .title }}</h2>
+      <p class="faq-intro">{{ .intro }}</p>
+      <div class="faq-list">
+        {{ range .items }}
+        <details class="faq-item">
+          <summary class="faq-question">{{ .q }}</summary>
+          <div class="faq-answer"><p>{{ .a }}</p></div>
+        </details>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
+  <section class="section" id="kontakt">
+    <div class="container contact-grid">
+      <div>
+        <h2>{{ $contact.title }}</h2>
+        <p>{{ $contact.text | markdownify }}</p>
+        <p><strong>{{ $ui.contact_email_label }}</strong> <a href="mailto:{{ $contact.email }}" title="{{ $contact.email }}">{{ $contact.email }}</a></p>
+        {{ partial "social-links.html" . }}
+        <div class="contact-faq-cta">
+          {{ partial "button-icon.html" (dict "href" $ui.faq_cta_href "text" $ui.faq_cta_text "title" $ui.faq_cta_text "targetBlank" true) }}
+        </div>
+        <div class="contact-blog-teaser">
+          <div class="contact-blog-icon-wrap" aria-hidden="true">
+            <img src="{{ "/images/book.svg" | relURL }}" alt="" class="contact-blog-icon" width="32" height="32">
+          </div>
+          <p class="contact-blog-copy">
+            {{ $contactBlogHintText }}<br />
+            <a href="{{ "blog" | relLangURL }}" title="{{ $contactBlogLinkText }}">→ {{ $contactBlogLinkText }}</a>
+          </p>
+        </div>
+      </div>
+      {{ partial "responsive-image.html" (dict "src" $contact.photo "alt" $ui.coach_image_alt "title" $ui.coach_image_alt "class" "signature-photo" "loading" "lazy" "decoding" "async" "sizes" "(max-width: 900px) 100vw, 420px" "width" 1290 "height" 1582) }}
+    </div>
+  </section>
+</main>
+
+{{ end }}
