@@ -32,19 +32,16 @@ problems:
       text: "Du suchst noch nach der perfekten Frisur und dem Make-up für deinen Typ."
       icon: "images/problems/svg/DasGewisseEtwas.svg"
 results:
-  title: "Das gewinnst du durch die Zusammenarbeit"
+  title: "Das gewinnst du durch meine Stilberatung"
   background: "images/editorial/style-background.png"
   items:
-    - title: "Du weißt, welche Outfits wirklich funktionieren"
-      text: "Du kennst deine Farben, Schnitte und Kombinationen und entscheidest morgens schneller und sicherer."
-    - title: "Du kaufst gezielter und verschwendest weniger"
-      text: "Du investierst in Teile, die wirklich tragbar sind, statt in Dinge, die ungetragen im Schrank bleiben."
-    - title: "Dein Kleiderschrank wird übersichtlicher und alltagstauglicher"
-      text: 'Jedes Teil hat einen klaren Platz und eine Funktion. Kein Chaos, keine Fehlkäufe, kein "nichts anzuziehen".'
-    - title: "Du bist morgens schneller ready"
-      text: "Outfits sind vorbereitet, kombinierbar und passen zu deinen Terminen und Rollen."
-    - title: "Du trittst in Beruf und Alltag stimmiger auf"
-      text: "Dein Auftreten gewinnt an Sicherheit und Wirkung - bei Kunden, im Team und auf Events."
+    - title: "Du weißt, welche Outfits wirklich zu dir passen"
+    - title: "Du kaufst gezielter und vermeidest Fehlkäufe."
+    - title: "Du erkennst schneller, was dir steht und sich gut kombinieren lässt."
+    - title: "Dein Kleiderschrank wird klarer und alltagstauglicher."
+    - title: "Du bist morgens schneller fertig."
+    - title: "Du wirkst stimmiger und selbstbewusster"
+  outro: "Dein Stil unterstreicht deine Persönlichkeit:<br>im Beruf, im Alltag und bei besonderen Anlässen."
 process:
   title: "Wie läuft die Zusammenarbeit mit mir ab?"
   intro: "Jede Zusammenarbeit beginnt mit einem klaren Blick auf deine aktuelle Situation, deine Ziele und deinen Alltag. Daraus entsteht Schritt für Schritt ein Stil, der wirklich zu dir passt - persönlich, tragbar und mit System."
@@ -76,13 +73,15 @@ facts:
     - "Mama von 2 stilbewussten Jungs"
     - "Ich denke Stilberatung neu; als Gründerin von [EStyle](/estyle/)"
   mission: |
-    *„Meine Mission ist es, Menschen durch Stil mehr Sicherheit,
-    Leichtigkeit und bewusste Entscheidungen zu geben."*
+    Meine Mission ist es, Stil einfacher, bewusster und wirkungsvoller zu machen:
+
+    - weniger Fehlkäufe
+    - mehr Qualität
+    - eine Garderobe, die langfristig funktioniert
 services:
   title: "Finde den Stil, der wirklich zu dir passt"
 
   free:
-    subtitle: "Bevor du dich für eine persönliche Stilberatung entscheidest, kannst du ESKYNA kostenlos kennenlernen. Nutze das Kennenlerngespräch, den Stiltest oder die Styling-Tipps als ersten Impuls für mehr Klarheit in deinem Stil."
     items:
       - title: "Kostenloser Stiltest"
         text: "Der ideale Einstieg, wenn du deinen Stil besser verstehen und erste Orientierung gewinnen möchtest."
@@ -187,40 +186,27 @@ references:
     - name: "EXIST Women 2025"
       label: "Förderprogramm"
       logo: "images/references/exist_logo.svg"
+      hoverText: "Teilnahme EXIST Women 2025. Trainerin seit 2026."
     - name: "TRIP 2025 / 2026"
       label: "Gründungsnetzwerk"
       logo: "images/references/trip_logo.svg"
+      hoverText: "Top 10 Startup Thüringen 2025."
     - name: "IONOS"
       label: "Technologiepartner"
       logo: "images/references/ionos_logo.png"
+      hoverText: "Beratung."
     - name: "HIKE"
       label: "Kooperation"
       logo: "images/references/hike.png"
+      hoverText: "Ein Startup des Hochschulinkubators der Hochschule Nordhausen."
     - name: "Hannover Messe 2026"
       label: "Veranstaltung"
       logo: "images/references/hannover-messe.png"
+      hoverText: "Ausstellung als Startup bei der Hannover Messe 2026 mit Fachvortrag."
     - name: "Thüringer Aufbaubank"
       label: "Förderprogramm"
       logo: "images/references/thueringer_aufbaubank.png"
-testimonials:
-  title: "Das sagen meine Kundinnen"
-  items:
-    - image: "images/customer_references/reference_1.png"
-      quote: "Seit der Beratung mit Natalia weiß ich, welche Outfits für meinen Berufsalltag wirklich funktionieren. Ich bin morgens schneller fertig und trete bei Terminen deutlich sicherer auf."
-      name: "Anna M."
-    - image: "images/customer_references/reference_2.png"
-      quote: "Dank Natalia kaufe ich gezielter ein, habe deutlich weniger Fehlkäufe und endlich einen klaren Stil, dem ich vertraue. deine Beratung war einfühlsam, professionell und direkt umsetzbar."
-      name: "Katharina S."
-    - image: "images/customer_references/reference_3.png"
-      quote: "Ich hätte nicht gedacht, dass eine Stilberatung so viel verändern kann. Mein Kleiderschrank ist übersichtlicher, ich kombiniere schneller und kaufe nur noch Teile, die wirklich passen."
-      name: "Laura W."
-    - image: "images/customer_references/reference_4.png"
-      quote: "Die Zusammenarbeit mit Natalia hat meinen Stil klarer und meinen Auftritt wirkungsvoller gemacht. Ich treffe bewusstere Kaufentscheidungen und fühle mich in Meetings deutlich sicherer."
-      name: "Sophie K."
-    - image: "images/customer_references/reference_5.png"
-      quote: "Natalia versteht es wirklich, Menschen in ihrer Wirkung zu stärken. Nach der Beratung fühle ich mich in meiner Kleidung sicherer und trete in Gesprächen und Events selbstbewusster auf."
-      name: "Julia B."
-  icon: "images/icons/unsicherheit.svg"
+      hoverText: "Förderung durch den Freistaat Thüringen."
 faq:
   title: "Häufige Fragen vor dem Start"
   intro: "Hier findest du Antworten auf typische Fragen."
@@ -239,9 +225,9 @@ faq:
       a: "Ja. Wenn dein Auftritt im Beruf eine wichtige Rolle spielt, hilft die Beratung dabei, Kompetenz, Persönlichkeit und Präsenz sichtbarer zu machen. Das ist besonders wertvoll für Meetings, Kundentermine, Vorträge und Führungsrollen."
   icon: "images/icons/garderoben-chaos.svg"
 contact:
-  title: "Lass uns über deinen neuen Auftritt sprechen"
-  text: "Buche ein unverbindliches Erstgespräch und wir schauen gemeinsam, welches Coaching zu dir passt."
-  blogHintText: "Mehr Details zu Stil, Wirkung und bewusster Garderobe finden Sie in meinem Blog"
+  title: "Lass uns über deinen neuen <em>Auftritt</em> sprechen"
+  text: "Buche ein **unverbindliches Erstgespräch** und wir schauen gemeinsam, welches Coaching zu dir passt."
+  blogHintText: "Mehr Details zu Stil, Wirkung und bewusster Garderobe findest du in meinem Blog"
   blogLinkText: "Zum Blog"
   email: "natalia@eskyna.com"
   photo: "images/portraits/natalia-about-portrait.png"
