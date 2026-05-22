@@ -7,7 +7,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SOURCE_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
-TARGET_DIR_DEFAULT="$(cd "$SOURCE_DIR/.." && pwd)/eskyna-preview"
+TARGET_DIR_DEFAULT="preview"
 TARGET_DIR="$TARGET_DIR_DEFAULT"
 DO_APPLY=0
 
@@ -17,13 +17,13 @@ Usage: $(basename "$0") [--apply] [--target PATH]
 
 Options:
   --apply         Perform the sync (default is dry-run).
-  --target PATH   Target directory (default: ../eskyna-preview)
+  --target PATH   Target directory (default: preview)
   -h, --help      Show this help.
 
 Examples:
   ./bin/sync-to-preview
   ./bin/sync-to-preview --apply
-  ./bin/sync-to-preview --apply --target ../eskyna-preview
+  ./bin/sync-to-preview --apply --target preview
 EOF
 }
 
