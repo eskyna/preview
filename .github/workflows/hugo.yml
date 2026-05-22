@@ -129,9 +129,17 @@ jobs:
           PY
           )
 
-          python3 -m http.server 4173 --directory public >/tmp/linkcheck-server.log 2>&1 &
+          SERVE_DIR=$(mktemp -d)
+          if [ -n "$BASE_PATH" ]; then
+            mkdir -p "$SERVE_DIR$BASE_PATH"
+            cp -R public/. "$SERVE_DIR$BASE_PATH/"
+          else
+            cp -R public/. "$SERVE_DIR/"
+          fi
+
+          python3 -m http.server 4173 --directory "$SERVE_DIR" >/tmp/linkcheck-server.log 2>&1 &
           SERVER_PID=$!
-          trap 'kill $SERVER_PID' EXIT
+          trap 'kill $SERVER_PID; rm -rf "$SERVE_DIR"' EXIT
 
           python3 bin/check-live-assets \
             "http://localhost:4173${BASE_PATH}" \
