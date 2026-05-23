@@ -17,9 +17,12 @@
 <main class="home-main">
   <section class="hero">
     <div class="container hero-topbar">
-      <p class="hero-coach-label" aria-label="Natalia Kleemann">
-        <span class="hero-coach-name">Natalia Kleemann</span>
+      <p class="hero-coach-label" aria-label="Natalia Kleemann" tabindex="0">
         <img src="/images/sign_gold.png" alt="Eskyna Kleeblatt-Symbol" class="hero-coach-sign" aria-hidden="true" width="42" height="42">
+        <span class="hero-coach-copy">
+          <span class="hero-coach-name">Natalia Kleemann</span>
+          <span class="hero-coach-title">Style- und Imagecoach</span>
+        </span>
       </p>
       <div class="hero-tools">
         {{ partial "social-links.html" . }}
@@ -31,7 +34,19 @@
         <h1>{{ $hero.headline }}</h1>
         <div class="lead">{{ $hero.text | markdownify }}</div>
         <div class="hero-actions">
-          {{ partial "button-icon.html" (dict "href" $hero.ctaHref "text" $hero.ctaText "title" $hero.ctaText) }}
+          {{ with $hero.ctaTooltip }}
+            {{ $ctaTooltipId := printf "hero-cta-tooltip-%s" $.Language.Lang }}
+            <div class="hero-cta-tooltip">
+              {{ partial "button-icon.html" (dict "href" $hero.ctaHref "text" $hero.ctaText "title" $hero.ctaText "ariaDescribedBy" $ctaTooltipId) }}
+              <span id="{{ $ctaTooltipId }}" class="hero-cta-tooltip-panel" role="tooltip">
+                <strong class="hero-cta-tooltip-title">{{ .title }}</strong>
+                <strong class="hero-cta-tooltip-lead">{{ .lead }}</strong>
+                <span class="hero-cta-tooltip-text">{{ .text }}</span>
+              </span>
+            </div>
+          {{ else }}
+            {{ partial "button-icon.html" (dict "href" $hero.ctaHref "text" $hero.ctaText "title" $hero.ctaText) }}
+          {{ end }}
         </div>
         {{ with $hero.trust }}
         <div class="hero-trust">
@@ -48,6 +63,13 @@
           <source media="(min-width: 800px)" srcset="{{ "/images/backgrounds/hero/new_hero_landscape_combined.webp" | relURL }}" type="image/webp">
           <source media="(min-width: 800px)" srcset="{{ "/images/backgrounds/hero/new_hero_landscape_combined.png" | relURL }}" type="image/png">
           <img src="{{ "/images/backgrounds/hero/new_hero_landscape_combined.png" | relURL }}" alt="{{ $ui.hero_image_alt }}" title="{{ $ui.hero_image_alt }}" class="hero-image" loading="eager" decoding="async" fetchpriority="high">
+            <source media="(max-width: 799px)" srcset="{{ "/images/backgrounds/hero/new_hero_portrait_bright_combined.avif" | relURL }}" type="image/avif">
+            <source media="(max-width: 799px)" srcset="{{ "/images/backgrounds/hero/new_hero_portrait_bright_combined.webp" | relURL }}" type="image/webp">
+            <source media="(max-width: 799px)" srcset="{{ "/images/backgrounds/hero/new_hero_portrait_bright_combined.png" | relURL }}" type="image/png">
+            <source media="(min-width: 800px)" srcset="{{ "/images/backgrounds/hero/new_hero_landscape_bright_combined.avif" | relURL }}" type="image/avif">
+            <source media="(min-width: 800px)" srcset="{{ "/images/backgrounds/hero/new_hero_landscape_bright_combined.webp" | relURL }}" type="image/webp">
+            <source media="(min-width: 800px)" srcset="{{ "/images/backgrounds/hero/new_hero_landscape_bright_combined.png" | relURL }}" type="image/png">
+            <img src="{{ "/images/backgrounds/hero/new_hero_landscape_bright_combined.png" | relURL }}" alt="{{ $ui.hero_image_alt }}" title="{{ $ui.hero_image_alt }}" class="hero-image" loading="eager" decoding="async" fetchpriority="high">
         </picture>
       </div>
     </div>
