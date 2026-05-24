@@ -3,14 +3,9 @@ title: "Natalia Kleemann"
 hero:
   eyebrow: "Natalia Kleemann | Style- und Imagecoach"
   headline: "Kleidung, die zu deinem Leben passt."
-  text: |
-    Mehr <span class="inline-term-tooltip inline-term-tooltip-start"><button class="inline-term-tooltip-trigger" type="button" aria-describedby="tooltip-stilgefuehl">Stilgefühl</button><span id="tooltip-stilgefuehl" class="inline-term-tooltip-panel" role="tooltip"><strong class="inline-term-tooltip-title">Stilgefühl</strong><strong class="inline-term-tooltip-lead">Du möchtest dich gut anziehen, aber dir fehlt ein klarer roter Faden.</strong><span class="inline-term-tooltip-text">Stilgefühl bedeutet, zu erkennen, was wirklich zu dir passt - unabhängig von Trends oder spontanen Impulsen. Es verbindet deine Farben, Schnitte, Proportionen und Vorlieben zu einem Look, der sich stimmig und authentisch anfühlt.</span></span></span>.
-    Weniger <span class="inline-term-tooltip inline-term-tooltip-start"><button class="inline-term-tooltip-trigger" type="button" aria-describedby="tooltip-fehlkaeufe">Fehlkäufe</button><span id="tooltip-fehlkaeufe" class="inline-term-tooltip-panel" role="tooltip"><strong class="inline-term-tooltip-title">Fehlkäufe</strong><strong class="inline-term-tooltip-lead">Dein Kleiderschrank ist voll, aber viele Teile fühlen sich nicht wirklich nach dir an.</strong><span class="inline-term-tooltip-text">Fehlkäufe entstehen oft, wenn Kleidung zwar schön aussieht, aber nicht zu deinem Alltag, deiner Figur, deinen Farben oder deinem Stilgefühl passt. So sammeln sich Einzelteile, aus denen trotzdem keine stimmigen Outfits entstehen.</span></span></span>.
-
-    Für Frauen und Männer,
-    die <span class="inline-term-tooltip inline-term-tooltip-start"><button class="inline-term-tooltip-trigger" type="button" aria-describedby="tooltip-qualitaet">Qualität</button><span id="tooltip-qualitaet" class="inline-term-tooltip-panel" role="tooltip"><strong class="inline-term-tooltip-title">Qualität</strong><strong class="inline-term-tooltip-lead">Weniger Fehlkäufe schaffen Raum für bessere Kleidung.</strong><span class="inline-term-tooltip-text">Wenn du weißt, was wirklich zu dir passt, kaufst du automatisch weniger - und kannst bewusster in hochwertige Stoffe, gute Verarbeitung und langlebige Lieblingsstücke investieren. Das fühlt sich besser auf der Haut an und ist nachhaltiger als Fast Fashion.</span></span></span> und <span class="inline-term-tooltip inline-term-tooltip-start"><button class="inline-term-tooltip-trigger" type="button" aria-describedby="tooltip-wirkung">Wirkung</button><span id="tooltip-wirkung" class="inline-term-tooltip-panel" role="tooltip"><strong class="inline-term-tooltip-title">Wirkung</strong><strong class="inline-term-tooltip-lead">Der erste Eindruck entsteht, bevor du dein erstes Argument genannt hast.</strong><span class="inline-term-tooltip-text">Dein Auftreten sendet Signale, noch bevor du sprichst. Kleidung, Farben und Stil beeinflussen, ob du als souverän, sympathisch, kompetent oder authentisch wahrgenommen wirst. Ein bewusster Stil hilft dir, genau die Wirkung zu erzeugen, die zu dir und deinem Anlass passt.</span></span></span> schätzen.
-
-    Lass uns gemeinsam starten.
+  detail_1: 'Mehr <span class="inline-term-tooltip inline-term-tooltip-start"><button class="inline-term-tooltip-trigger" type="button" aria-describedby="tooltip-stilgefuehl">Stilgefühl</button><span id="tooltip-stilgefuehl" class="inline-term-tooltip-panel" role="tooltip"><strong class="inline-term-tooltip-title">Stilgefühl</strong><strong class="inline-term-tooltip-lead">Sie möchten sich gut anziehen, aber es fehlt ein klarer roter Faden.</strong><span class="inline-term-tooltip-text">Stilgefühl bedeutet, zu erkennen, was wirklich zu Ihnen passt - unabhängig von Trends oder spontanen Impulsen. Es verbindet Farben, Schnitte, Proportionen und Vorlieben zu einem stimmigen, authentischen Look.</span></span></span>. Weniger <span class="inline-term-tooltip inline-term-tooltip-start"><button class="inline-term-tooltip-trigger" type="button" aria-describedby="tooltip-fehlkaeufe">Fehlkäufe</button><span id="tooltip-fehlkaeufe" class="inline-term-tooltip-panel" role="tooltip"><strong class="inline-term-tooltip-title">Fehlkäufe</strong><strong class="inline-term-tooltip-lead">Der Kleiderschrank ist voll, aber viele Teile fühlen sich nicht nach Ihnen an.</strong><span class="inline-term-tooltip-text">Fehlkäufe entstehen oft, wenn Kleidung zwar schön aussieht, aber nicht zu Alltag, Figur, Farben oder Stilgefühl passt. So sammeln sich Einzelteile ohne funktionierende Outfits.</span></span></span>.'
+  detail_2: 'Für Frauen und Männer, die <span class="inline-term-tooltip inline-term-tooltip-start"><button class="inline-term-tooltip-trigger" type="button" aria-describedby="tooltip-qualitaet">Qualität</button><span id="tooltip-qualitaet" class="inline-term-tooltip-panel" role="tooltip"><strong class="inline-term-tooltip-title">Qualität</strong><strong class="inline-term-tooltip-lead">Weniger Fehlkäufe schaffen Raum für bessere Kleidung.</strong><span class="inline-term-tooltip-text">Wenn Sie wissen, was wirklich zu Ihnen passt, kaufen Sie automatisch weniger und investieren bewusster in hochwertige Stoffe, gute Verarbeitung und langlebige Lieblingsstücke.</span></span></span> und <span class="inline-term-tooltip inline-term-tooltip-start"><button class="inline-term-tooltip-trigger" type="button" aria-describedby="tooltip-wirkung">Wirkung</button><span id="tooltip-wirkung" class="inline-term-tooltip-panel" role="tooltip"><strong class="inline-term-tooltip-title">Wirkung</strong><strong class="inline-term-tooltip-lead">Der erste Eindruck entsteht, bevor Sie Ihr erstes Argument genannt haben.</strong><span class="inline-term-tooltip-text">Auftreten sendet Signale, bevor Sie sprechen. Kleidung, Farben und Stil beeinflussen, ob Sie souverän, sympathisch, kompetent oder authentisch wahrgenommen werden.</span></span></span> schätzen.'
+  detail_3: "<br><br>Lass uns gemeinsam starten."
   ctaText: "Kostenloses Erstgespräch"
   ctaHref: "https://calendar.app.google/sPZWYZT6vfK9NMim7"
   ctaTooltip:
@@ -69,6 +64,13 @@ process:
       text: "Outfits, die passen und sich richtig anfühlen."
   outro: "Der genaue Ablauf richtet sich nach dem gewählten Angebot - das Ziel bleibt immer gleich: ein Stil, der dich im Alltag entlastet und in deiner Wirkung stärkt."
 coach:
+  promiseHeading: "Mission & Stilversprechen"
+  eyebrow: "Persönlicher Style- und Imagecoach"
+  name: "Natalia Kleemann"
+  statement: "Weniger Fehlkäufe.<br>Mehr Qualität.<br>Eine Garderobe, die langfristig funktioniert."
+  statementCopy: "Ich mache Stil einfacher, bewusster und wirkungsvoller - damit du dich in deiner Kleidung sicher fühlst."
+  signatureName: "Natalia Kleemann"
+  signatureRole: "Style- & Imagecoach"
   title: "Professioneller<br>Style- und Imagecoach<br>Natalia Kleemann"
   text: "Ich helfe dir dabei, diese Herausforderungen gezielt und stilvoll zu lösen."
   buttonText: "Kostenloses Erstgespräch"
@@ -274,4 +276,12 @@ ui:
       link: "https://calendar.app.google/sPZWYZT6vfK9NMim7"
       description: "Buche direkt einen kostenlosen Kennenlerntermin."
       external: true
+  hero_coach_name: "Natalia Kleemann"
+  hero_coach_title: "Style- und Imagecoach"
+  hero_coach_label: "Natalia Kleemann"
+  free_highlights_title: "Vorteile der kostenlosen Angebote"
+  free_highlight_1: "Für mehr Klarheit in Ihrem Stil"
+  free_highlight_2: "Praxisnah & sofort anwendbar"
+  free_highlight_3: "Von Personal Stylistin Natalia Kleemann"
+  free_highlight_4: "100% kostenlos & unverbindlich"
 ---
