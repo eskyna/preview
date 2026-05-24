@@ -111,7 +111,7 @@ jobs:
           MODE_VAR="${{ vars.DEPLOY_MODE || '' }}"
           LAST_UPDATED="$(git log -1 --date=format:'%Y-%m-%d %H:%M UTC' --pretty=format:'%cd')"
           VERSION="$(git rev-parse --short HEAD)"
-          COMMITS="$(git log -n 5 --pretty=format:'%s' | sed 's/|/-/g' | paste -sd ' || ' -)"
+          COMMITS="$(git log -n 5 --pretty=format:'%s' | sed 's/|/-/g' | awk 'NR==1{printf "%s", $0} NR>1{printf " || %s", $0}')"
 
           if [[ -z "$MODE_VAR" ]]; then
             echo "Fehler: Environment-Variable DEPLOY_MODE ist nicht gesetzt (expected: live oder preview)." >&2
