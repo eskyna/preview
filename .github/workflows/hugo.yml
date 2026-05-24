@@ -112,14 +112,26 @@ jobs:
           VERSION="$(git rev-parse --short HEAD)"
           COMMITS="$(git log -n 5 --pretty=format:'%s' | sed 's/|/-/g' | paste -sd ' || ' -)"
 
+          if [[ -z "$MODE_VAR" ]]; then
+            echo "Fehler: Environment-Variable DEPLOY_MODE ist nicht gesetzt (expected: live oder preview)." >&2
+            exit 1
+          fi
+
+          if [[ "$MODE_VAR" != "live" && "$MODE_VAR" != "preview" ]]; then
+            echo "Fehler: Ungueltiger DEPLOY_MODE='$MODE_VAR' (erlaubt: live, preview)." >&2
+            exit 1
+          fi
+
           MODE=""
           if [[ -n "$MODE_INPUT" && "$MODE_INPUT" != "environment" ]]; then
             MODE="$MODE_INPUT"
           else
             MODE="$MODE_VAR"
           fi
-          if [[ -z "$MODE" ]]; then
-            MODE="live"
+
+          if [[ "$MODE" != "live" && "$MODE" != "preview" ]]; then
+            echo "Fehler: Effektiver deploy_mode '$MODE' ist ungueltig (erlaubt: live, preview)." >&2
+            exit 1
           fi
 
           BUILD_BASEURL="${BASE_URL%/}/"
@@ -163,6 +175,19 @@ jobs:
           HUGO_PREVIEW_LAST_UPDATED: ${{ env.HUGO_PREVIEW_LAST_UPDATED }}
           HUGO_PREVIEW_COMMITS: ${{ env.HUGO_PREVIEW_COMMITS }}
         run: npm run build:ci
+      - name: Verify preview banner output
+        run: |
+          if [[ "${DEPLOY_MODE_EFFECTIVE}" == "preview" ]]; then
+            if ! grep -Rqs 'id="preview-banner"' public; then
+              echo "Fehler: Preview-Modus aktiv, aber Preview-Banner wurde nicht gerendert." >&2
+              exit 1
+            fi
+            echo "Preview-Banner erfolgreich im Build gefunden."
+          else
+            echo "Live-Modus: Banner-Check wird uebersprungen."
+          fi
+        env:
+          DEPLOY_MODE_EFFECTIVE: ${{ env.DEPLOY_MODE_EFFECTIVE }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
