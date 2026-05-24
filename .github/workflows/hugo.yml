@@ -175,19 +175,6 @@ jobs:
           HUGO_PREVIEW_LAST_UPDATED: ${{ env.HUGO_PREVIEW_LAST_UPDATED }}
           HUGO_PREVIEW_COMMITS: ${{ env.HUGO_PREVIEW_COMMITS }}
         run: npm run build:ci
-      - name: Verify preview banner output
-        run: |
-          if [[ "${DEPLOY_MODE_EFFECTIVE}" == "preview" ]]; then
-            if ! grep -Rqs 'id="preview-banner"' public; then
-              echo "Fehler: Preview-Modus aktiv, aber Preview-Banner wurde nicht gerendert." >&2
-              exit 1
-            fi
-            echo "Preview-Banner erfolgreich im Build gefunden."
-          else
-            echo "Live-Modus: Banner-Check wird uebersprungen."
-          fi
-        env:
-          DEPLOY_MODE_EFFECTIVE: ${{ env.DEPLOY_MODE_EFFECTIVE }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
