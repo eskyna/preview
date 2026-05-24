@@ -10,11 +10,12 @@ on:
   workflow_dispatch:
     inputs:
       deploy_mode:
-        description: "Deploy mode: live | preview"
+        description: "Deploy mode override: environment | live | preview"
         required: false
-        default: live
+        default: environment
         type: choice
         options:
+          - environment
           - live
           - preview
 
@@ -111,8 +112,10 @@ jobs:
           VERSION="$(git rev-parse --short HEAD)"
           COMMITS="$(git log -n 5 --pretty=format:'%s' | sed 's/|/-/g' | paste -sd ' || ' -)"
 
-          MODE="$MODE_INPUT"
-          if [[ -z "$MODE" ]]; then
+          MODE=""
+          if [[ -n "$MODE_INPUT" && "$MODE_INPUT" != "environment" ]]; then
+            MODE="$MODE_INPUT"
+          else
             MODE="$MODE_VAR"
           fi
           if [[ -z "$MODE" ]]; then
@@ -139,6 +142,10 @@ jobs:
           echo "HUGO_PREVIEW_COMMITS=$COMMITS" >> "$GITHUB_ENV"
           echo "HUGO_BUILD_BASEURL=$BUILD_BASEURL" >> "$GITHUB_ENV"
           echo "DEPLOY_MODE_EFFECTIVE=$MODE" >> "$GITHUB_ENV"
+
+          echo "Resolved deploy mode: $MODE"
+          echo "Resolved base URL: $BUILD_BASEURL"
+          echo "Preview banner: $(grep -E '^HUGO_PREVIEW_BANNER=' "$GITHUB_ENV" | tail -1 | cut -d= -f2-)"
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
@@ -189,8 +196,10 @@ jobs:
           MODE_INPUT="${{ github.event.inputs.deploy_mode || '' }}"
           MODE_VAR="${{ vars.DEPLOY_MODE || '' }}"
 
-          MODE="$MODE_INPUT"
-          if [[ -z "$MODE" ]]; then
+          MODE=""
+          if [[ -n "$MODE_INPUT" && "$MODE_INPUT" != "environment" ]]; then
+            MODE="$MODE_INPUT"
+          else
             MODE="$MODE_VAR"
           fi
           if [[ -z "$MODE" ]]; then
@@ -207,6 +216,8 @@ jobs:
           else
             CHECK_BASE_URL="${BASE_URL%/}/"
           fi
+
+          export CHECK_BASE_URL
 
           BASE_PATH=$(python3 - <<'PY'
           from urllib.parse import urlparse
