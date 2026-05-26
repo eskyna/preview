@@ -3,7 +3,7 @@ title: "Natalia Kleemann"
 hero:
   eyebrow: "Natalia Kleemann | Style- und Imagecoach"
   headline: ""
-  detail_1: 'Individuelle Stilberatung für Frauen und Männer, die <span class="inline-term-tooltip inline-term-tooltip-start"><button class="inline-term-tooltip-trigger" type="button" aria-describedby="tooltip-qualitaet">Qualität</button><span id="tooltip-qualitaet" class="inline-term-tooltip-panel" role="tooltip"><strong class="inline-term-tooltip-title">Qualität</strong><strong class="inline-term-tooltip-lead">Weniger Fehlkäufe schaffen Raum für bessere Kleidung.</strong><span class="inline-term-tooltip-text">Wenn Sie wissen, was wirklich zu Ihnen passt, kaufen Sie automatisch weniger und investieren bewusster in hochwertige Stoffe, gute Verarbeitung und langlebige Lieblingsstücke.</span></span></span> und <span class="inline-term-tooltip inline-term-tooltip-start"><button class="inline-term-tooltip-trigger" type="button" aria-describedby="tooltip-wirkung">Wirkung</button><span id="tooltip-wirkung" class="inline-term-tooltip-panel" role="tooltip"><strong class="inline-term-tooltip-title">Wirkung</strong><strong class="inline-term-tooltip-lead">Der erste Eindruck entsteht, bevor Sie Ihr erstes Argument genannt haben.</strong><span class="inline-term-tooltip-text">Auftreten sendet Signale, bevor Sie sprechen. Kleidung, Farben und Stil beeinflussen, ob Sie souverän, sympathisch, kompetent oder authentisch wahrgenommen werden.</span></span></span> schätzen.'
+  detail_1: '<span class="no-break">Individuelle Stilberatung für Frauen und Männer,</span> <span class="no-break">die <span class="inline-term-tooltip inline-term-tooltip-start"><button class="inline-term-tooltip-trigger" type="button" aria-describedby="tooltip-qualitaet">Qualität</button><span id="tooltip-qualitaet" class="inline-term-tooltip-panel" role="tooltip"><strong class="inline-term-tooltip-title">Qualität</strong><strong class="inline-term-tooltip-lead">Weniger Fehlkäufe schaffen Raum für bessere Kleidung.</strong><span class="inline-term-tooltip-text">Wenn Sie wissen, was wirklich zu Ihnen passt, kaufen Sie automatisch weniger und investieren bewusster in hochwertige Stoffe, gute Verarbeitung und langlebige Lieblingsstücke.</span></span></span> und <span class="inline-term-tooltip inline-term-tooltip-start"><button class="inline-term-tooltip-trigger" type="button" aria-describedby="tooltip-wirkung">Wirkung</button><span id="tooltip-wirkung" class="inline-term-tooltip-panel" role="tooltip"><strong class="inline-term-tooltip-title">Wirkung</strong><strong class="inline-term-tooltip-lead">Der erste Eindruck entsteht, bevor Sie Ihr erstes Argument genannt haben.</strong><span class="inline-term-tooltip-text">Auftreten sendet Signale, bevor Sie sprechen. Kleidung, Farben und Stil beeinflussen, ob Sie souverän, sympathisch, kompetent oder authentisch wahrgenommen werden.</span></span></span> schätzen.</span>'
   detail_2: ""
   detail_3: "<br><br>Lass uns gemeinsam starten."
   ctaText: "Kostenloses Erstgespräch"
@@ -11,7 +11,7 @@ hero:
   ctaTooltip:
     title: "Kostenlos & unverbindlich"
     lead: "Wir schauen gemeinsam auf deine Stilfragen, deine Wünsche und mögliche nächste Schritte."
-    text: "Du bekommst ein erstes Gefühl dafür, ob ESKYNA zu dir passt. 25 Minuten Zeit mit dem vollen Fokus auf dir."
+    text: "Du bekommst ein erstes Gefühl dafür, ob ESKYNA zu dir passt. 25 Minuten Zeit mit dem vollen Fokus auf dir."
   image: "images/Natalia_white_hero.png"
 problems:
   title: "Erkennst du dich hier wieder?"
@@ -64,11 +64,11 @@ process:
       text: "Outfits, die passen und sich richtig anfühlen."
   outro: "Der genaue Ablauf richtet sich nach dem gewählten Angebot - das Ziel bleibt immer gleich: ein Stil, der dich im Alltag entlastet und in deiner Wirkung stärkt."
 coach:
-  promiseHeading: "Mission & Stilversprechen"
+  promiseHeading: "Mission"
   eyebrow: "Persönlicher Style- und Imagecoach"
   name: "Natalia Kleemann"
-  statement: "Weniger Fehlkäufe.<br>Mehr Qualität.<br>Eine Garderobe, die langfristig funktioniert."
-  statementCopy: "Ich mache Stil einfacher, bewusster und wirkungsvoller - damit du dich in deiner Kleidung sicher fühlst."
+  statement: "Meine Mission ist es, Stil einfacher, bewusster und wirkungsvoller zu machen, mit weniger Fehlkäufen, mehr Qualität und einer Garderobe, die langfristig funktioniert."
+  statementCopy: ""
   signatureName: "Natalia Kleemann"
   signatureRole: "Style- & Imagecoach"
   title: "Professioneller<br>Style- und Imagecoach<br>Natalia Kleemann"
