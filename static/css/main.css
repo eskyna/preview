@@ -3453,8 +3453,13 @@ main .hero .hero-copy {
   }
 
   main .hero .hero-topbar {
-    padding-left: var(--hero-left-axis);
+    padding-left: calc(var(--hero-left-axis) + 10rem);
     padding-right: var(--hero-left-axis);
+  }
+
+  main .hero .hero-coach-label {
+    transform: scale(1.3);
+    transform-origin: left center;
   }
 
   main .hero .hero-content-grid {
@@ -3465,6 +3470,7 @@ main .hero .hero-copy {
   main .hero .hero-copy-column {
     align-items: flex-start;
     max-width: min(100%, 33rem);
+    margin-left: 10rem;
   }
 
   main .hero .hero-headline,
@@ -3473,12 +3479,21 @@ main .hero .hero-copy {
     margin-left: 0;
   }
 
+  main .hero .hero-headline-smaller {
+    font-size: clamp(1.64rem, 6.72vw, 2.56rem) !important;
+  }
+
   main .hero .hero-details {
     max-width: min(100%, 31ch);
   }
 
   main .hero .hero-actions {
     align-self: flex-start;
+  }
+
+  .hero-second-line {
+    display: inline-block;
+    margin-left: 1.5rem;
   }
 }
 
@@ -3534,6 +3549,8 @@ main .hero .hero-copy {
   main .hero .hero-coach-label {
     font-size: clamp(0.62rem, 1.2vw, 0.72rem);
     line-height: 1.2;
+    transform: scale(1.5);
+    transform-origin: left center;
   }
 
   main .hero .hero-content-grid {
