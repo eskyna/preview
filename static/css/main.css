@@ -1035,6 +1035,23 @@ h1 {
   align-self: flex-end;
 }
 
+.page-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.75fr);
+  grid-template-areas: "content image";
+  gap: 2rem;
+  align-items: end;
+}
+
+.page-grid.page-grid.page-grid > div:first-child {
+  grid-area: content;
+  min-width: 0;
+}
+
+.page-privacy .page-grid {
+  grid-template-columns: 1fr;
+}
+
 #kontakt .contact-grid > div {
   display: flex;
   flex-direction: column;
@@ -2404,23 +2421,6 @@ h1 {
   width: clamp(220px, 30vw, 360px);
   height: auto;
   opacity: 0.08;
-}
-
-.page-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.75fr);
-  grid-template-areas: "content image";
-  gap: 2rem;
-  align-items: end;
-}
-
-.page-grid.page-grid.page-grid > div:first-child {
-  grid-area: content;
-  min-width: 0;
-}
-
-.page-privacy .page-grid {
-  grid-template-columns: 1fr;
 }
 
 .page-privacy .section,

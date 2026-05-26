@@ -24,10 +24,7 @@ tags:
   - EskynaStyle
 ---
 
-<video controls preload="metadata" playsinline poster="styling-secrets-poster.jpg" style="width:100%;height:auto;border-radius:12px;margin:0 0 1.25rem 0;">
-  <source src="./styling_secrets.mp4" type="video/mp4">
-  Ihr Browser unterstützt das Video-Tag nicht.
-</video>
+{{< video src="styling_secrets.mp4" poster="styling-secrets-poster.jpg" >}}
 
 Kennst du diese Menschen, die einen Raum betreten und plötzlich richtet sich die Aufmerksamkeit auf sie?
 
@@ -212,7 +209,7 @@ Der LinkedIn-Post zum Artikel: [Styling Secrets auf LinkedIn](https://www.linked
 
 Der Instagram-Post zum Artikel: [Styling Secrets auf Instagram](https://www.instagram.com/p/DYg0QTuKc6z/).
 
-{{< button-icon text="Kostenloses Erstgespräch" title="Kostenloses Erstgespräch" href="https://calendar.app.google/sPZWYZT6vfK9NMim7" targetBlank="true" >}}
+[**Kostenloses Erstgespräch vereinbaren**](https://calendar.app.google/sPZWYZT6vfK9NMim7)
 
 ## Quellen & weiterführende Literatur
 
