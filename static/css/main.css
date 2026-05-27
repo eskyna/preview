@@ -2394,6 +2394,13 @@ h1 {
   height: auto;
 }
 
+#kontakt .signature-photo {
+  width: min(100%, 460px);
+  max-width: 460px;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgb(0 0 0 / 92%) 14%, rgb(0 0 0 / 92%) 86%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, rgb(0 0 0 / 92%) 14%, rgb(0 0 0 / 92%) 86%, transparent 100%);
+}
+
 .page {
   min-height: 100vh;
 }
