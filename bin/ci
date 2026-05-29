@@ -32,8 +32,8 @@ echo "==> Build production..."
 echo "==> Check empty hash links..."
 bash ./bin/check-empty-hash-links
 
-echo "==> Check preisetikett CSS path..."
-bash ./bin/check-preisetikett-path
+echo "==> Check image references (404 guard)..."
+python3 ./bin/check-preisetikett-path
 
 echo "==> Format (Prettier)..."
 yarn format
