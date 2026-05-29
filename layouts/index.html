@@ -170,7 +170,9 @@
               <p class="package-name">{{ .name }}</p>
               <p class="package-price">{{ .price }}</p>
               <h4 class="package-headline">{{ .headline }}</h4>
-              <p class="package-description">{{ .description }}</p>
+              {{ with .description }}
+                <p class="package-description">{{ . }}</p>
+              {{ end }}
               {{ with .highlights }}
                 <ul class="package-highlights">
                   {{ range . }}

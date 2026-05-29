@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+CSS_FILE="$ROOT_DIR/static/css/main.css"
+
+if [[ ! -f "$CSS_FILE" ]]; then
+  echo "Error: CSS file not found: $CSS_FILE" >&2
+  exit 1
+fi
+
+echo "Checking preisetikett CSS path..."
+
+# Regression guard: root-absolute path breaks preview subpath deployments.
+if grep -n 'url("/images/benefits/preisetikett.png")' "$CSS_FILE"; then
+  echo "" >&2
+  echo "Error: Found root-absolute preisetikett path in CSS." >&2
+  echo "Use preview-safe relative path instead:" >&2
+  echo "  url(\"../images/benefits/preisetikett.png\")" >&2
+  exit 1
+fi
+
+# Sanity check: expected relative path must be present.
+if ! grep -n 'url("../images/benefits/preisetikett.png")' "$CSS_FILE" >/dev/null; then
+  echo "" >&2
+  echo "Error: Expected preisetikett relative path not found in CSS." >&2
+  echo "Expected:" >&2
+  echo "  url(\"../images/benefits/preisetikett.png\")" >&2
+  exit 1
+fi
+
+echo "Preisetikett CSS path check passed."

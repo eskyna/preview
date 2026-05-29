@@ -1520,7 +1520,7 @@ h1 {
   align-items: center;
   min-height: 96px;
   padding: 1.05rem 1.15rem;
-  background-image: url("/images/benefits/preisetikett.png");
+  background-image: url("../images/benefits/preisetikett.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% 100%;
@@ -1589,6 +1589,11 @@ h1 {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
+}
+
+.offers-intro {
+  margin-top: 1.35rem;
+  white-space: pre-line;
 }
 
 .benefits-grid {
@@ -5460,6 +5465,15 @@ body :where(button) {
   content: "–";
   margin-right: 0.5rem;
   color: var(--accent-strong);
+}
+
+.page-offer .prose ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+}
+
+.page-offer .prose ul li::before {
+  content: none;
 }
 
 @media (width <= 768px) {

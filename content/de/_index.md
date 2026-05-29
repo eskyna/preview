@@ -100,7 +100,6 @@ facts:
 services:
   title: "Angebote für mehr Stilgefühl und sichere Entscheidungen"
   subtitle: "Du brauchst nicht mehr Kleidung. Du brauchst mehr Klarheit darüber, was wirklich zu dir passt."
-  intro: "Natalia Kleemann hilft dir, deinen Stil besser zu verstehen, Fehlkäufe zu vermeiden und Outfits zu entwickeln, die zu deinem Alltag, deiner Persönlichkeit und deiner Wirkung passen. Ob konkrete Stilfrage, persönliche Beratung, Garderoben-Check oder professioneller Auftritt: Hier findest du den passenden nächsten Schritt."
 
   free:
     items:
@@ -120,14 +119,7 @@ services:
     items:
       - name: "Stilfrage an Natalia"
         headline: "Für konkrete Stilentscheidungen: auch live beim Einkaufen"
-        description: "Du bist unsicher, ob ein Kleidungsstück zu dir passt, ob ein Look stimmig ist oder ob sich ein Kauf wirklich lohnt? Natalia gibt dir eine persönliche Einschätzung zu Farbe, Schnitt, Kombination oder Wirkung."
         price: "ab 49 €"
-        highlights:
-          - "Persönliche Antwort zu deiner konkreten Frage"
-          - "Einschätzung zu Farbe, Schnitt, Proportion, Stil oder Wirkung"
-          - "Klare Empfehlung: kaufen, behalten, anders kombinieren oder lieber lassen"
-          - "Kurze Erklärung, warum etwas funktioniert oder nicht"
-          - "Optional: Live-Shopping-Check per Video (ab 79 €)"
         result: "Du entscheidest sicherer, kaufst bewusster und weißt, warum etwas funktioniert oder warum nicht."
         ctaText: "Stilfrage stellen"
         ctaHref: "/stilfrage/"
@@ -135,15 +127,7 @@ services:
 
       - name: "ESKYNA Stilgefühl"
         headline: "Für mehr Klarheit darüber, was dir wirklich steht"
-        description: "Du möchtest verstehen, welche Farben, Schnitte, Proportionen und Stilrichtungen zu dir passen? Mit ESKYNA Stilgefühl entwickelst du ein sicheres Gefühl für Kleidung, die dich stärkt. Im Alltag, im Beruf und bei besonderen Anlässen."
         price: "390 €"
-        highlights:
-          - "Persönliche Stil- und Wirkungsanalyse"
-          - "Farbberatung mit digitalem Farbpass"
-          - "Analyse von Proportionen, Linien und Schnitten"
-          - "Persönliche Stilrichtung"
-          - "Konkrete Empfehlungen für Alltag und Beruf"
-          - "Digitaler Mini-Style-Guide"
         result: "Du kaufst bewusster, kombinierst sicherer und entwickelst mehr Vertrauen in deinen Stil."
         ctaText: "ESKYNA Stilgefühl ansehen"
         ctaHref: "/stilgefuehl/"
@@ -151,18 +135,8 @@ services:
 
       - name: "ESKYNA Stilgarderobe"
         headline: "Für einen Kleiderschrank, der zu dir und deinem Leben passt"
-        description: "Dein Schrank ist voll, aber du hast trotzdem oft das Gefühl, nichts Passendes anzuziehen? In der ESKYNA Stilgarderobe schaut Natalia mit dir auf deine vorhandene Kleidung, entwickelt neue Kombinationen und zeigt, was bleibt, was fehlt und was gehen darf."
         price: "890 €"
         badge: "Beliebteste Wahl"
-        highlights:
-          - "Vollständige Stil-, Farb- und Wirkungsanalyse"
-          - "Garderoben-Check"
-          - "Neue Kombinationen aus vorhandenen Teilen"
-          - "Klarheit: behalten, kombinieren, ergänzen oder loslassen"
-          - "Outfit-Logik für Alltag, Beruf und besondere Anlässe"
-          - "Individuelle Einkaufsliste"
-          - "Persönlicher Style-Guide"
-          - "Optional: Shoppingbegleitung"
         result: "Mehr tragbare Outfits, mehr Klarheit und weniger Stress vor dem Schrank."
         ctaText: "ESKYNA Stilgarderobe ansehen"
         ctaHref: "/stilgarderobe/"
@@ -170,17 +144,7 @@ services:
 
       - name: "ESKYNA Präsenz"
         headline: "Für deinen professionellen Auftritt"
-        description: "Dein äußerer Auftritt soll zeigen, wer du bist, wofür du stehst und welche Kompetenz du mitbringst? Mit ESKYNA Präsenz entwickelt Natalia ein Styling- und Image-Konzept für Business, Fotos, Website, LinkedIn, Social Media oder Bühne."
         price: "1.490 €"
-        highlights:
-          - "Image- und Wirkungsanalyse"
-          - "Visuelles Auftrittskonzept"
-          - "Styling-Konzept für Business, Website, LinkedIn oder Social Media"
-          - "Outfit-Auswahl für Fotos, Bühne oder öffentliche Auftritte"
-          - "Vorbereitung auf ein Fotoshooting"
-          - "Abstimmung von Kleidung, Accessoires, Frisur und Make-up"
-          - "Optional: Koordination mit Fotograf:in"
-        note: "Fotoshooting und Fotograf:in sind separat zu planen."
         result: "Ein Auftritt, der zeigt, wer du bist und wofür du stehst."
         ctaText: "ESKYNA Präsenz ansehen"
         ctaHref: "/praesenz/"
@@ -188,14 +152,7 @@ services:
 
       - name: "ESKYNA Gutschein"
         headline: "Stilberatung verschenken"
-        description: "Ein persönliches Geschenk für Menschen, die mehr Sicherheit beim Kaufen, Kombinieren und Auftreten möchten. Der ESKYNA Gutschein eignet sich für Geburtstage, Jobwechsel, neue Lebensphasen, Fotoshootings oder einfach für jemanden, der sich mehr Stilgefühl wünscht."
         price: "ab 149 €"
-        highlights:
-          - "Style Moment: 60 Minuten Online-Beratung (149 €)"
-          - "Style Moment Plus: 75 Minuten mit Zusammenfassung (199 €)"
-          - "Persönliche Beratung zu Stilfrage, Outfit oder Anlass"
-          - "Individuelle Empfehlungen von Natalia"
-          - "Flexible Nutzung innerhalb eines Jahres"
         result: "Ein Geschenk, das nicht im Schrank liegt, sondern den Alltag leichter macht."
         ctaText: "ESKYNA Gutschein ansehen"
         ctaHref: "/gutschein/"
