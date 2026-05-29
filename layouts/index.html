@@ -163,7 +163,7 @@
             {{ $ctaHref := or .ctaHref "#kontakt" }}
             {{ $ctaText := or .ctaText $ui.default_cta_text }}
             {{ $openInNewTab := or (hasPrefix $ctaHref "http") (hasSuffix $ctaHref ".pdf") }}
-            <article class="package-card {{ if .featured }}package-card-featured{{ end }}">
+            <a class="package-card package-card-link {{ if .featured }}package-card-featured{{ end }}" href="{{ $ctaHref | relURL }}" title="{{ $ctaText }}" aria-label="{{ $ctaText }}"{{ if $openInNewTab }} target="_blank" rel="noopener noreferrer"{{ end }}>
               {{ if .badge }}
                 <div class="package-badge">{{ .badge }}</div>
               {{ end }}
@@ -187,9 +187,9 @@
                 <p class="package-result"><span class="package-result-label">{{ $ui.result_label }}</span> {{ . }}</p>
               {{ end }}
               <div class="package-cta">
-                {{ partial "button-icon.html" (dict "href" $ctaHref "text" $ctaText "title" $ctaText "class" (printf "btn%s" (cond (not .featured) " btn-secondary" "")) "targetBlank" $openInNewTab) }}
+                <span class="btn{{ if not .featured }} btn-secondary{{ end }}">{{ $ctaText }}</span>
               </div>
-            </article>
+            </a>
           {{ end }}
         </div>
       </section>

@@ -2147,6 +2147,16 @@ h1 {
   min-height: 480px;
 }
 
+.package-card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.package-card-link:focus-visible {
+  outline: 3px solid rgb(197 160 89 / 55%);
+  outline-offset: 3px;
+}
+
 .package-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 16px 48px rgb(60 38 24 / 12%);
@@ -2271,6 +2281,13 @@ h1 {
 }
 
 .package-cta.package-cta .btn.btn {
+  width: 100%;
+  justify-content: center;
+  min-height: 48px;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.package-cta.package-cta .btn {
   width: 100%;
   justify-content: center;
   min-height: 48px;
