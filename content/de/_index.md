@@ -130,7 +130,7 @@ services:
           - "Optional: Live-Shopping-Check per Video (ab 79 €)"
         result: "Du entscheidest sicherer, kaufst bewusster und weißt, warum etwas funktioniert oder warum nicht."
         ctaText: "Stilfrage stellen"
-        ctaHref: "#"
+        ctaHref: "/stilfrage/"
         featured: false
 
       - name: "ESKYNA Stilgefühl"
@@ -146,7 +146,7 @@ services:
           - "Digitaler Mini-Style-Guide"
         result: "Du kaufst bewusster, kombinierst sicherer und entwickelst mehr Vertrauen in deinen Stil."
         ctaText: "ESKYNA Stilgefühl ansehen"
-        ctaHref: "#"
+        ctaHref: "/stilgefuehl/"
         featured: false
 
       - name: "ESKYNA Stilgarderobe"
@@ -165,7 +165,7 @@ services:
           - "Optional: Shoppingbegleitung"
         result: "Mehr tragbare Outfits, mehr Klarheit und weniger Stress vor dem Schrank."
         ctaText: "ESKYNA Stilgarderobe ansehen"
-        ctaHref: "#"
+        ctaHref: "/stilgarderobe/"
         featured: true
 
       - name: "ESKYNA Präsenz"
@@ -183,7 +183,7 @@ services:
         note: "Fotoshooting und Fotograf:in sind separat zu planen."
         result: "Ein Auftritt, der zeigt, wer du bist und wofür du stehst."
         ctaText: "ESKYNA Präsenz ansehen"
-        ctaHref: "#"
+        ctaHref: "/praesenz/"
         featured: false
 
       - name: "ESKYNA Gutschein"
@@ -198,7 +198,7 @@ services:
           - "Flexible Nutzung innerhalb eines Jahres"
         result: "Ein Geschenk, das nicht im Schrank liegt, sondern den Alltag leichter macht."
         ctaText: "ESKYNA Gutschein ansehen"
-        ctaHref: "#"
+        ctaHref: "/gutschein/"
         featured: false
 
   comparison:

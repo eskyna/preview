@@ -29,6 +29,9 @@ echo "==> Check translation..."
 echo "==> Build production..."
 ./bin/build-production
 
+echo "==> Check empty hash links..."
+bash ./bin/check-empty-hash-links
+
 echo "==> Format (Prettier)..."
 yarn format
 

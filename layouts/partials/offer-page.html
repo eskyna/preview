@@ -1,4 +1,3 @@
-{{ define "main" }}
 {{ $offer := .Params.offer }}
 {{ $problem := .Params.problem }}
 {{ $whatItIs := .Params.what_it_is }}
@@ -13,18 +12,19 @@
 {{ $offersHref := or .Params.offers_back.href "#angebote" }}
 {{ $offersLabel := or .Params.offers_back.label "Back to offers" }}
 {{ $variantsHeading := or .Params.variants_heading "Choose the right format" }}
+{{ $normalizedOffersHref := strings.TrimPrefix "/" $offersHref }}
+{{ $resolvedOffersHref := cond (hasPrefix $offersHref "#") $offersHref ($normalizedOffersHref | relURL) }}
 
 <main class="page page-offer">
-  <!-- Hero Section -->
   <section class="offer-hero">
     <div class="container">
-      <a class="back-link" href="{{ $offersHref }}" title="{{ $offersLabel }}">{{ $offersLabel }}</a>
-      
+      <a class="back-link" href="{{ $resolvedOffersHref }}" title="{{ $offersLabel }}">{{ $offersLabel }}</a>
+
       <div class="offer-hero-grid">
         <div class="offer-hero-copy">
           <h1 class="offer-hero-headline">{{ $offer.headline }}</h1>
           <p class="offer-hero-subheadline">{{ $offer.subheadline }}</p>
-          
+
           <div class="offer-hero-intro">
             {{ $offer.intro | markdownify }}
           </div>
@@ -50,7 +50,6 @@
     </div>
   </section>
 
-  <!-- Problem Section -->
   {{ if $problem }}
   <section class="section offer-problem-section">
     <div class="container">
@@ -62,7 +61,6 @@
   </section>
   {{ end }}
 
-  <!-- What It Is Section -->
   {{ if $whatItIs }}
   <section class="section offer-what-section">
     <div class="container">
@@ -85,7 +83,6 @@
   </section>
   {{ end }}
 
-  <!-- Typical Questions Section -->
   {{ if $typicalQuestions }}
   <section class="section offer-questions-section">
     <div class="container">
@@ -99,7 +96,6 @@
   </section>
   {{ end }}
 
-  <!-- Intro Section -->
   {{ if $introSection }}
   <section class="section offer-intro-section">
     <div class="container">
@@ -111,7 +107,6 @@
   </section>
   {{ end }}
 
-  <!-- Services/Variants Section -->
   {{ if $services }}
   <section class="section offer-services-section">
     <div class="container">
@@ -147,7 +142,6 @@
   </section>
   {{ end }}
 
-  <!-- Variants Section -->
   {{ if $variants }}
   <section class="section offer-variants-section">
     <div class="container">
@@ -179,7 +173,6 @@
   </section>
   {{ end }}
 
-  <!-- For Whom Section -->
   {{ if $forWhom }}
   <section class="section offer-for-whom-section">
     <div class="container">
@@ -193,7 +186,6 @@
   </section>
   {{ end }}
 
-  <!-- Result Section -->
   {{ if $result }}
   <section class="section offer-result-section">
     <div class="container">
@@ -215,7 +207,6 @@
   </section>
   {{ end }}
 
-  <!-- CTA Section -->
   {{ if $ctaSection }}
   <section class="section offer-cta-section">
     <div class="container">
@@ -230,11 +221,9 @@
   </section>
   {{ end }}
 
-  <!-- Back to Offers Link -->
   <section class="section offer-back-section">
     <div class="container">
-      <a class="btn btn-secondary" href="{{ $offersHref }}" title="{{ $offersLabel }}">{{ $offersLabel }}</a>
+      <a class="btn btn-secondary" href="{{ $resolvedOffersHref }}" title="{{ $offersLabel }}">{{ $offersLabel }}</a>
     </div>
   </section>
 </main>
-{{ end }}
