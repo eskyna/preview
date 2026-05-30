@@ -1,4 +1,4 @@
-baseURL = "https://eskyna.com/"
+baseURL = "https://eskyna.com/preview/"
 defaultContentLanguage = "de"
 defaultContentLanguageInSubdir = false
 disableHugoGeneratorInject = true
