@@ -2696,9 +2696,9 @@ h1 {
 
 .eskyna-contact-form {
   display: grid;
-  gap: 1rem;
-  margin-top: 1.4rem;
-  padding: 1.15rem;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding: 0.95rem;
   border: 1px solid var(--card-border);
   border-radius: 14px;
   background: rgb(255 255 255 / 64%);
@@ -2707,42 +2707,89 @@ h1 {
 
 .eskyna-contact-form label {
   display: grid;
-  gap: 0.42rem;
+  gap: 0.3rem;
   color: var(--text);
   font-weight: 600;
+}
+
+.eskyna-contact-form .contact-preferred-fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: grid;
+  gap: 0.3rem;
+}
+
+.eskyna-contact-form .contact-preferred-fieldset legend {
+  margin: 0;
+  padding: 0;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.eskyna-contact-form .contact-preferred-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.eskyna-contact-form .contact-preferred-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0.35rem 0.6rem;
+  border: 1px solid rgb(44 30 22 / 18%);
+  border-radius: 9px;
+  background: rgb(255 255 255 / 80%);
+  font-weight: 500;
+  cursor: pointer;
 }
 
 .eskyna-contact-form input,
 .eskyna-contact-form select,
 .eskyna-contact-form textarea {
   width: 100%;
-  padding: 0.85rem 1rem;
+  padding: 0.62rem 0.75rem;
   border: 1px solid rgb(44 30 22 / 20%);
-  border-radius: 12px;
+  border-radius: 10px;
   font: inherit;
   color: var(--text);
   background: rgb(255 255 255 / 92%);
 }
 
+.eskyna-contact-form input[type="radio"],
+.eskyna-contact-form input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  accent-color: var(--accent-strong);
+}
+
 .eskyna-contact-form textarea {
   resize: vertical;
-  min-height: 9rem;
+  min-height: 7rem;
 }
 
 .eskyna-contact-form .privacy-check {
   display: flex;
   align-items: flex-start;
-  gap: 0.6rem;
+  gap: 0.45rem;
   font-weight: 400;
+  font-size: 0.92rem;
+  line-height: 1.45;
 }
 
 .eskyna-contact-form .privacy-check input {
   width: auto;
-  margin-top: 0.22rem;
+  margin-top: 0.16rem;
 }
 
 .eskyna-contact-form .cf-turnstile {
-  min-height: 65px;
+  min-height: 56px;
 }
 
 .contact-status {
