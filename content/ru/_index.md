@@ -1,5 +1,6 @@
 ---
 title: "Natalia Kleemann"
+seoTitle: "ESKYNA | Стиль и имидж-коучинг онлайн"
 hero:
   eyebrow: "Natalia Kleemann | Коуч по стилю и имиджу"
   headline: "Одежда, которая подходит именно к вашей жизни."
