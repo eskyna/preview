@@ -1,6 +1,7 @@
 ---
 title: "Блог ESKYNA"
-description: "Статьи ESKYNA о стиле, цвете и практичных образах."
+seoTitle: "Блог о стиле и имидже | ESKYNA"
+description: "Статьи ESKYNA о стиле, цвете и практичных образах для повседневной жизни и работы."
 ui:
   back_text: "На главную"
   read_more_text: "Читать статью"
@@ -12,9 +13,8 @@ ui:
   audio_description: "Аудиоверсия этой статьи"
   category_text: "Цвет и стиль"
   looks_text: "Смотреть образы"
-  looks_anchor: "три-капсулы-образов"
   instagram_text: "Пост в Instagram"
-  journal_title: "ESKYNA Journal"
+  journal_title: "Журнал ESKYNA"
   journal_eyebrow: "Журнал"
   journal_subtitle: "Практика стиля, теория цвета и готовые идеи образов для гардероба, который действительно подходит именно вам."
   featured_text: "Текущий редакционный материал"
@@ -24,7 +24,7 @@ ui:
   categories_aria_label: "Категории"
   chip_all: "Все"
   chip_colors: "Цвет"
-  chip_capsule: "Капсульный гардероб"
+  chip_capsule: "Капсульные образы"
   chip_business: "Бизнес-шик"
   chip_consulting: "Консультация по стилю"
 ---

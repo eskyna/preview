@@ -1,6 +1,6 @@
 ---
 title: "Обо мне"
-eyebrow: "Natalia Kleemann"
+eyebrow: "Наталия Клеманн"
 image: "images/portraits/natalia-about-portrait.png"
 facts:
   title: "Несколько фактов обо мне"
@@ -10,7 +10,7 @@ facts:
     - "Международный опыт в стиле: от Сибири до Лейпцига"
     - "Осознанность и устойчивость — важная часть моей работы"
     - "Мама двух стильных мальчиков"
-    - "Я переосмысляю консультации по стилю как основательница [EStyle](/ru/estyle/)"
+    - "Я переосмысляю консультации по стилю как основательница [EStyle](/rus/estyle/)"
 method:
   eyebrow: "Метод ESKYNA"
   title: "Больше, чем консультация по стилю: метод с системой"
@@ -45,9 +45,9 @@ method:
 ui:
   back_to_home_text: "На главную"
   privacy_clover_alt: "Клевер ESKYNA"
-  page_image_title: "Natalia Kleemann"
+  page_image_title: "Наталия Клеманн"
   method_symbol_prefix: "Символ для"
-  method_quote_author: "Natalia Kleemann"
+  method_quote_author: "Наталия Клеманн"
 ---
 
 Я, **Наталия Клеманн**, стилист и имидж-коуч с фокусом на образ,

@@ -12,7 +12,6 @@ ui:
   audio_description: "Diesen Beitrag als Audio-Version"
   category_text: "Farbe & Stil"
   looks_text: "Looks ansehen"
-  looks_anchor: "drei-outfit-kapseln"
   instagram_text: "Instagram-Beitrag"
   journal_title: "ESKYNA Journal"
   journal_eyebrow: "Journal"
