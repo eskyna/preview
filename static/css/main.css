@@ -415,7 +415,8 @@ h2 {
 
 .hero-actions {
   display: flex;
-  flex-wrap: wrap;
+  flex-flow: column wrap;
+  align-items: flex-start;
   gap: 0.75rem;
   margin-top: clamp(0.25rem, 0.9vw, 0.55rem);
 }
@@ -634,7 +635,7 @@ h1 {
   min-height: 52px;
   border: 1px solid var(--accent);
   border-radius: 10px;
-  color: var(--text);
+  color: var(--on-dark);
   font-weight: 600;
   font-size: 0.95rem;
   line-height: 1;
@@ -647,7 +648,7 @@ h1 {
 }
 
 .btn:hover {
-  color: var(--text);
+  color: var(--on-dark);
   background-color: rgb(197 160 89 / 86%);
   box-shadow: 0 2px 12px rgb(197 160 89 / 28%);
 }
@@ -656,6 +657,7 @@ h1 {
   height: 20px;
   width: auto;
   margin-right: 0.5rem;
+  filter: brightness(0) invert(1);
 }
 
 .hero-cta-tooltip {
@@ -788,6 +790,48 @@ h1 {
 }
 
 .hero .hero-actions .btn .btn-icon {
+  filter: brightness(0) invert(1);
+}
+
+.hero .hero-actions .hero-beta-btn {
+  gap: 0.65rem;
+  border-color: rgb(255 255 255 / 72%);
+  color: var(--hero-cta-bg);
+  background: rgb(255 255 255 / 88%);
+  box-shadow: 0 10px 24px rgb(74 52 38 / 16%);
+}
+
+.hero .hero-actions .hero-beta-btn:hover {
+  border-color: rgb(255 255 255 / 92%);
+  color: var(--hero-cta-bg-hover);
+  background: rgb(255 255 255 / 96%);
+  box-shadow: 0 12px 28px rgb(74 52 38 / 22%);
+}
+
+.hero-beta-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.22rem 0.5rem;
+  border-radius: 999px;
+  color: var(--on-dark);
+  background: var(--accent-strong);
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+#kontakt .contact-faq-cta .btn {
+  color: var(--on-dark);
+}
+
+#kontakt .contact-faq-cta .btn:hover {
+  color: var(--on-dark);
+}
+
+#kontakt .contact-faq-cta .btn .btn-icon {
   filter: brightness(0) invert(1);
 }
 
@@ -1816,6 +1860,15 @@ h1 {
   margin: 3rem 0 4rem;
 }
 
+.offers-home-section .offers-free-section {
+  margin-bottom: 1.5rem;
+}
+
+.offers-home-actions {
+  display: flex;
+  justify-content: center;
+}
+
 .offers-free-intro {
   margin: 0.8rem 0 1.5rem;
   max-width: 75ch;
@@ -2590,7 +2643,7 @@ h1 {
 .content-page .page-image-wrap .hero-image {
   width: 100%;
   max-height: min(85vh, 740px);
-  object-fit: cover;
+  object-fit: contain;
   object-position: center top;
 }
 
@@ -4368,6 +4421,10 @@ main .hero .hero-copy {
   .contact-faq-cta .btn {
     width: 100%;
     justify-content: center;
+  }
+
+  .hero-actions .hero-cta-tooltip {
+    width: 100%;
   }
 
   .contact-blog-teaser {
