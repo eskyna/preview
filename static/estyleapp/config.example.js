@@ -25,8 +25,12 @@
       // Oeffentlicher Web-Push-Zertifikatsschluessel aus Firebase Console > Project settings > Cloud Messaging.
       // Er ist kein Secret und darf im Frontend stehen. Ohne diesen Key kann die App kein FCM Token erstellen.
       fcmVapidKey: "",
-      registerTokenEndpoint: "/api/fcm/register",
-      unregisterTokenEndpoint: "/api/fcm/unregister",
+      // GitHub Pages kann keine /api/fcm/register POST-Endpunkte ausfuehren.
+      // Deshalb speichert die App FCM Tokens direkt in Cloud Firestore.
+      tokenStorage: "firestore",
+      fcmTokensCollection: "fcmTokens",
+      registerTokenEndpoint: "",
+      unregisterTokenEndpoint: "",
       topic: "patchnotes",
       attachIdTokenToRegisterRequest: true,
     },
@@ -48,13 +52,13 @@
       // Firebase Web App Konfiguration.
       // In Firebase Authentication vorerst nur Google aktivieren; Email/Password deaktiviert lassen.
       firebaseConfig: {
-        apiKey: "AIzaSyBLnOeqtIgBUObt5S4G9vImavaeS0lua1E",
-        authDomain: "eskyna-style.firebaseapp.com",
-        projectId: "eskyna-style",
-        storageBucket: "eskyna-style.firebasestorage.app",
-        messagingSenderId: "349179931593",
-        appId: "1:349179931593:web:332b9c02eaee3e8e525618",
-        measurementId: "G-ERP45XHEG9",
+        apiKey: "",
+        authDomain: "",
+        projectId: "",
+        storageBucket: "",
+        messagingSenderId: "",
+        appId: "",
+        measurementId: "",
       },
     },
   };
