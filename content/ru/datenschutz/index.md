@@ -1,10 +1,11 @@
 ---
-title: "Политика конфиденциальности"
-eyebrow: "Защита данных"
-image: "images/sign.png"
+title: Политика конфиденциальности
+eyebrow: Защита данных
+image: images/sign.png
 ui:
-  back_to_home_text: "На главную"
-  privacy_clover_alt: "Символ клевера ESKYNA"
+  back_to_home_text: На главную
+  privacy_clover_alt: Символ клевера ESKYNA
+url: /rus/politika-konfidentsialnosti/
 ---
 
 ## Преамбула
@@ -21,7 +22,7 @@ ui:
 
 Natalia Kleemann\
 Wilhelm-Michel-Straße 10\
-04249 Leipzig, Deutschland
+04249 Leipzig, Германия
 
 Электронная почта: [natalia@eskyna.com](mailto:natalia@eskyna.com)
 
@@ -179,6 +180,25 @@ Wilhelm-Michel-Straße 10\
 - **постоянные cookies** (сохраняются дольше, срок зависит от назначения).
 
 Согласие можно отозвать в любое время; также можно использовать настройки браузера для ограничения cookies.
+
+## Google Tag Manager и Google Analytics (GA4)
+
+На этом сайте мы используем Google Tag Manager и Google Analytics 4 для анализа использования сайта и улучшения наших услуг.
+
+- Поставщик: Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland.
+- Цель: измерение охвата и веб-аналитика.
+- Правовое основание: ваше согласие в соответствии со ст. 6(1)(a) GDPR.
+
+Аналитика активируется только после вашего согласия в баннере cookie. Без согласия аналитические теги не загружаются.
+
+Вы можете в любой момент отозвать или изменить согласие через ссылку **Настройки cookie** в футере.
+
+При включенной аналитике данные могут передаваться в третьи страны, включая США. Google сертифицирован в рамках EU-US Data Privacy Framework.
+
+Дополнительная информация:
+
+- [Политика конфиденциальности Google](https://policies.google.com/privacy)
+- [Условия Google Analytics](https://marketingplatform.google.com/about/analytics/terms/)
 
 ## Блоги и публикационные форматы
 

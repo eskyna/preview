@@ -1,0 +1,162 @@
+# Contact form defaults
+[cf_offer_default]
+other = "General inquiry"
+
+[cf_privacy_href]
+other = "/en/privacy-policy/"
+
+[cf_name_label]
+other = "Name *"
+
+[cf_email_label]
+other = "Email *"
+
+[cf_phone_label]
+other = "Phone"
+
+[cf_preferred_label]
+other = "Preferred contact method"
+
+[cf_preferred_email]
+other = "Email"
+
+[cf_preferred_phone]
+other = "Phone"
+
+[cf_message_label]
+other = "Message *"
+
+[cf_message_placeholder]
+other = "Briefly describe how I can support you."
+
+[cf_privacy_text_before]
+other = "I have read the"
+
+[cf_privacy_link_text]
+other = "privacy policy"
+
+[cf_privacy_text_after]
+other = "and agree to be contacted."
+
+[cf_submit_default]
+other = "Send inquiry"
+
+[cf_fallback_email_text]
+other = "Or write directly by email:"
+
+[cf_status_sending]
+other = "Sending ..."
+
+[cf_status_success]
+other = "Thank you! Your inquiry has been sent."
+
+[cf_status_error]
+other = "Sorry, something went wrong. Please write directly to {{ . }}."
+
+[cf_status_turnstile]
+other = "Please complete the Turnstile check."
+
+[cf_email_invalid]
+other = "Please enter a valid email address."
+
+# Contact modal
+[contact_modal_close]
+other = "Close contact form"
+
+[contact_modal_title]
+other = "Message to Natalia"
+
+# Footer
+[footer_a11y]
+other = "Accessibility screen reader keyboard navigation"
+
+[footer_glossar_text]
+other = "Glossary"
+
+[footer_about_text]
+other = "About"
+
+[footer_blog_text]
+other = "Blog"
+
+[footer_estyle_text]
+other = "EStyle"
+
+[footer_imprint_text]
+other = "Legal notice"
+
+[footer_privacy_text]
+other = "Privacy policy"
+
+# Social links
+[contact_form_label]
+other = "Contact form"
+
+# Alias page
+[alias_keywords]
+other = "Accessibility, screen reader, keyboard navigation"
+
+# Taxonomy
+[taxonomy_categories_title]
+other = "Categories"
+
+# Pricing
+[price_label_final]
+other = "Final price"
+
+[price_label_tooltip]
+other = "The listed prices are final prices for the described services. Due to VAT exemption under section 19 of the German VAT Act, no VAT is shown."
+
+[offers_more_text]
+other = "More offers"
+
+[offers_more_text_short]
+other = "More<br>offers"
+
+[footer_cookie_settings_text]
+other = "Cookie settings"
+
+[cookie_banner_title]
+other = "Cookies and analytics"
+
+[cookie_banner_text]
+other = "We use necessary cookies to run the website. We only activate Google Analytics with your consent."
+
+[cookie_banner_privacy_link]
+other = "Privacy policy"
+
+[cookie_banner_accept_all]
+other = "Accept all"
+
+[cookie_banner_reject_all]
+other = "Reject"
+
+[cookie_banner_open_settings]
+other = "Settings"
+
+[cookie_settings_title]
+other = "Cookie settings"
+
+[cookie_settings_necessary]
+other = "Necessary cookies (always active)"
+
+[cookie_settings_analytics]
+other = "Analytics (Google Analytics)"
+
+[cookie_settings_save]
+other = "Save selection"
+
+[cookie_settings_reset]
+other = "Delete consent"
+
+[glossar_consult_cta_kicker]
+other = "Your next step"
+
+[glossar_consult_cta_title]
+other = "Want to go deeper into this topic?"
+
+[glossar_consult_cta_text]
+other = "Book a free initial consultation with Natalia. Together you will clarify your questions, your style impact, and the next smart steps that fit your life."
+
+[glossar_consult_cta_button]
+other = "Book a free initial consultation"

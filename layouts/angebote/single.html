@@ -5,15 +5,15 @@
 {{ $priceLabelTooltip := i18n "price_label_tooltip" }}
 {{ $bot := .Params.bot | default (dict) }}
 {{ $botKicker := or $bot.kicker "ESKYNA digital" }}
-{{ $botProfileAlt := or $bot.profile_alt "Profilbild ESKYNA digital" }}
-{{ $botTitle := or $bot.title "Stil beginnt jetzt direkt im Chat." }}
-{{ $botLead := or $bot.lead "Dein ESKYNA Telegram-Bot gibt dir schnelle Stil-Impulse genau dort, wo du sowieso schreibst. Aktuell läuft ESKYNA digital als Beta und wird laufend weiterentwickelt." }}
-{{ $botPrimaryText := or $bot.primary_text "Telegram-Bot testen" }}
-{{ $botSecondaryText := or $bot.secondary_text "Mehr über ESKYNA digital" }}
+{{ $botProfileAlt := or $bot.profile_alt (cond (or (eq .Language.Lang "ru") (eq .Language.Lang "rus")) "Профильное изображение ESKYNA digital" (cond (eq .Language.Lang "en") "ESKYNA digital profile image" "Profilbild ESKYNA digital")) }}
+{{ $botTitle := or $bot.title (cond (or (eq .Language.Lang "ru") (eq .Language.Lang "rus")) "Стиль начинается прямо в чате." (cond (eq .Language.Lang "en") "Style starts right in the chat." "Stil beginnt jetzt direkt im Chat.")) }}
+{{ $botLead := or $bot.lead (cond (or (eq .Language.Lang "ru") (eq .Language.Lang "rus")) "Telegram-бот ESKYNA дает быстрые стилевые импульсы там, где вы и так переписываетесь. Сейчас ESKYNA digital работает как beta-сервис и постоянно развивается." (cond (eq .Language.Lang "en") "Your ESKYNA Telegram bot gives you quick style prompts exactly where you already write. ESKYNA digital is currently running as a beta service and is being developed continuously." "Dein ESKYNA Telegram-Bot gibt dir schnelle Stil-Impulse genau dort, wo du sowieso schreibst. Aktuell läuft ESKYNA digital als Beta und wird laufend weiterentwickelt.")) }}
+{{ $botPrimaryText := or $bot.primary_text (cond (or (eq .Language.Lang "ru") (eq .Language.Lang "rus")) "Протестировать Telegram-бот" (cond (eq .Language.Lang "en") "Try the Telegram bot" "Telegram-Bot testen")) }}
+{{ $botSecondaryText := or $bot.secondary_text (cond (or (eq .Language.Lang "ru") (eq .Language.Lang "rus")) "Подробнее об ESKYNA digital" (cond (eq .Language.Lang "en") "More about ESKYNA digital" "Mehr über ESKYNA digital")) }}
 <main class="page page-angebote">
   <section class="section offers-free-section-wrapper" id="angebote">
     <div class="container">
-      {{ $backToHomeText := or $ui.back_to_home_text "Zur Startseite" }}
+      {{ $backToHomeText := or $ui.back_to_home_text (cond (or (eq .Language.Lang "ru") (eq .Language.Lang "rus")) "На главную" (cond (eq .Language.Lang "en") "Back to home" "Zur Startseite")) }}
       <a class="back-link" href="{{ "/" | relLangURL }}" title="{{ $backToHomeText }}">{{ $backToHomeText }}</a>
 
       <h1>{{ .Title }}</h1>
@@ -27,7 +27,7 @@
             {{ $ctaText := or .ctaText $ui.default_cta_text }}
             {{ $openInNewTab := or (hasPrefix $ctaHref "http") (hasSuffix $ctaHref ".pdf") }}
             {{ $normalizedHref := replaceRE "^/" "" $ctaHref }}
-            {{ $resolvedHref := cond (or $openInNewTab (hasPrefix $ctaHref "#")) $ctaHref ($normalizedHref | relURL) }}
+            {{ $resolvedHref := cond (or $openInNewTab (hasPrefix $ctaHref "#")) $ctaHref ($normalizedHref | relLangURL) }}
             {{ $showPriceLabel := and .price (not (in .price "Individuell auf Anfrage")) (not (in .price "Индивидуально по запросу")) }}
             <a class="package-card package-card-link {{ if .featured }}package-card-featured{{ end }}" href="{{ $resolvedHref }}" title="{{ $ctaText }}" aria-label="{{ $ctaText }}"{{ if $openInNewTab }} target="_blank" rel="noopener noreferrer"{{ end }}>
               {{ if .badge }}
@@ -35,7 +35,7 @@
               {{ end }}
               <p class="package-name">{{ .name }}</p>
               <p class="package-price">{{ .price }}{{ if $showPriceLabel }}<span class="price-tag" title="{{ $priceLabelTooltip }}">{{ $priceLabelFinal }}</span>{{ end }}</p>
-              <h3 class="package-headline">{{ .headline }}</h3>
+              <h2 class="package-headline">{{ .headline }}</h2>
               {{ with .result }}
                 <p class="package-result"><span class="package-result-label">{{ $ui.result_label }}</span> {{ . }}</p>
               {{ end }}
@@ -57,7 +57,7 @@
             {{ $ctaText := or .ctaText $ui.default_cta_text }}
             {{ $openInNewTab := or (hasPrefix $ctaHref "http") (hasSuffix $ctaHref ".pdf") }}
             {{ $normalizedHref := replaceRE "^/" "" $ctaHref }}
-            {{ $resolvedHref := cond (or $openInNewTab (hasPrefix $ctaHref "#")) $ctaHref ($normalizedHref | relURL) }}
+            {{ $resolvedHref := cond (or $openInNewTab (hasPrefix $ctaHref "#")) $ctaHref ($normalizedHref | relLangURL) }}
             {{ $imagePath := .image }}
             {{ if not $imagePath }}
               {{ if or (in $normalizedHref "stilfrage") (in $normalizedHref "stilfrage/") }}
@@ -68,14 +68,14 @@
             {{ end }}
             {{ $showPriceLabel := and .price (not (in .price "Individuell auf Anfrage")) (not (in .price "Индивидуально по запросу")) }}
             <div class="offers-free-item">
-              {{ with .subheading }}<h2 class="offers-free-subheading">{{ . }}</h2>{{ end }}
+              {{ with .subheading }}<h3 class="offers-free-subheading">{{ . }}</h3>{{ end }}
               <a class="free-offer-card free-offer-card-link" href="{{ $resolvedHref }}" title="{{ $ctaText }}" aria-label="{{ $itemTitle }}"{{ if $openInNewTab }} target="_blank" rel="noopener noreferrer"{{ end }}>
                 {{ if $imagePath }}
                   <div class="free-offer-media">
                     {{ partial "responsive-image.html" (dict "src" $imagePath "alt" $itemTitle "title" $itemTitle "class" (printf "free-offer-image%s" (cond (or (hasSuffix $imagePath "10_styling_tipps.png") (hasSuffix $imagePath "stiltest.png") (hasSuffix $imagePath "cover_stylingtipps.png") (hasSuffix $imagePath "cover_stiltest.png") (hasSuffix $imagePath "Stilfrage.png") (hasSuffix $imagePath "Gutschein.png")) " free-offer-image-contain" "")) "loading" "lazy" "decoding" "async" "sizes" "(max-width: 700px) 100vw, (max-width: 1200px) 50vw, 33vw") }}
                   </div>
                 {{ end }}
-                <h4>{{ .title }}</h4>
+                <h3>{{ .title }}</h3>
                 {{ if .price }}<p class="free-offer-price">{{ .price }}{{ if $showPriceLabel }}<span class="price-tag" title="{{ $priceLabelTooltip }}">{{ $priceLabelFinal }}</span>{{ end }}</p>{{ end }}
                 <p>{{ .text }}</p>
                 <span class="btn">{{ $ctaText }}</span>
@@ -105,7 +105,7 @@
                 <td><strong>{{ .situation }}</strong></td>
                 {{ $offerHref := or .offerHref "" }}
                 {{ $normalizedOfferHref := replaceRE "^/" "" $offerHref }}
-                {{ $resolvedOfferHref := cond (eq $offerHref "") "" ($normalizedOfferHref | relURL) }}
+                {{ $resolvedOfferHref := cond (eq $offerHref "") "" ($normalizedOfferHref | relLangURL) }}
                 <td>{{ if $resolvedOfferHref }}<a href="{{ $resolvedOfferHref }}" title="{{ .offer }}">{{ .offer }}</a>{{ else }}{{ .offer }}{{ end }}</td>
               </tr>
               {{ end }}
@@ -152,7 +152,7 @@
             {{ $ctaText := or .ctaText $ui.default_cta_text }}
             {{ $openInNewTab := or (hasPrefix $ctaHref "http") (hasSuffix $ctaHref ".pdf") }}
             {{ $normalizedHref := replaceRE "^/" "" $ctaHref }}
-            {{ $resolvedHref := cond (or $openInNewTab (hasPrefix $ctaHref "#")) $ctaHref ($normalizedHref | relURL) }}
+            {{ $resolvedHref := cond (or $openInNewTab (hasPrefix $ctaHref "#")) $ctaHref ($normalizedHref | relLangURL) }}
             {{ $imagePath := .image }}
             <a class="free-offer-card free-offer-card-link" href="{{ $resolvedHref }}" title="{{ $ctaText }}" aria-label="{{ $itemTitle }}"{{ if $openInNewTab }} target="_blank" rel="noopener noreferrer"{{ end }}>
               {{ if $imagePath }}
@@ -160,7 +160,7 @@
                   {{ partial "responsive-image.html" (dict "src" $imagePath "alt" $itemTitle "title" $itemTitle "class" (printf "free-offer-image%s" (cond (or (hasSuffix $imagePath "10_styling_tipps.png") (hasSuffix $imagePath "stiltest.png") (hasSuffix $imagePath "cover_stylingtipps.png") (hasSuffix $imagePath "cover_stiltest.png") (hasSuffix $imagePath "Stilfrage.png") (hasSuffix $imagePath "Gutschein.png")) " free-offer-image-contain" "")) "loading" "lazy" "decoding" "async" "sizes" "(max-width: 700px) 100vw, (max-width: 1200px) 50vw, 33vw") }}
                 </div>
               {{ end }}
-              <h4>{{ .title }}</h4>
+              <h3>{{ .title }}</h3>
               <p>{{ .text }}</p>
               <span class="btn">{{ $ctaText }}</span>
             </a>

@@ -133,7 +133,7 @@
   <section class="section coach-section">
     <div class="container intro-grid">
       <div class="coach-visual-column">
-        {{ partial "responsive-image.html" (dict "src" $coach.image "alt" $coachImageTitle "title" $coachImageTitle "class" "card-image coach-image" "loading" "lazy" "decoding" "async" "sizes" "(max-width: 900px) 100vw, 50vw") }}
+        {{ partial "responsive-image.html" (dict "src" $coach.image "alt" $coachImageTitle "title" $coachImageTitle "class" "card-image coach-image" "loading" "lazy" "decoding" "async" "fetchpriority" "high" "sizes" "(max-width: 900px) 100vw, 50vw") }}
       </div>
       <div class="coach-copy-column">
         {{ $coachName := or $coach.name "Natalia Kleemann" }}
@@ -154,7 +154,7 @@
           <p class="coach-mission-sub">{{ . }}</p>
           {{ end }}
         </blockquote>
-        <img src="{{ "images/signature.png" | relURL }}" alt="{{ $coachSignatureAlt }}" class="coach-signature" loading="lazy" width="220" height="78">
+        {{ partial "responsive-image.html" (dict "src" "images/signature.png" "alt" $coachSignatureAlt "class" "coach-signature" "loading" "lazy" "width" 220 "height" 78) }}
         <p class="coach-signoff">
           <strong>{{ $coachSignatureName }}</strong>
           <span>{{ $coachSignatureRole }}</span>
@@ -162,7 +162,7 @@
         <div class="coach-actions">
           {{ partial "button-icon.html" (dict "href" $coach.buttonHref "text" $coach.buttonText "title" $coach.buttonText "targetBlank" true) }}
           {{ if and (isset $ui "coach_about_cta_text") (isset $ui "coach_about_cta_href") }}
-          {{ partial "button-icon.html" (dict "href" ($ui.coach_about_cta_href | relURL) "text" $ui.coach_about_cta_text "title" $ui.coach_about_cta_text "class" "btn btn-secondary btn-secondary-light" "noIcon" true) }}
+          {{ partial "button-icon.html" (dict "href" ($ui.coach_about_cta_href | relLangURL) "text" $ui.coach_about_cta_text "title" $ui.coach_about_cta_text "class" "btn btn-secondary btn-secondary-light" "noIcon" true) }}
           {{ end }}
         </div>
       </div>
@@ -187,12 +187,13 @@
   </section>
 
   {{ $isRu := or (eq .Language.Lang "ru") (eq .Language.Lang "rus") }}
-  {{ $stilfrageAlt := cond $isRu "Наталия за рабочим столом" "Natalia am Schreibtisch" }}
-  {{ $stilfrageIntro := cond $isRu "Для моментов,<br>когда вы не уверены." "Für Momente,<br>in denen du dir nicht sicher bist." }}
-  {{ $stilfrageHeading := cond $isRu "Вопрос стилисту Наталии" "Stilfrage an Natalia" }}
-  {{ $stilfrageQuote := cond $isRu "Иногда достаточно честного второго мнения. Задайте свой вопрос о стиле и принимайте уверенные решения при покупке, сочетании вещей и своем образе." "Manchmal reicht eine ehrliche zweite Meinung. Stelle deine Stilfrage und triff sichere Entscheidungen beim Kaufen, Kombinieren und Auftreten." }}
-  {{ $offersHeading := cond $isRu "Мои предложения" "Meine Angebote" }}
-  {{ $offersMoreText := cond $isRu "Другие предложения" "Weitere Angebote" }}
+  {{ $isEn := eq .Language.Lang "en" }}
+  {{ $stilfrageAlt := cond $isRu "Наталия за рабочим столом" (cond $isEn "Natalia at her desk" "Natalia am Schreibtisch") }}
+  {{ $stilfrageIntro := cond $isRu "Для моментов,<br>когда вы не уверены." (cond $isEn "For moments,<br>when you are not sure." "Für Momente,<br>in denen du dir nicht sicher bist.") }}
+  {{ $stilfrageHeading := cond $isRu "Вопрос стилисту Наталии" (cond $isEn "Ask Natalia a style question" "Stilfrage an Natalia") }}
+  {{ $stilfrageQuote := cond $isRu "Иногда достаточно честного второго мнения. Задайте свой вопрос о стиле и принимайте уверенные решения при покупке, сочетании вещей и своем образе." (cond $isEn "Sometimes an honest second opinion is enough. Ask your style question and make confident decisions when shopping, combining pieces, and shaping your look." "Manchmal reicht eine ehrliche zweite Meinung. Stelle deine Stilfrage und triff sichere Entscheidungen beim Kaufen, Kombinieren und Auftreten.") }}
+  {{ $offersHeading := cond $isRu "Мои предложения" (cond $isEn "My offers" "Meine Angebote") }}
+  {{ $offersMoreText := i18n "offers_more_text" }}
 
   <section class="section stilfrage-section" id="stilfrage">
     <div class="stilfrage-bg">
@@ -255,11 +256,12 @@
         </div>
       </section>
       <div class="offers-home-actions">
-        <a class="offers-home-tag" href="{{ "angebote" | relLangURL }}" title="{{ $offersMoreText }}" aria-label="{{ $offersMoreText }}">
+        {{ $offersHref := "angebote" | relLangURL }}{{ with .Site.GetPage "angebote" }}{{ $offersHref = .RelPermalink }}{{ end }}
+        <a class="offers-home-tag" href="{{ $offersHref }}" title="{{ $offersMoreText }}" aria-label="{{ $offersMoreText }}">
           {{ if $isRu }}
             <span class="benefits-tag-text">Другие<br>предложения</span>
           {{ else }}
-            <span class="benefits-tag-text">Weitere<br>Angebote</span>
+            <span class="benefits-tag-text">{{ i18n "offers_more_text_short" | safeHTML }}</span>
           {{ end }}
         </a>
       </div>

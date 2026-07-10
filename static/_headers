@@ -1,46 +1,83 @@
+# Global Security Headers
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=()
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://challenges.cloudflare.com https://www.googletagmanager.com https://www.google-analytics.com https://www.facebook.com/tr/ https://*.telegram.org; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https: wss:; frame-src 'self' https://challenges.cloudflare.com https://calendar.app.google/ https://t.me/; frame-ancestors 'self'
+
+# Cache HTML pages (5 minutes, allows stale-while-revalidate)
+/index.html
+  Cache-Control: public, max-age=300, stale-while-revalidate=86400
+/en/index.html
+  Cache-Control: public, max-age=300, stale-while-revalidate=86400
+/rus/index.html
+  Cache-Control: public, max-age=300, stale-while-revalidate=86400
+/ru/index.html
+  Cache-Control: public, max-age=300, stale-while-revalidate=86400
+/*
+  Cache-Control: public, max-age=300, stale-while-revalidate=86400
+
 # Cache images for 1 year (immutable)
 /images/*
   Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
 
 # Cache fonts for 1 year
 /fonts/*
   Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
 
 # Cache CSS/JS for 1 year (fingerprinted)
 /css/*
   Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
 /js/*
   Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
 
 # Cache SVG for 1 year
 /*.svg
   Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
 /images/*.svg
   Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
 
 # Cache favicon for 1 year
 /favicon.ico
   Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
 /images/favicon-*
   Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
 /images/apple-touch-icon.png
   Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
 /images/mask-icon.svg
   Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
 
 # Short cache for HTML (revalidate often)
 /index.html
   Cache-Control: public, max-age=3600, must-revalidate
+  X-Content-Type-Options: nosniff
 /*.html
   Cache-Control: public, max-age=3600, must-revalidate
+  X-Content-Type-Options: nosniff
 /*/index.html
   Cache-Control: public, max-age=3600, must-revalidate
+  X-Content-Type-Options: nosniff
 
 # Cache sitemaps for 1 day
 /sitemap.xml
   Cache-Control: public, max-age=86400
+  X-Content-Type-Options: nosniff
 /*/sitemap.xml
   Cache-Control: public, max-age=86400
+  X-Content-Type-Options: nosniff
 
 # Default for everything else
 /*

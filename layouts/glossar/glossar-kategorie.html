@@ -1,0 +1,199 @@
+{{ define "main" }}
+{{ $pageUI := .Params.ui }}
+{{ $sectionUI := dict }}
+{{ with .CurrentSection }}{{ $sectionUI = .Params.ui }}{{ end }}
+{{ $homeUI := .Site.Home.Params.ui }}
+{{ $backText := or $pageUI.back_text $sectionUI.back_text $homeUI.back_text "Zum Glossar" }}
+{{ $lang := .Site.Language.Lang }}
+{{ $isRuLang := or (eq $lang "ru") (eq $lang "rus") }}
+{{ $glossaryHref := "glossar" | relLangURL }}
+{{ with .CurrentSection }}{{ $glossaryHref = .RelPermalink }}{{ end }}
+{{ $colorWheelHeading := cond $isRuLang "Выберите цвет" (cond (eq $lang "en") "Choose colors directly" "Farben direkt wählen") }}
+{{ $colorWheelIntro := cond $isRuLang "Выберите оттенок на цветовом круге и перейдите сразу к подходящему термину." (cond (eq $lang "en") "Select a shade in the color wheel and jump directly to the matching term." "Wähle im Farbkreis eine Nuance und springe direkt zum passenden Begriff.") }}
+{{ $colorWheelLabel := cond $isRuLang "Выбор цвета" (cond (eq $lang "en") "Color selection" "Farbauswahl") }}
+{{ $colorWheelCenter := cond $isRuLang "Цветовой круг" (cond (eq $lang "en") "Color wheel" "Farbkreis") }}
+{{ $category := .Params.glossar_category | default .Title }}
+{{ $allGlossarPages := where .CurrentSection.RegularPages "Params.is_glossar_category" "ne" true }}
+{{ $terms := sort (where $allGlossarPages "Params.category" $category) "Title" "asc" }}
+{{ $isColorLexicon := false }}
+{{ with .File }}
+  {{ if or (eq .BaseFileName "farb-lexikon") (eq .BaseFileName "tsvetovoy-slovar") }}
+    {{ $isColorLexicon = true }}
+  {{ end }}
+{{ end }}
+{{ $wheelTerms := slice }}
+{{ if $isColorLexicon }}
+  {{ $wheelOrder := slice
+    "weiss" "off-white" "creme" "beige" "camel" "khaki"
+    "gelb" "senfgelb" "gold" "orange" "terracotta" "rosegold"
+    "rosa" "pink" "fuchsia" "rot" "bordeaux"
+    "violett" "lila" "flieder"
+    "blau" "hellblau" "navy" "petrol" "tuerkis"
+    "gruen" "salbeigruen" "oliv"
+    "braun" "grau" "anthrazit" "metallic" "silber" "schwarz"
+  }}
+  {{ range $slug := $wheelOrder }}
+    {{ range $term := $terms }}
+      {{ with $term.File }}
+        {{ if eq .BaseFileName $slug }}
+          {{ $wheelTerms = $wheelTerms | append $term }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  {{ range $term := $terms }}
+    {{ with $term.File }}
+      {{ if not (in $wheelOrder .BaseFileName) }}
+        {{ $wheelTerms = $wheelTerms | append $term }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ $heroImage := .Params.image }}
+{{ $categoryImageMap := dict
+  "garderob-i-povsednevnost" "images/glossar/kategorie/garderobe-alltag.png"
+  "konsultatsiya-po-tsvetu-i-tsvet" "images/glossar/kategorie/farbberatung-farbe.png"
+  "kroy-proportsii-i-posadka" "images/glossar/kategorie/schnitt-proportion-passform.png"
+  "materialy-i-detali" "images/glossar/kategorie/materialien-details.png"
+  "obuv" "images/glossar/kategorie/schuhe.png"
+  "platya-i-yubki" "images/glossar/kategorie/kleider-roecke.png"
+  "stil-und-vozdeystvie" "images/glossar/kategorie/stil-wirkung.png"
+  "tsvetovoy-slovar" "images/glossar/kategorie/farb-lexikon.png"
+}}
+{{ if not $heroImage }}
+  {{ with .File }}
+    {{ with index $categoryImageMap .BaseFileName }}
+      {{ $heroImage = . }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ if not $heroImage }}
+  {{ with .File }}
+    {{ $candidatePng := printf "images/glossar/kategorie/%s.png" .BaseFileName }}
+    {{ $candidateWebp := printf "images/glossar/kategorie/%s.webp" .BaseFileName }}
+    {{ $candidateAvif := printf "images/glossar/kategorie/%s.avif" .BaseFileName }}
+    {{ if fileExists (printf "static/%s" $candidatePng) }}
+      {{ $heroImage = $candidatePng }}
+    {{ else if fileExists (printf "static/%s" $candidateWebp) }}
+      {{ $heroImage = $candidateWebp }}
+    {{ else if fileExists (printf "static/%s" $candidateAvif) }}
+      {{ $heroImage = $candidateAvif }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ if not $heroImage }}
+  {{ $heroImage = "images/glossar/kategorie/_index.png" }}
+{{ end }}
+
+<main class="glossar-list-page">
+  <section class="hero-small glossar-list-hero">
+    <div class="container glossar-list-hero-shell">
+      <div class="glossar-list-hero-copy">
+        <a class="back-link" href="{{ $glossaryHref }}" title="{{ $backText }}">{{ $backText }}</a>
+        <h1 class="glossar-list-title">{{ .Title }}</h1>
+        {{ with .Description }}
+        <p class="glossar-list-description">{{ . }}</p>
+        {{ end }}
+        {{ with .Content }}
+        <div class="glossar-list-description">{{ . }}</div>
+        {{ end }}
+      </div>
+
+      <div class="glossar-list-hero-visual">
+        {{ partial "responsive-image.html" (dict "src" $heroImage "alt" ($category | plainify) "title" ($category | plainify) "class" "glossar-list-hero-image" "loading" "eager" "decoding" "async" "fetchpriority" "high" "sizes" "(max-width: 900px) 100vw, 420px") }}
+      </div>
+    </div>
+  </section>
+
+  <section class="glossar-panel active">
+    <div class="container glossar-content-shell">
+      <div class="glossar-category-view">
+        {{ if and $isColorLexicon (gt (len $wheelTerms) 0) }}
+          <section class="glossar-color-wheel-block" aria-labelledby="glossar-color-wheel-heading">
+            <h2 id="glossar-color-wheel-heading" class="glossar-color-wheel-heading">{{ $colorWheelHeading }}</h2>
+            <p class="glossar-color-wheel-intro">{{ $colorWheelIntro }}</p>
+            <div class="glossar-color-wheel" role="list" aria-label="{{ $colorWheelLabel }}">
+              {{ range $index, $term := $wheelTerms }}
+                {{ $termTitle := $term.Params.term | default $term.Title }}
+                {{ $termId := printf "term-%s" $term.File.BaseFileName }}
+                {{ $termColor := $term.Params.color_hex | default "#C5A059" }}
+                <a
+                  class="glossar-color-wheel-dot"
+                  role="listitem"
+                  href="{{ $term.RelPermalink }}"
+                  title="{{ $termTitle | plainify }}"
+                  aria-label="{{ $termTitle | plainify }}"
+                  data-color-name="{{ $termTitle | plainify }}"
+                  style="--swatch-color: {{ $termColor }}; --swatch-index: {{ $index }}; --swatch-total: {{ len $wheelTerms }};"
+                >
+                  <span class="glossar-color-wheel-dot-label">{{ $termTitle }}</span>
+                </a>
+              {{ end }}
+              <span class="glossar-color-wheel-center" aria-live="polite" aria-atomic="true">{{ $colorWheelCenter }}</span>
+            </div>
+          </section>
+        {{ end }}
+        <div class="glossar-category-group">
+          <h2 class="glossar-category-heading">{{ $category }} <span class="glossar-group-count">{{ len $terms }}</span></h2>
+          <ul class="glossar-term-list">
+            {{ range $terms }}
+              {{ $termTitle := .Params.term | default .Title }}
+              {{ $termId := printf "term-%s" .File.BaseFileName }}
+              {{ $imageAlt := .Params.image_alt | default $termTitle }}
+              {{ $entryImage := .Params.image }}
+              {{ if not $entryImage }}
+                {{ with .File }}
+                  {{ $candidate := printf "images/glossar/%s.png" .BaseFileName }}
+                  {{ if fileExists (printf "static/%s" $candidate) }}
+                    {{ $entryImage = $candidate }}
+                  {{ end }}
+                {{ end }}
+              {{ end }}
+              <li id="{{ $termId }}" class="glossar-term-item">
+                <a href="{{ .RelPermalink }}" class="glossar-term-link" title="{{ $termTitle | plainify }}" aria-label="{{ $termTitle | plainify }}">
+                  {{ with $entryImage }}
+                    <span class="glossar-term-thumb">
+                      {{ partial "responsive-image.html" (dict "src" . "alt" $imageAlt "title" $imageAlt "class" "glossar-term-thumb-image" "loading" "lazy" "decoding" "async" "sizes" "(max-width: 768px) 160px, 176px" "width" "400" "height" "500") }}
+                    </span>
+                  {{ end }}
+                  <span class="glossar-term-title">{{ $termTitle }}</span>
+                  {{ with .Description }}
+                    <span class="glossar-term-excerpt">{{ . }}</span>
+                  {{ end }}
+                </a>
+              </li>
+            {{ end }}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+{{ if and $isColorLexicon (gt (len $wheelTerms) 0) }}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var wheel = document.querySelector(".glossar-color-wheel");
+  if (!wheel) return;
+
+  var center = wheel.querySelector(".glossar-color-wheel-center");
+  if (!center) return;
+
+  var defaultLabel = center.textContent.trim();
+  var dots = wheel.querySelectorAll(".glossar-color-wheel-dot");
+
+  function setLabel(label) {
+    center.textContent = label || defaultLabel;
+  }
+
+  dots.forEach(function (dot) {
+    var label = dot.getAttribute("data-color-name") || dot.getAttribute("aria-label") || "";
+    dot.addEventListener("mouseenter", function () { setLabel(label); });
+    dot.addEventListener("focus", function () { setLabel(label); });
+    dot.addEventListener("mouseleave", function () { setLabel(defaultLabel); });
+    dot.addEventListener("blur", function () { setLabel(defaultLabel); });
+  });
+});
+</script>
+{{ end }}
+{{ end }}
