@@ -3,6 +3,7 @@
 import argparse
 import concurrent.futures
 import re
+import time
 import sys
 from collections import deque
 from dataclasses import dataclass
@@ -14,6 +15,7 @@ from urllib.request import Request, urlopen
 DEFAULT_LIVE_ORIGIN = "https://eskyna.com"
 DEFAULT_PATHS = ["/", "/estyle", "/about", "/impressum", "/datenschutz", "/shop", "/blog"]
 USER_AGENT = "eskyna-link-check/2.0"
+TRANSIENT_HTTP_STATUSES = {429, 500, 502, 503, 504}
 
 
 def parse_args() -> argparse.Namespace:
@@ -149,7 +151,7 @@ class LinkExtractor(HTMLParser):
                     self.asset_links.append(ref)
 
 
-def fetch(url: str, method: str = "GET", timeout: int = 20, headers: dict | None = None):
+def fetch_once(url: str, method: str = "GET", timeout: int = 20, headers: dict | None = None):
     all_headers = {"User-Agent": USER_AGENT}
     if headers:
         all_headers.update(headers)
@@ -167,6 +169,22 @@ def fetch(url: str, method: str = "GET", timeout: int = 20, headers: dict | None
         return 0, "", b"", str(err)
 
 
+def fetch(url: str, method: str = "GET", timeout: int = 20, headers: dict | None = None):
+    attempts = 3
+    backoff_seconds = 1.5
+    last_result = (0, "", b"", "request not attempted")
+
+    for attempt in range(attempts):
+        last_result = fetch_once(url, method=method, timeout=timeout, headers=headers)
+        status, _, _, _ = last_result
+        if status not in TRANSIENT_HTTP_STATUSES:
+            return last_result
+        if attempt < attempts - 1:
+            time.sleep(backoff_seconds * (attempt + 1))
+
+    return last_result
+
+
 def decode_body(body: bytes, content_type: str) -> str:
     charset = "utf-8"
     match = re.search(r"charset=([a-zA-Z0-9_-]+)", content_type)
@@ -179,7 +197,9 @@ def check_loadable(url: str) -> tuple[bool, int, str]:
     status, _, _, err = fetch(url, method="HEAD")
     if 200 <= status < 400:
         return True, status, "HEAD"
-    if status in (403, 405, 501, 0):
+    # Some origins/CDNs handle HEAD differently or return transient errors.
+    # Fall back to a lightweight ranged GET probe before declaring failure.
+    if status in ({403, 405, 501, 0} | TRANSIENT_HTTP_STATUSES):
         status, _, _, err = fetch(url, method="GET", headers={"Range": "bytes=0-0"})
         return 200 <= status < 400, status, err or "GET"
     return False, status, err or "HEAD"
@@ -310,6 +330,10 @@ def main() -> int:
 
     def check_one_asset(url: str):
         ok, status, detail = check_loadable(url)
+        if not ok and status in TRANSIENT_HTTP_STATUSES:
+            # Final grace retry for temporary upstream overloads.
+            time.sleep(3)
+            ok, status, detail = check_loadable(url)
         return url, ok, status, detail
 
     checked = 0
