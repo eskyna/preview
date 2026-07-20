@@ -44,7 +44,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: 24
           cache: npm
@@ -60,7 +60,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: 24
           cache: npm
@@ -171,7 +171,7 @@ jobs:
           echo "Resolved base URL: $BUILD_BASEURL"
           echo "Preview banner: $(grep -E '^HUGO_PREVIEW_BANNER=' "$GITHUB_ENV" | tail -1 | cut -d= -f2-)"
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: 24
           cache: npm
@@ -424,7 +424,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: 24
           cache: npm
