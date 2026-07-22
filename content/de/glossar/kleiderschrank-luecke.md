@@ -13,7 +13,7 @@ keywords:
   - was bedeutet kleiderschrank-lücke
   - kleiderschrank-lücke stilberatung
 weight: 1
-image: images/glossar/kleiderschrank-lücke.png
+image: images/glossar/kleiderschrank-luecke.png
 image_alt: Editoriale Glossar-Grafik zu Kleiderschrank-Lücke mit ruhigen Farbfeldern und feiner Linienführung
 relatedTerms:
   - title: Capsule Wardrobe
@@ -86,6 +86,8 @@ Wenn du den Begriff **Kleiderschrank-Lücke** auf ein Outfit überträgst, prüf
 In der Beratung ist **Kleiderschrank-Lücke** kein starres Etikett. Der Begriff wird erst hilfreich, wenn er zu deinem Körper, deinem Alltag und deiner gewünschten Wirkung passt. So erkennst du schneller, ob ein Teil wirklich zu dir gehört oder ob es nur im ersten Moment interessant aussieht.
 
 Mehr Orientierung findest du in der Kategorie [Garderobe & Alltag](/glossar/kategorie/garderobe-alltag/). Wenn du eine konkrete Entscheidung zu Kauf, Kombination oder Wirkung prüfen möchtest, passt [ESKYNA Stilgarderobe](/stilgarderobe/).
+
+Ein naheliegender Anschlussbegriff in diesem Zusammenhang ist [Elevated Flip-Flop](/glossar/elevated-flip-flop/).
 
 ## Verwandte Begriffe
 

@@ -5,6 +5,7 @@ description:
   Das umgekehrte Dreieck beschreibt eine Silhouette mit stärkerer Schulter- oder Oberkörperpräsenz
   und schmalerem Hüftbereich.
 category: Schnitt, Proportion & Passform
+subcategory: "Größen & Passform"
 tags:
   - umgekehrtes dreieck
   - silhouette
@@ -27,7 +28,7 @@ relatedTerms:
   - title: Schulterlinie
     url: /glossar/schulterlinie/
   - title: Körperform
-    url: /glossar/körperform/
+    url: /glossar/koerperform/
 faq:
   items:
     - q: Wie nutze ich „Umgekehrtes Dreieck“ im Alltag?
@@ -75,10 +76,12 @@ Frag dich bei **Umgekehrtes Dreieck**: Welche Aufgabe soll dieses Element im Out
 
 Bei Proportionen hilft Distanz. Schau nicht nur auf Details, sondern auf die ganze Linie von Kopf bis Schuh. Teste deshalb bewusst zwei Alternativen: eine ruhigere und eine markantere Variante. Notiere dir, welche sich natürlicher anfühlt und welche besser zu deinen vorhandenen Lieblingsstücken passt. So wird **Umgekehrtes Dreieck** zu einem praktischen Stilwerkzeug statt zu einer abstrakten Modevokabel.
 
+Ein naheliegender Anschlussbegriff in diesem Zusammenhang ist [Khaki](/glossar/khaki/).
+
 ## Verwandte Begriffe
 
 - [Silhouette](/glossar/silhouette/)
 - [Schulter-Hüft-Balance](/glossar/schulter-hueft-balance/)
 - [Balance](/glossar/balance/)
 - [Schulterlinie](/glossar/schulterlinie/)
-- [Körperform](/glossar/körperform/)
+- [Körperform](/glossar/koerperform/)

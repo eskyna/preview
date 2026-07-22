@@ -4,6 +4,7 @@ term: Sanduhr-Silhouette
 description: Die Sanduhr-Silhouette beschreibt eine Form mit sichtbarer Taille und ähnlicher Breite
   von Schulter- und Hüftbereich.
 category: Schnitt, Proportion & Passform
+subcategory: "Größen & Passform"
 tags:
   - sanduhr silhouette
   - silhouette
@@ -26,7 +27,7 @@ relatedTerms:
   - title: X-Linie
     url: /glossar/x-linie/
   - title: Körperform
-    url: /glossar/körperform/
+    url: /glossar/koerperform/
 faq:
   items:
     - q: Wie nutze ich „Sanduhr-Silhouette“ im Alltag?
@@ -74,10 +75,12 @@ Frag dich bei **Sanduhr-Silhouette**: Welche Aufgabe soll dieses Element im Outf
 
 Bei Proportionen hilft Distanz. Schau nicht nur auf Details, sondern auf die ganze Linie von Kopf bis Schuh. Teste deshalb bewusst zwei Alternativen: eine ruhigere und eine markantere Variante. Notiere dir, welche sich natürlicher anfühlt und welche besser zu deinen vorhandenen Lieblingsstücken passt. So wird **Sanduhr-Silhouette** zu einem praktischen Stilwerkzeug statt zu einer abstrakten Modevokabel.
 
+Wenn du mehr Kontrast zur Sanduhr suchst, hilft dir die [Dreieck-Silhouette](/glossar/dreieck-silhouette/) bei der Einordnung von Schulter, Taille und Hüfte.
+
 ## Verwandte Begriffe
 
 - [Silhouette](/glossar/silhouette/)
 - [Taillierung](/glossar/taillierung/)
 - [Balance](/glossar/balance/)
 - [X-Linie](/glossar/x-linie/)
-- [Körperform](/glossar/körperform/)
+- [Körperform](/glossar/koerperform/)

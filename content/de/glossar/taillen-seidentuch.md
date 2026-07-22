@@ -6,6 +6,7 @@ slug: taillen-seidentuch
 url: /glossar/taillen-seidentuch/
 description: Ein Taillen-Seidentuch ersetzt den Gürtel und setzt einen weichen Akzent an der Taille. Erfahre, wie du es stylst.
 category: Garderobe & Alltag
+subcategory: Accessoires
 tags:
   - taillen-seidentuch
   - seidentuch
@@ -21,7 +22,7 @@ relatedTerms:
   - title: Seidentuch
     url: /glossar/seidentuch/
   - title: Gürtel
-    url: /glossar/gürtel/
+    url: /glossar/guertel/
   - title: Taillengürtel
     url: /glossar/taillenguertel/
   - title: Kleid
@@ -49,10 +50,12 @@ Wichtig ist die richtige Größe. Das Tuch sollte lang genug sein, um locker gek
 
 Für einen modernen Look das Seidentuch nicht zu perfekt binden. Ein lockerer seitlicher Knoten wirkt natürlicher und passt gut zu Jeans, Slip Dresses, Leinenhosen oder schlichten Sommerkleidern.
 
+Ein naheliegender Anschlussbegriff in diesem Zusammenhang ist [Indigo und Denimblau](/glossar/indigo-und-denimblau/).
+
 ## Verwandte Begriffe
 
 - [Seidentuch](/glossar/seidentuch/)
-- [Gürtel](/glossar/gürtel/)
+- [Gürtel](/glossar/guertel/)
 - [Taillengürtel](/glossar/taillenguertel/)
 - [Kleid](/glossar/kleid/)
 - [Jeans](/glossar/jeans/)

@@ -5,6 +5,7 @@ description:
   Plus-Size-Styling beschreibt Stylingansätze für größere Konfektionsgrößen, ohne den Körper
   zu kaschieren oder zu bewerten.
 category: Schnitt, Proportion & Passform
+subcategory: "Größen & Passform"
 tags:
   - plus size styling
   - passform
@@ -23,7 +24,7 @@ relatedTerms:
   - title: Passform
     url: /glossar/passform/
   - title: Körperform
-    url: /glossar/körperform/
+    url: /glossar/koerperform/
   - title: Proportion
     url: /glossar/proportion/
   - title: Qualität
@@ -46,6 +47,8 @@ lastmod: "2026-07-09"
 ## Einfach erklärt
 
 Auch hier geht es nicht um Verkleinern oder Verstecken. Es geht um Kleidung, die gut sitzt, sauber fällt und die gewünschte Wirkung unterstütetzt.
+
+Gerade für einen ruhigen Gesamteindruck ist die bewusste [optische Streckung](/glossar/optische-streckung/) oft ein hilfreiches Werkzeug.
 
 ## Mini-Test vor dem Spiegel
 
@@ -75,10 +78,12 @@ Frag dich bei **Plus-Size-Styling**: Welche Aufgabe soll dieses Element im Outfi
 
 Bei Proportionen hilft Distanz. Schau nicht nur auf Details, sondern auf die ganze Linie von Kopf bis Schuh. Teste deshalb bewusst zwei Alternativen: eine ruhigere und eine markantere Variante. Notiere dir, welche sich natürlicher anfühlt und welche besser zu deinen vorhandenen Lieblingsstücken passt. So wird **Plus-Size-Styling** zu einem praktischen Stilwerkzeug statt zu einer abstrakten Modevokabel.
 
+Für ruhige Linien ohne harte Brüche ist die [Rechteck-Silhouette](/glossar/rechteck-silhouette/) eine hilfreiche Orientierung.
+
 ## Verwandte Begriffe
 
 - [Curvy Styling](/glossar/curvy-styling/)
 - [Passform](/glossar/passform/)
-- [Körperform](/glossar/körperform/)
+- [Körperform](/glossar/koerperform/)
 - [Proportion](/glossar/proportion/)
 - [Qualität](/glossar/qualitaet/)

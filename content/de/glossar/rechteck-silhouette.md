@@ -4,6 +4,7 @@ term: Rechteck-Silhouette
 description: Die Rechteck-Silhouette beschreibt eine eher gerade Körper- oder Outfitlinie mit wenig
   sichtbarer Taillenbetonung.
 category: Schnitt, Proportion & Passform
+subcategory: "Größen & Passform"
 tags:
   - rechteck silhouette
   - silhouette
@@ -24,7 +25,7 @@ relatedTerms:
   - title: Androgyne Figur
     url: /glossar/androgyne-figur/
   - title: Körperform
-    url: /glossar/körperform/
+    url: /glossar/koerperform/
   - title: Proportion
     url: /glossar/proportion/
 faq:
@@ -74,10 +75,12 @@ Frag dich bei **Rechteck-Silhouette**: Welche Aufgabe soll dieses Element im Out
 
 Bei Proportionen hilft Distanz. Schau nicht nur auf Details, sondern auf die ganze Linie von Kopf bis Schuh. Teste deshalb bewusst zwei Alternativen: eine ruhigere und eine markantere Variante. Notiere dir, welche sich natürlicher anfühlt und welche besser zu deinen vorhandenen Lieblingsstücken passt. So wird **Rechteck-Silhouette** zu einem praktischen Stilwerkzeug statt zu einer abstrakten Modevokabel.
 
+Ein naheliegender Anschlussbegriff in diesem Zusammenhang ist [Fokuspunkt](/glossar/fokuspunkt/).
+
 ## Verwandte Begriffe
 
 - [Silhouette](/glossar/silhouette/)
 - [H-Linie](/glossar/h-linie/)
 - [Androgyne Figur](/glossar/androgyne-figur/)
-- [Körperform](/glossar/körperform/)
+- [Körperform](/glossar/koerperform/)
 - [Proportion](/glossar/proportion/)

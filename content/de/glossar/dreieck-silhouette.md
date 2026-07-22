@@ -4,6 +4,7 @@ term: Dreieck-Silhouette
 description: Die Dreieck-Silhouette beschreibt eine Form, bei der der Hüftbereich optisch breiter
   wirkt als die Schulterpartie.
 category: Schnitt, Proportion & Passform
+subcategory: "Größen & Passform"
 tags:
   - dreieck silhouette
   - silhouette
@@ -24,7 +25,7 @@ relatedTerms:
   - title: Balance
     url: /glossar/balance/
   - title: Körperform
-    url: /glossar/körperform/
+    url: /glossar/koerperform/
   - title: A-Linie
     url: /glossar/a-linie/
 faq:
@@ -74,10 +75,12 @@ Frag dich bei **Dreieck-Silhouette**: Welche Aufgabe soll dieses Element im Outf
 
 Bei Proportionen hilft Distanz. Schau nicht nur auf Details, sondern auf die ganze Linie von Kopf bis Schuh. Teste deshalb bewusst zwei Alternativen: eine ruhigere und eine markantere Variante. Notiere dir, welche sich natürlicher anfühlt und welche besser zu deinen vorhandenen Lieblingsstücken passt. So wird **Dreieck-Silhouette** zu einem praktischen Stilwerkzeug statt zu einer abstrakten Modevokabel.
 
+Ein naheliegender Anschlussbegriff in diesem Zusammenhang ist [Crêpe/Krepp](/glossar/crepe-krepp/).
+
 ## Verwandte Begriffe
 
 - [Silhouette](/glossar/silhouette/)
 - [Schulter-Hüft-Balance](/glossar/schulter-hueft-balance/)
 - [Balance](/glossar/balance/)
-- [Körperform](/glossar/körperform/)
+- [Körperform](/glossar/koerperform/)
 - [A-Linie](/glossar/a-linie/)

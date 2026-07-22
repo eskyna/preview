@@ -5,6 +5,7 @@ description:
   Tall Styling beschäftigt sich mit Kleidung für große Körpergrößen und der bewussten Balance
   von Länge, Volumen und Details.
 category: Schnitt, Proportion & Passform
+subcategory: "Größen & Passform"
 tags:
   - tall styling
   - proportion
@@ -23,7 +24,7 @@ relatedTerms:
   - title: Horizontale Linie
     url: /glossar/horizontale-linie/
   - title: Layering-Länge
-    url: /glossar/layering-länge/
+    url: /glossar/layering-laenge/
   - title: Saumlänge
     url: /glossar/saumlange/
   - title: Volumen
@@ -75,10 +76,12 @@ Frag dich bei **Tall Styling**: Welche Aufgabe soll dieses Element im Outfit üb
 
 Bei Proportionen hilft Distanz. Schau nicht nur auf Details, sondern auf die ganze Linie von Kopf bis Schuh. Teste deshalb bewusst zwei Alternativen: eine ruhigere und eine markantere Variante. Notiere dir, welche sich natürlicher anfühlt und welche besser zu deinen vorhandenen Lieblingsstücken passt. So wird **Tall Styling** zu einem praktischen Stilwerkzeug statt zu einer abstrakten Modevokabel.
 
+Ein naheliegender Anschlussbegriff in diesem Zusammenhang ist [Jacquard](/glossar/jacquard/).
+
 ## Verwandte Begriffe
 
 - [Vertikale Linie](/glossar/vertikale-linie/)
 - [Horizontale Linie](/glossar/horizontale-linie/)
-- [Layering-Länge](/glossar/layering-länge/)
+- [Layering-Länge](/glossar/layering-laenge/)
 - [Saumlänge](/glossar/saumlange/)
 - [Volumen](/glossar/volumen/)

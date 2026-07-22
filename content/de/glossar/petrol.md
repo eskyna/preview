@@ -21,7 +21,7 @@ image: images/glossar/petrol.png
 image_alt: Editoriale Grafik zu Petrol mit Farbfeldern, Materialflächen und ruhigen Kombinationsakzenten
 relatedTerms:
   - title: Türkis
-    url: /glossar/türkis/
+    url: /glossar/tuerkis/
   - title: Blau
     url: /glossar/blau/
   - title: Grün
@@ -79,6 +79,8 @@ Petrol ist oft leichter zu tragen als sehr helle Blaugrün-Töne. Wenn die Farbe
 ## ESKYNA-Merksatz
 
 Petrol ist Farbe mit Tiefe. Präsent genug für Persönlichkeit und ruhig genug für Eleganz.
+
+Ein naheliegender Anschlussbegriff in diesem Zusammenhang ist [Faser-Mix](/glossar/faser-mix/).
 
 ## Praxischeck
 

@@ -5,6 +5,7 @@ description:
   Eine vertikale Linie lenkt den Blick von oben nach unten und kann Outfits klarer, länger
   und ruhiger erscheinen lassen.
 category: Schnitt, Proportion & Passform
+subcategory: "Größen & Passform"
 tags:
   - vertikale linie
   - optische streckung
@@ -25,7 +26,7 @@ relatedTerms:
   - title: Horizontale Linie
     url: /glossar/horizontale-linie/
   - title: Layering-Länge
-    url: /glossar/layering-länge/
+    url: /glossar/layering-laenge/
   - title: Saumlänge
     url: /glossar/saumlange/
 faq:
@@ -75,10 +76,12 @@ Frag dich bei **Vertikale Linie**: Welche Aufgabe soll dieses Element im Outfit 
 
 Bei Proportionen hilft Distanz. Schau nicht nur auf Details, sondern auf die ganze Linie von Kopf bis Schuh. Teste deshalb bewusst zwei Alternativen: eine ruhigere und eine markantere Variante. Notiere dir, welche sich natürlicher anfühlt und welche besser zu deinen vorhandenen Lieblingsstücken passt. So wird **Vertikale Linie** zu einem praktischen Stilwerkzeug statt zu einer abstrakten Modevokabel.
 
+Ein naheliegender Anschlussbegriff in diesem Zusammenhang ist [Klare Farben](/glossar/klare-farben/).
+
 ## Verwandte Begriffe
 
 - [Blickführung](/glossar/blickfuehrung/)
 - [Längsstreckung](/glossar/laengsstreckung/)
 - [Horizontale Linie](/glossar/horizontale-linie/)
-- [Layering-Länge](/glossar/layering-länge/)
+- [Layering-Länge](/glossar/layering-laenge/)
 - [Saumlänge](/glossar/saumlange/)

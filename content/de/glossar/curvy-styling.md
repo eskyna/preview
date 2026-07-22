@@ -4,6 +4,7 @@ term: Curvy Styling
 description: Curvy Styling beschreibt eine body-neutrale Stilberatung für kurvigere Körperformen mit
   Fokus auf Passform, Proportion und gewünschte Wirkung.
 category: Schnitt, Proportion & Passform
+subcategory: "Größen & Passform"
 tags:
   - curvy styling
   - körperform
@@ -18,7 +19,7 @@ image: images/glossar/curvy-styling.png
 image_alt: "Glossar-Illustration zu Curvy Styling"
 relatedTerms:
   - title: Körperform
-    url: /glossar/körperform/
+    url: /glossar/koerperform/
   - title: Passform
     url: /glossar/passform/
   - title: Taillierung
@@ -74,9 +75,11 @@ Frag dich bei **Curvy Styling**: Welche Aufgabe soll dieses Element im Outfit ü
 
 Bei Proportionen hilft Distanz. Schau nicht nur auf Details, sondern auf die ganze Linie von Kopf bis Schuh. Teste deshalb bewusst zwei Alternativen: eine ruhigere und eine markantere Variante. Notiere dir, welche sich natürlicher anfühlt und welche besser zu deinen vorhandenen Lieblingsstücken passt. So wird **Curvy Styling** zu einem praktischen Stilwerkzeug statt zu einer abstrakten Modevokabel.
 
+Ein naheliegender Anschlussbegriff in diesem Zusammenhang ist [Cost per Wear](/glossar/cost-per-wear/).
+
 ## Verwandte Begriffe
 
-- [Körperform](/glossar/körperform/)
+- [Körperform](/glossar/koerperform/)
 - [Passform](/glossar/passform/)
 - [Taillierung](/glossar/taillierung/)
 - [Balance](/glossar/balance/)
